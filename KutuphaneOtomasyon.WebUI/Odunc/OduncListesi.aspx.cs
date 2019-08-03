@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Ninject.Web;
 
-namespace KutuphaneOtomasyon.WebUI.KitapOdunc
+namespace KutuphaneOtomasyon.WebUI.Odunc
 {
-    public partial class OduncListesi : System.Web.UI.Page
+    public partial class OduncListesi : PageBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {

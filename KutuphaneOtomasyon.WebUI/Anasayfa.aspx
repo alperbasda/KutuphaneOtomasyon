@@ -1,8 +1,8 @@
-﻿<%@ Page Title="Anasayfa" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Anasayfa.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.Anasayfa" %>
+﻿<%@ Page Title="Kutuphane - Anasayfa" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Anasayfa.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.Anasayfa" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop m-body align-custom">
     <div class="m-grid__item m-grid__item--fluid m-wrapper">
-
         <!-- BEGIN: Subheader -->
         <div class="m-subheader ">
             <div class="d-flex align-items-center">
@@ -11,21 +11,14 @@
                 </div>
             </div>
         </div>
-
         <!-- END: Subheader -->
         <div class="m-content">
-
-
             <!--Begin::Section-->
             <div class="row">
-              
                 <div class="col-xl-12">
-
                     <!--begin:: Packages-->
                     <div class="m-portlet m--bg-warning m-portlet--bordered-semi m-portlet--full-height  m-portlet--rounded">
-                        
                         <div class="m-portlet__body" style="padding-top: 30px">
-
                             <!--begin::Widget 29-->
                             <div class="m-widget29">
                                 <div class="m-widget_content">

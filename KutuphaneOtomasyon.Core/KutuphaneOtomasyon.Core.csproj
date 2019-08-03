@@ -54,9 +54,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\Abstract\IQueryableRepositoryBase.cs" />
+    <Compile Include="DataAccess\Abstract\IRepositoryBase.cs" />
+    <Compile Include="DataAccess\Concrete\QueryableRepositoryBase.cs" />
+    <Compile Include="DataAccess\Concrete\RepositoryBase.cs" />
     <Compile Include="Entity\Abstract\IEntity.cs" />
+    <Compile Include="Entity\Abstract\IFilterModel.cs" />
+    <Compile Include="Entity\Abstract\IPostModel.cs" />
     <Compile Include="Entity\Abstract\IViewModel.cs" />
     <Compile Include="Entity\Concrete\Entity.cs" />
+    <Compile Include="Entity\Concrete\FilterModel.cs" />
+    <Compile Include="Entity\Concrete\PostModel.cs" />
     <Compile Include="Entity\Concrete\ViewModel.cs" />
     <Compile Include="Entity\Identity\Identity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,5 +73,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

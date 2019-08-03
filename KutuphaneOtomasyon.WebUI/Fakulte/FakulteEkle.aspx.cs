@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Ninject.Web;
 
-namespace KutuphaneOtomasyon.WebUI
+namespace KutuphaneOtomasyon.WebUI.Fakulte
 {
-    public partial class FakulteEkle : System.Web.UI.Page
+    public partial class FakulteEkle : PageBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {

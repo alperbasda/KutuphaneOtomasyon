@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Ninject.Web;
 
 namespace KutuphaneOtomasyon.WebUI.Bolum
 {
-    public partial class BolumListesi : System.Web.UI.Page
+    public partial class BolumListesi : PageBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {

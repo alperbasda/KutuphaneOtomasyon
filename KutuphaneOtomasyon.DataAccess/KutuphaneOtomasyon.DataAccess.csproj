@@ -48,6 +48,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IBolumDal.cs" />
+    <Compile Include="Abstract\IFakulteDal.cs" />
+    <Compile Include="Abstract\IKitapAnahtarDal.cs" />
+    <Compile Include="Abstract\IKitapDal.cs" />
+    <Compile Include="Abstract\IKitapHareketDal.cs" />
+    <Compile Include="Abstract\IKitapKategoriDal.cs" />
+    <Compile Include="Abstract\IKullaniciDal.cs" />
+    <Compile Include="Abstract\IOgrenciAdresDal.cs" />
+    <Compile Include="Abstract\IOgrenciDal.cs" />
+    <Compile Include="Abstract\IOgrenciMailDal.cs" />
+    <Compile Include="Abstract\IOgrenciTelefonDal.cs" />
+    <Compile Include="Concrete\BolumDal.cs" />
+    <Compile Include="Concrete\FakulteDal.cs" />
+    <Compile Include="Concrete\KitapAnahtarDal.cs" />
+    <Compile Include="Concrete\KitapDal.cs" />
+    <Compile Include="Concrete\KitapHareketDal.cs" />
+    <Compile Include="Concrete\KitapKategoriDal.cs" />
+    <Compile Include="Concrete\KullaniciDal.cs" />
+    <Compile Include="Concrete\OgrenciAdresDal.cs" />
+    <Compile Include="Concrete\OgrenciDal.cs" />
+    <Compile Include="Concrete\OgrenciMailDal.cs" />
+    <Compile Include="Concrete\OgrenciTelefonDal.cs" />
     <Compile Include="Core\EntityFramework\KutuphaneContext.cs" />
     <Compile Include="Migrations\201908021239221_first.cs" />
     <Compile Include="Migrations\201908021239221_first.Designer.cs">
@@ -61,6 +83,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\KutuphaneOtomasyon.Core\KutuphaneOtomasyon.Core.csproj">
+      <Project>{93597AF4-74D6-43DF-9BA6-4EAF633A74AA}</Project>
+      <Name>KutuphaneOtomasyon.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KutuphaneOtomasyon.Entities\KutuphaneOtomasyon.Entities.csproj">
       <Project>{A0097892-B829-49BA-A86F-2A24105879B3}</Project>
       <Name>KutuphaneOtomasyon.Entities</Name>
