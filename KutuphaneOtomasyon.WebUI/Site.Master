@@ -1,0 +1,296 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="KutuphaneOtomasyon.WebUI.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="tr">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kutuphane - <%: Page.Title %></title>
+
+
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <!-- Fonts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto:300,400,500,600,700%7CAsap+Condensed:500" media="all">
+    <script>
+        WebFont.load({
+            google: { "families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"] },
+            active: function () {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+    <!-- Fonts End-->
+
+    <!--Theme Style -->
+    <link href="Content/Metronic/vendors.bundle.css" rel="stylesheet" />
+    <link href="Content/Metronic/style.bundle.css" rel="stylesheet" />
+    
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <!--Theme Style End-->
+
+</head>
+<body class="m-page--fluid m-page--loading-enabled m-header--fixed m-header--fixed-mobile m-footer--push m-aside--offcanvas-default m-header--minimize-on">
+    <form runat="server">
+        <div class="m-grid m-grid--hor m-grid--root m-page">
+            <!-- begin::Header -->
+            <header id="m_header" class="m-grid__item m-header " m-minimize="minimize" m-minimize-mobile="minimize" m-minimize-offset="10" m-minimize-mobile-offset="10">
+                <div class="m-header__top">
+                    <div class="m-container m-container--fluid m-container--full-height m-page__container">
+                        <div class="m-stack m-stack--ver m-stack--desktop">
+
+                            <!-- begin::Brand -->
+                            <div class="m-stack__item m-brand m-stack__item--left">
+                                <div class="m-stack m-stack--ver m-stack--general m-stack--inline">
+                                    <div class="m-stack__item m-stack__item--middle m-brand__logo">
+                                        <a href="../Anasayfa.aspx" class="m-brand__logo-wrapper">
+                                            <img alt="" src="../Content/Images/logo.png" class="m-brand__logo-desktop">
+                                            <img alt="" src="../Content/Images/logo_mini.png" class="m-brand__logo-mobile">
+                                        </a>
+                                    </div>
+                                    <div class="m-stack__item m-stack__item--middle m-brand__tools">
+
+                                        <!-- begin::Quick Actions-->
+                                        <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-left m-dropdown--align-push" m-dropdown-toggle="click" aria-expanded="true">
+                                            <a href="#" class="dropdown-toggle m-dropdown__toggle btn btn-outline-metal m-btn  m-btn--icon m-btn--pill">
+                                                <span>Kısa Yollar</span>
+                                            </a>
+                                            <div class="m-dropdown__wrapper">
+                                                <span class="m-dropdown__arrow m-dropdown__arrow--left m-dropdown__arrow--adjust"></span>
+                                                <div class="m-dropdown__inner">
+                                                    <div class="m-dropdown__body">
+                                                        <div class="m-dropdown__content">
+                                                            <ul class="m-nav">
+                                                                <li class="m-nav__section m-nav__section--first m--hide">
+                                                                    <span class="m-nav__section-text">Kısa Yollar</span>
+                                                                </li>
+                                                                <li class="m-nav__item">
+                                                                    <a href="../Odunc/OduncEkle.aspx" class="m-nav__link">
+                                                                        <i class="m-nav__link-icon flaticon-add-circular-button"></i>
+                                                                        <span class="m-nav__link-text">Yeni Ödünç Kaydı</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="m-nav__item">
+                                                                    <a href="../Ogrenci/OgrenciListesi.aspx" class="m-nav__link">
+                                                                        <i class="m-nav__link-icon flaticon-users"></i>
+                                                                        <span class="m-nav__link-text">Ögrenci Listesi</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="m-nav__item">
+                                                                    <a href="../Kitap/KitapListesi.aspx" class="m-nav__link">
+                                                                        <i class="m-nav__link-icon flaticon-book"></i>
+                                                                        <span class="m-nav__link-text">Kitap Listesi</span>
+                                                                    </a>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- end::Quick Actions-->
+
+                                        <!-- begin::Responsive Header Menu Toggler-->
+                                        <a id="m_aside_header_menu_mobile_toggle" href="javascript:;" class="m-brand__icon m-brand__toggler m--visible-tablet-and-mobile-inline-block">
+                                            <span></span>
+                                        </a>
+
+                                        <!-- end::Responsive Header Menu Toggler-->
+
+                                        <!-- begin::Topbar Toggler-->
+                                        <a id="m_aside_header_topbar_mobile_toggle" href="javascript:;" class="m-brand__icon m--visible-tablet-and-mobile-inline-block">
+                                            <i class="flaticon-more"></i>
+                                        </a>
+
+                                        <!--end::Topbar Toggler-->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- end::Brand -->
+
+                            <!-- begin::Topbar -->
+                            <div class="m-stack__item m-stack__item--right m-header-head" id="m_header_nav">
+                                <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
+                                    <div class="m-stack__item m-topbar__nav-wrapper">
+                                        <ul class="m-topbar__nav m-nav m-nav--inline">
+                                            <li class="m-nav__item m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
+                                                <a href="#" class="m-nav__link m-dropdown__toggle">
+                                                    <span class="m-topbar__userpic">Çıkış Yap
+                                                    </span>
+                                                </a>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- end::Topbar -->
+                        </div>
+                    </div>
+                </div>
+                <div class="m-header__bottom">
+                    <div class="m-container m-container--fluid m-container--full-height m-page__container">
+                        <div class="m-stack m-stack--ver m-stack--desktop">
+
+                            <!-- begin::Horizontal Menu -->
+                            <div class="m-stack__item m-stack__item--fluid m-header-menu-wrapper">
+                                <button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-light " id="m_aside_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
+                                <div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-dark m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-light m-aside-header-menu-mobile--submenu-skin-light ">
+                                    <ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
+                                        <li class="m-menu__item m-menu__item--active m-menu__item--tabs" data-redirect-link="Anasayfa" m-menu-link-redirect="1" aria-haspopup="true"><a href="../Anasayfa.aspx" class="m-menu__link "><i class="m-menu__link-icon flaticon-home-2"></i><span class="m-menu__link-text">Anasayfa</span></a></li>
+
+
+                                        <li class="m-menu__item m-menu__item--submenu m-menu__item--tabs m-menu__item--open-dropdown" data-redirect-link="Kitap" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link m-menu__toggle"><span class="m-menu__link-text">Kitap İşlemleri</span><i class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
+                                            <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
+                                                <span class="m-menu__arrow m-menu__arrow--adjust" style="left: 67.5px;"></span>
+                                                <ul class="m-menu__subnav">
+
+                                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="../KitapKategori/KitapKategoriEkle.aspx" class="m-menu__link "><i class="m-menu__link-icon flaticon-add"></i><span class="m-menu__link-text">Yeni Kitap Kategorisi Ekle</span></a></li>
+                                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="../KitapKategori/KitapKategoriListesi.aspx" class="m-menu__link "><i class="m-menu__link-icon flaticon-list-1"></i><span class="m-menu__link-text">Kitap Kategori Listesi</span></a></li>
+                                                    <li class="m-menu__item ">
+                                                        <div class="vert-divider"></div>
+                                                    </li>
+                                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="../Kitap/KitapEkle.aspx" class="m-menu__link "><i class="m-menu__link-icon flaticon-add-circular-button"></i><span class="m-menu__link-text">Yeni Kitap Ekle</span></a></li>
+                                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="../Kitap/KitapListesi.aspx" class="m-menu__link "><i class="m-menu__link-icon flaticon-clipboard"></i><span class="m-menu__link-text">Kitap Listesi</span></a></li>
+                                                    <li class="m-menu__item ">
+                                                        <div class="vert-divider"></div>
+                                                    </li>
+                                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="../KitapAnahtari/KitapAnahtariEkle.aspx" class="m-menu__link "><i class="m-menu__link-icon flaticon-add-label-button"></i><span class="m-menu__link-text">Yeni Kitap Anahtarı Ekle</span></a></li>
+                                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="../KitapAnahtari/KitapAnahtariListesi.aspx" class="m-menu__link "><i class="m-menu__link-icon flaticon-list-2"></i><span class="m-menu__link-text">Kitap Anahtar Listesi</span></a></li>
+
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="m-menu__item m-menu__item--submenu m-menu__item--tabs m-menu__item--open-dropdown" data-redirect-link="Ogrenci" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link m-menu__toggle"><span class="m-menu__link-text">Ögrenci İşlemleri</span><i class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
+                                            <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
+                                                <span class="m-menu__arrow m-menu__arrow--adjust" style="left: 55px;"></span>
+                                                <ul class="m-menu__subnav">
+                                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="../Ogrenci/OgrenciEkle.aspx" class="m-menu__link "><i class="m-menu__link-icon flaticon-add-circular-button"></i><span class="m-menu__link-text">Yeni Ögrenci Ekle</span></a></li>
+                                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="../Ogrenci/OgrenciListesi.aspx" class="m-menu__link "><i class="m-menu__link-icon flaticon-clipboard"></i><span class="m-menu__link-text">Ögrenci Listesi</span></a></li>
+
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="m-menu__item m-menu__item--submenu m-menu__item--tabs m-menu__item--open-dropdown" data-redirect-link="Bolum" data-redirect-link2="Fakulte" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link m-menu__toggle"><span class="m-menu__link-text">Fakülte / Bölüm İşlemleri</span><i class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
+                                            <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
+                                                <span class="m-menu__arrow m-menu__arrow--adjust" style="left: 52px;"></span>
+                                                <ul class="m-menu__subnav">
+                                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="../Fakulte/FakulteEkle.aspx" class="m-menu__link "><i class="m-menu__link-icon flaticon-add-circular-button"></i><span class="m-menu__link-text">Yeni Fakülte Ekle</span></a></li>
+                                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="../Fakulte/FakulteListesi.aspx" class="m-menu__link "><i class="m-menu__link-icon flaticon-clipboard"></i><span class="m-menu__link-text">Fakülte Listesi</span></a></li>
+                                                    <li class="m-menu__item ">
+                                                        <div class="vert-divider"></div>
+                                                    </li>
+                                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="../Bolum/BolumEkle.aspx" class="m-menu__link "><i class="m-menu__link-icon flaticon-add"></i><span class="m-menu__link-text">Yeni Bölüm Ekle</span></a></li>
+                                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="../Bolum/BolumListesi.aspx" class="m-menu__link "><i class="m-menu__link-icon flaticon-attachment"></i><span class="m-menu__link-text">Bölüm Listesi</span></a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="m-menu__item m-menu__item--submenu m-menu__item--tabs m-menu__item--open-dropdown" data-redirect-link="Odunc" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link m-menu__toggle"><span class="m-menu__link-text">Ödünç İşlemleri</span><i class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
+                                            <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
+                                                <span class="m-menu__arrow m-menu__arrow--adjust" style="left: 64.5px;"></span>
+                                                <ul class="m-menu__subnav">
+                                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="../Odunc/OduncEkle.aspx" class="m-menu__link "><i class="m-menu__link-icon flaticon-add"></i><span class="m-menu__link-text">Yeni Ödünç Kaydı Ekle</span></a></li>
+                                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="../Odunc/OduncListesi.aspx" class="m-menu__link "><i class="m-menu__link-icon flaticon-clipboard"></i><span class="m-menu__link-text">Ödünç Raporu</span></a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- end::Horizontal Menu -->
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- end::Header -->
+        </div>
+
+
+
+        <!-- Body -->
+
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <!-- Body End-->
+        <br />
+
+        <!-- begin::Footer -->
+        <footer class="m-grid__item m-footer container">
+            <div class="m-container m-container--fluid m-container--full-height m-page__container">
+                <div class="m-footer__wrapper">
+                    <div class="m-stack m-stack--flex-tablet-and-mobile m-stack--ver m-stack--desktop">
+                        <div class="m-stack__item m-stack__item--left m-stack__item--middle m-stack__item--last">
+                            <span class="m-footer__copyright">
+                                <a href="#" class="m-link">Alper Başda</a>
+                            </span>
+                        </div>
+                        <div class="m-stack__item m-stack__item--right m-stack__item--middle m-stack__item--first">
+                            <ul class="m-footer__nav m-nav m-nav--inline m--pull-right">
+                                <li class="m-nav__item">
+                                    <a href="#" onclick="notificationAlertParameter('Hoppp','Tasarım yapmaktan nefret ederim !')" class="m-nav__link">
+                                        <span class="m-nav__link-text">Hakkımda</span>
+                                    </a>
+                                </li>
+                                <li class="m-nav__item">
+                                    <a href="http://www.github.com/alperbasda" target="_blank" class="m-nav__link">
+                                        <span class="m-nav__link-text">Github</span>
+                                    </a>
+                                </li>
+                                <li class="m-nav__item">
+                                    <a href="https://www.linkedin.com/in/alper-basda-26612168/" target="_blank" class="m-nav__link">
+                                        <span class="m-nav__link-text">Linkedln</span>
+                                    </a>
+                                </li>
+                                <li class="m-nav__item">
+                                    <a href="#" class="m-nav__link" data-toggle="m-tooltip" title="" data-placement="left" data-original-title="Projenin tüm kodlarına github sayfamdan erişebilirsiniz !!!">
+                                        <i class="m-nav__link-icon flaticon-info m--icon-font-size-lg3"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end::Footer -->
+
+
+
+        <%--<asp:ScriptManager runat="server">
+            <Scripts>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+
+            </Scripts>
+        </asp:ScriptManager>--%>
+    </form>
+    <script src="../Scripts/jquery-3.1.0.min.js"></script>
+    <script src="../Scripts/Metronic/vendors.bundle.js"></script>
+    <script src="../Scripts/Metronic/scripts.bundle.js"></script>
+    <script src="../Scripts/Metronic/dashboard.js"></script>
+    <script src="../Scripts/Metronic/toastr.js"></script>
+    <script src="../Scripts/Metronic/toast.js"></script>
+
+</body>
+</html>

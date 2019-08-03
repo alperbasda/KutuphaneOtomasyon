@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{93597AF4-74D6-43DF-9BA6-4EAF633A74AA}</ProjectGuid>
+    <ProjectGuid>{8E46178E-21E3-4A56-A6D4-62A6A8BA33EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KutuphaneOtomasyon.Core</RootNamespace>
-    <AssemblyName>KutuphaneOtomasyon.Core</AssemblyName>
+    <RootNamespace>KutuphaneOtomasyon.DataAccess</RootNamespace>
+    <AssemblyName>KutuphaneOtomasyon.DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -37,12 +37,6 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -54,16 +48,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity\Abstract\IEntity.cs" />
-    <Compile Include="Entity\Abstract\IViewModel.cs" />
-    <Compile Include="Entity\Concrete\Entity.cs" />
-    <Compile Include="Entity\Concrete\ViewModel.cs" />
-    <Compile Include="Entity\Identity\Identity.cs" />
+    <Compile Include="Core\EntityFramework\KutuphaneContext.cs" />
+    <Compile Include="Migrations\201908021239221_first.cs" />
+    <Compile Include="Migrations\201908021239221_first.Designer.cs">
+      <DependentUpon>201908021239221_first.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KutuphaneOtomasyon.Entities\KutuphaneOtomasyon.Entities.csproj">
+      <Project>{A0097892-B829-49BA-A86F-2A24105879B3}</Project>
+      <Name>KutuphaneOtomasyon.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201908021239221_first.resx">
+      <DependentUpon>201908021239221_first.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
