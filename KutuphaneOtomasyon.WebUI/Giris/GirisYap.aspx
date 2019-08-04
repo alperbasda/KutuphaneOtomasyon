@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Giris.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.Giris" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GirisYap.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.Giris.GirisYap" %>
 <%@ Import Namespace="KutuphaneOtomasyon.Entities.ComplexType.PostModels.Kullanici" %>
 <!DOCTYPE html>
 
@@ -7,8 +7,8 @@
     <title>Kutuphane Otomasyon Giriş</title>
 
     <!--Theme Style -->
-    <link href="Content/Metronic/style.bundle.css" rel="stylesheet" />
-    <link href="Content/Metronic/vendors.bundle.css" rel="stylesheet" />
+    <link href="../Content/Metronic/style.bundle.css" rel="stylesheet" />
+    <link href="../Content/Metronic/vendors.bundle.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
     <script>
         WebFont.load({
@@ -23,7 +23,7 @@
 <body>
     <div class="m-grid m-grid--hor m-grid--root m-page">
         <div class="m-grid__item m-grid__item--fluid m-grid m-grid--desktop m-grid--ver-desktop m-grid--hor-tablet-and-mobile m-login m-login--6" id="m_login">
-            <div class="m-grid__item   m-grid__item--order-tablet-and-mobile-2  m-grid m-grid--hor m-login__aside " style="background-image: url(Content/Images/bg-4.jpg);">
+            <div class="m-grid__item   m-grid__item--order-tablet-and-mobile-2  m-grid m-grid--hor m-login__aside " style="background-image: url(../Content/Images/bg-4.jpg);">
                 <div class="m-grid__item">
                     <div class="m-login__logo">
                     </div>
@@ -88,10 +88,10 @@
         </div>
     </div>
 
-    <script src="Scripts/jquery-3.3.1.js"></script>
-    <script src="Scripts/Metronic/scripts.bundle.js"></script>
-    <script src="Scripts/Metronic/vendors.bundle.js"></script>
-    <script src="Scripts/Metronic/toastr.js"></script>
-    <script src="Scripts/Metronic/toast.js"></script>
+    <script src="../Scripts/jquery-3.3.1.js"></script>
+    <script src="../Scripts/Metronic/scripts.bundle.js"></script>
+    <script src="../Scripts/Metronic/vendors.bundle.js"></script>
+    <script src="../Scripts/Metronic/toastr.js"></script>
+    <script src="../Scripts/Metronic/toast.js"></script>
 </body>
 </html>

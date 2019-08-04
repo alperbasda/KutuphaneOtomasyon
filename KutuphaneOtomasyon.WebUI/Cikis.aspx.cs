@@ -13,7 +13,7 @@ namespace KutuphaneOtomasyon.WebUI
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("Giris.aspx?notificationSuccess=" + KullaniciService.CikisYap().Mesaj);
+            Response.Redirect("Giris/GirisYap.aspx?notificationSuccess=" + KullaniciService.CikisYap().Mesaj);
         }
     }
 }

@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using KutuphaneOtomasyon.Business.Abstract;
 using KutuphaneOtomasyon.Entities.ComplexType.PostModels.Kullanici;
 using KutuphaneOtomasyon.WebUI.Helpers;
 using Ninject;
 using Ninject.Web;
 
-namespace KutuphaneOtomasyon.WebUI
+namespace KutuphaneOtomasyon.WebUI.Giris
 {
-    public partial class Giris : PageBase
+    public partial class GirisYap : PageBase
     {
         [Inject]
         public IKullaniciService KullaniciService { get; set; }
@@ -26,8 +21,8 @@ namespace KutuphaneOtomasyon.WebUI
         {
             var response = KullaniciService.GirisYap(ObjectCreator.Create<GirisModel>(girisForm));
             if (response.Tamamlandi)
-                Response.Redirect("Anasayfa.aspx?notificationSuccess=" + response.Mesaj);
-            Response.Redirect("Giris.aspx?notificationError=" + response.Mesaj);
+                Response.Redirect("../Anasayfa.aspx?notificationSuccess=" + response.Mesaj);
+            Response.Redirect("../Giris/GirisYap.aspx?notificationError=" + response.Mesaj);
         }
     }
 }

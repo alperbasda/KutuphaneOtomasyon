@@ -1,6 +1,5 @@
 ﻿using System;
 using KutuphaneOtomasyon.Business.Abstract;
-using KutuphaneOtomasyon.Business.Aspects.AuthorizationAspects;
 using KutuphaneOtomasyon.Entities.ComplexType.PostModels.Fakulte;
 using KutuphaneOtomasyon.WebUI.Helpers;
 using Ninject;
@@ -8,7 +7,7 @@ using Ninject.Web;
 
 namespace KutuphaneOtomasyon.WebUI.Fakulte
 {
-    [SecuredOperationAspect(Roles = "Kullanici")]
+    
     public partial class FakulteEkle : PageBase
     {
         [Inject]

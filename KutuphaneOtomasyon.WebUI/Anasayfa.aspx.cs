@@ -18,7 +18,7 @@ namespace KutuphaneOtomasyon.WebUI
         {
             DataResponse response = ViewService.SiteStatistics();
             if (!response.Tamamlandi)
-                Response.Redirect("Giris.aspx");
+                Response.Redirect("~/Giris/GirisYap.aspx?notificationError="+response.Mesaj);
             else
                 _stats = response.Data as SiteStats;
         }

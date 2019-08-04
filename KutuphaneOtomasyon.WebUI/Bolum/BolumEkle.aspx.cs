@@ -14,5 +14,10 @@ namespace KutuphaneOtomasyon.WebUI.Bolum
         {
 
         }
+
+        protected void BolumEkleButton_OnClick(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

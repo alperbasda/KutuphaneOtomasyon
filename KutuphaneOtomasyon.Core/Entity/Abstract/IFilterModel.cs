@@ -2,6 +2,6 @@
 {
     public interface IFilterModel
     {
-        
+        int Sayfa { get; set; }
     }
 }

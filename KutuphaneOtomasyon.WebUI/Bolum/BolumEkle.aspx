@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="Bölüm Ekle" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BolumEkle.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.Bolum.BolumEkle" %>
+<%@ Import Namespace="KutuphaneOtomasyon.Entities.ComplexType.PostModels.Bolum" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop m-body align-custom">
         <div class="m-grid__item m-grid__item--fluid m-wrapper">
@@ -17,29 +19,54 @@
 
 
                 <!--Begin::Section-->
-                <div class="row justify-content-center">
-                    <div class="col-4">
-                        <div class="form-group m-form__group">
-                            <label for="fakulteSec">Fakülte Seçin</label>
-                            <select class="form-control m-input m-input--air m-input--pill" id="fakulteSec">
-                                <option>Mühendislik Fakültesi</option>
-                                <option>Fen Edebiyat Fakültesi</option>
-                                <option>İktisadi ve İdari Bilimler Fakültesi</option>
+                <form id="BolumForm" runat="server">
+                    <dav:MetadataSource
+                        id="msBolumEkleModel" 
+                        ObjectType="<%$ Code: typeof(BolumEkleModel) %>"
+                        runat="server" />
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <div class="form-group m-form__group">
+                                <label for="fakulteSec">Fakülte Seçin</label>
+                                <select class="form-control m-input m-input--air m-input--pill" id="fakulteSec">
+                                    <option>Mühendislik Fakültesi</option>
+                                    <option>Fen Edebiyat Fakültesi</option>
+                                    <option>İktisadi ve İdari Bilimler Fakültesi</option>
+                                </select>
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="BolumAdi">Bölüm Adı</label>
+                                <asp:TextBox
+                                    ValidationGroup="BolumEkle"
+                                    Type="Text"
+                                    CssClass="form-control m-input m-input--air m-input--pill"
+                                    ID="BolumAdi"
+                                    placeholder="Bölüm adını yazın..."
+                                    runat="server"></asp:TextBox>
+                                <dav:DataAnnotationsValidator 
+                                    MetadataSourceID="msBolumEkleModel"
+                                    ValidationGroup="BolumEkle"
+                                    ID="validator"
+                                    cssclass="m-form__help"
+                                    controltovalidate="BolumAdi"
+                                    objectproperty="BolumAdi" 
+                                    runat="server"></dav:DataAnnotationsValidator>
+                            </div>
+                            <br />
+                            <div class="form-group m-form__group text-center">
+                                <asp:Button
+                                    ID="BolumEkleButton"
+                                    Text="Kaydet"
+                                    CssClass="btn btn-accent"
+                                    ValidationGroup="BolumEkle"
+                                    OnClick="BolumEkleButton_OnClick"
+                                    runat="server"/>
                                 
-                            </select>
+                            </div>
                         </div>
-                        <div class="form-group m-form__group">
-                            <label for="bolumAdi">Bölüm Adı</label>
-                            <input type="text" class="form-control m-input m-input--air m-input--pill" id="bolumAdi" name="Adi" placeholder="Bölüm adını yazın...">
-                        </div>
-                        <br />
-                        <div class="form-group m-form__group text-center">
-                            <button type="submit" class="btn btn-accent">Kaydet</button>
-                        </div>
-                    </div>
-                    
-                </div>
 
+                    </div>
+                </form>
                 <!--End::Section-->
 
             </div>

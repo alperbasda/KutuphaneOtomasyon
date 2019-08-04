@@ -79,6 +79,8 @@
     <Compile Include="BaseType\OgrenciMail.cs" />
     <Compile Include="BaseType\OgrenciTelefon.cs" />
     <Compile Include="ComplexType\GetModels\SiteStats.cs" />
+    <Compile Include="ComplexType\PostModels\Bolum\BolumEkleModel.cs" />
+    <Compile Include="ComplexType\PostModels\Fakulte\FakulteAraModel.cs" />
     <Compile Include="ComplexType\PostModels\Fakulte\FakulteEkleModel.cs" />
     <Compile Include="ComplexType\PostModels\Kullanici\GirisModel.cs" />
     <Compile Include="Enum\AdresTipleri.cs" />

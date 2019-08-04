@@ -32,17 +32,17 @@ namespace KutuphaneOtomasyon.Business.DependencyResolvers.Ninject
 
             #region DataAccessBindings
 
-            Bind<IBolumDal>().To<BolumDal>();
-            Bind<IFakulteDal>().To<FakulteDal>();
-            Bind<IKitapAnahtarDal>().To<KitapAnahtarDal>();
-            Bind<IKitapHareketDal>().To<KitapHareketDal>();
-            Bind<IKitapDal>().To<KitapDal>();
-            Bind<IKullaniciDal>().To<KullaniciDal>();
-            Bind<IOgrenciAdresDal>().To<OgrenciAdresDal>();
-            Bind<IOgrenciMailDal>().To<OgrenciMailDal>();
-            Bind<IOgrenciDal>().To<OgrenciDal>();
-            Bind<IOgrenciTelefonDal>().To<OgrenciTelefonDal>();
-            Bind<IViewDal>().To<ViewDal>();
+            Bind<IBolumDal>().To<BolumDal>().InSingletonScope();
+            Bind<IFakulteDal>().To<FakulteDal>().InSingletonScope();
+            Bind<IKitapAnahtarDal>().To<KitapAnahtarDal>().InSingletonScope();
+            Bind<IKitapHareketDal>().To<KitapHareketDal>().InSingletonScope();
+            Bind<IKitapDal>().To<KitapDal>().InSingletonScope();
+            Bind<IKullaniciDal>().To<KullaniciDal>().InSingletonScope();
+            Bind<IOgrenciAdresDal>().To<OgrenciAdresDal>().InSingletonScope();
+            Bind<IOgrenciMailDal>().To<OgrenciMailDal>().InSingletonScope();
+            Bind<IOgrenciDal>().To<OgrenciDal>().InSingletonScope();
+            Bind<IOgrenciTelefonDal>().To<OgrenciTelefonDal>().InSingletonScope();
+            Bind<IViewDal>().To<ViewDal>().InSingletonScope();
 
             #endregion
 

@@ -120,7 +120,7 @@
                                     <div class="m-stack__item m-topbar__nav-wrapper">
                                         <ul class="m-topbar__nav m-nav m-nav--inline">
                                             <li class="m-nav__item">
-                                                <a class="m-nav__link" href="Cikis.aspx">
+                                                <a class="m-nav__link" href="../Cikis.aspx">
                                                     <span class="m-topbar__userpic">
                                                         Çıkış Yap
                                                     </span>

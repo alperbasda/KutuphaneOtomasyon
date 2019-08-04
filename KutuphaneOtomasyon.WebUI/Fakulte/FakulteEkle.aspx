@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FakulteEkle.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.Fakulte.FakulteEkle" %>
+﻿<%@ Page Title="Fakulte Ekle" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FakulteEkle.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.Fakulte.FakulteEkle" %>
 <%@ Import Namespace="KutuphaneOtomasyon.Entities.ComplexType.PostModels.Fakulte" %>
 
 

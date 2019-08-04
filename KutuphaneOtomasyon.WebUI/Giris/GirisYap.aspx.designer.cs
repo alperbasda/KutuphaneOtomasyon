@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KutuphaneOtomasyon.WebUI {
+namespace KutuphaneOtomasyon.WebUI.Giris {
     
     
-    public partial class Giris {
+    public partial class GirisYap {
         
         /// <summary>
         /// girisForm control.
