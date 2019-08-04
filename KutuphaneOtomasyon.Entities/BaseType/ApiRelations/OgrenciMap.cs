@@ -12,7 +12,7 @@ namespace KutuphaneOtomasyon.Entities.BaseType.ApiRelations
             Property(s => s.Soyad).IsRequired().HasColumnType("nvarchar").HasMaxLength(100);
             Property(s => s.KayitTarihi).IsOptional().HasColumnType("datetime");
             Property(s => s.Numara).IsRequired().HasColumnType("nvarchar").HasMaxLength(50);
-
+            Property(s => s.SonGuncelleme).IsOptional().HasColumnType("datetime");
             #region Relations
 
             HasRequired(s => s.Bolum)

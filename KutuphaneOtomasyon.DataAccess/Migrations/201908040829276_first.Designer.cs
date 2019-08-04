@@ -13,7 +13,7 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201908021239221_first"; }
+            get { return "201908040829276_first"; }
         }
         
         string IMigrationMetadata.Source

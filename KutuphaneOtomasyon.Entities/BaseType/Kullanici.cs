@@ -7,7 +7,9 @@ namespace KutuphaneOtomasyon.Entities.BaseType
     {
         public string KullaniciAdi { get; set; }
 
-        public string Sifre { get; set; }
+        public int KullaniciSifreId { get; set; }
+
+        public virtual ICollection<KullaniciSifre> KullaniciSifreleri { get; set; }
 
         public virtual ICollection<KullaniciRol> KullaniciRolleri { get; set; }
     }

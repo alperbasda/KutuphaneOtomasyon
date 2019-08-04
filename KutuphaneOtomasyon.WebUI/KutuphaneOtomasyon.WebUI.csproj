@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <DontImportPostSharp>True</DontImportPostSharp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +48,9 @@
     <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="DAValidation, Version=1.0.8.0, Culture=neutral, PublicKeyToken=b2779dfe49b4b35d, processorArchitecture=MSIL">
+      <HintPath>..\packages\DAValidation.1.0.8\lib\net45\DAValidation.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -62,6 +66,10 @@
     </Reference>
     <Reference Include="Ninject.Web.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.Web.Common.3.0.0.7\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp, Version=4.2.17.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <HintPath>..\packages\PostSharp.4.2.17\lib\net35-client\PostSharp.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
@@ -133,6 +141,7 @@
     <Content Include="Bolum\BolumDuzenle.aspx" />
     <Content Include="Bolum\BolumEkle.aspx" />
     <Content Include="Bolum\BolumListesi.aspx" />
+    <Content Include="Cikis.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -207,12 +216,14 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Metronic\dashboard.js" />
     <Content Include="Scripts\Metronic\scripts.bundle.js" />
     <Content Include="Scripts\Metronic\toastr.js" />
     <Content Include="Scripts\Metronic\vendors.bundle.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\Site\login.js" />
     <Content Include="Scripts\Metronic\toast.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
@@ -274,6 +285,13 @@
     <Compile Include="Bolum\BolumListesi.aspx.designer.cs">
       <DependentUpon>BolumListesi.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Cikis.aspx.cs">
+      <DependentUpon>Cikis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cikis.aspx.designer.cs">
+      <DependentUpon>Cikis.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Fakulte\FakulteDuzenle.aspx.cs">
       <DependentUpon>FakulteDuzenle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -305,6 +323,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ObjectCreator.cs" />
     <Compile Include="KitapAnahtari\KitapAnahtariDuzenle.aspx.cs">
       <DependentUpon>KitapAnahtariDuzenle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -435,6 +454,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\Site\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -453,6 +473,10 @@
     <ProjectReference Include="..\KutuphaneOtomasyon.Core\KutuphaneOtomasyon.Core.csproj">
       <Project>{93597AF4-74D6-43DF-9BA6-4EAF633A74AA}</Project>
       <Name>KutuphaneOtomasyon.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KutuphaneOtomasyon.Entities\KutuphaneOtomasyon.Entities.csproj">
+      <Project>{A0097892-B829-49BA-A86F-2A24105879B3}</Project>
+      <Name>KutuphaneOtomasyon.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -485,6 +509,11 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <Import Project="..\packages\PostSharp.4.2.17\tools\PostSharp.targets" Condition="Exists('..\packages\PostSharp.4.2.17\tools\PostSharp.targets')" />
+  <Target Name="EnsurePostSharpImported" BeforeTargets="BeforeBuild" Condition="'$(PostSharp30Imported)' == ''">
+    <Error Condition="!Exists('..\packages\PostSharp.4.2.17\tools\PostSharp.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://www.postsharp.net/links/nuget-restore." />
+    <Error Condition="Exists('..\packages\PostSharp.4.2.17\tools\PostSharp.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://www.postsharp.net/links/nuget-restore." />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

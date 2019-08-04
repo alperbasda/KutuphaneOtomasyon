@@ -27,15 +27,15 @@
     <!--Theme Style -->
     <link href="Content/Metronic/vendors.bundle.css" rel="stylesheet" />
     <link href="Content/Metronic/style.bundle.css" rel="stylesheet" />
-    
+
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
     <!--Theme Style End-->
 
 </head>
 <body class="m-page--fluid m-page--loading-enabled m-header--fixed m-header--fixed-mobile m-footer--push m-aside--offcanvas-default m-header--minimize-on">
-<form runat="server">
-<div class="m-grid m-grid--hor m-grid--root m-page">
+    
+        <div class="m-grid m-grid--hor m-grid--root m-page">
             <!-- begin::Header -->
             <header id="m_header" class="m-grid__item m-header " m-minimize="minimize" m-minimize-mobile="minimize" m-minimize-offset="10" m-minimize-mobile-offset="10">
                 <div class="m-header__top">
@@ -119,12 +119,12 @@
                                 <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
                                     <div class="m-stack__item m-topbar__nav-wrapper">
                                         <ul class="m-topbar__nav m-nav m-nav--inline">
-                                            <li class="m-nav__item m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
-                                                <a href="#" class="m-nav__link m-dropdown__toggle">
-                                                    <span class="m-topbar__userpic">Çıkış Yap
+                                            <li class="m-nav__item">
+                                                <a class="m-nav__link" href="Cikis.aspx">
+                                                    <span class="m-topbar__userpic">
+                                                        Çıkış Yap
                                                     </span>
                                                 </a>
-
                                             </li>
                                         </ul>
                                     </div>
@@ -253,7 +253,7 @@
                                     </a>
                                 </li>
                                 <li class="m-nav__item">
-                                    <a href="#" class="m-nav__link" data-toggle="m-tooltip" title="" data-placement="left" data-original-title="Projenin tüm kodlarına github sayfamdan erişebilirsiniz !!!">
+                                    <a href="#" class="m-nav__link" çdata-toggle="m-tooltip" title="" data-placement="left" data-original-title="Projenin tüm kodlarına github sayfamdan erişebilirsiniz !!!">
                                         <i class="m-nav__link-icon flaticon-info m--icon-font-size-lg3"></i>
                                     </a>
                                 </li>
@@ -284,8 +284,10 @@
 
             </Scripts>
         </asp:ScriptManager>--%>
-    </form>
-    <script src="../Scripts/jquery-3.1.0.min.js"></script>
+    
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <script src="../Scripts/jquery.validate.min.js"></script>
+    <script src="../Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="../Scripts/Metronic/vendors.bundle.js"></script>
     <script src="../Scripts/Metronic/scripts.bundle.js"></script>
     <script src="../Scripts/Metronic/dashboard.js"></script>

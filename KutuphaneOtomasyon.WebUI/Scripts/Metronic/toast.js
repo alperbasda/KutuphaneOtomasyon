@@ -1,4 +1,8 @@
 ﻿
+$(document).ready(function() {
+    notificationAlert();
+});
+
 function notificationAlert() {
     toastr.options = {
         "closeButton": true,
@@ -25,8 +29,6 @@ function notificationAlert() {
     result = getParameterByName('notificationError');
     if (result != null) {
         toastr.error(result, "Hata");
-    } else {
-        toastr.info("Proje içeriğinde yer almadığından bu alan kodlanmamıştır", "Bilgi");
     }
 
 }

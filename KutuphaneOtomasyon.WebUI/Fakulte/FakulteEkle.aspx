@@ -1,4 +1,7 @@
-﻿<%@ Page Title="Fakülte Ekle" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FakulteEkle.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.FakulteEkle" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FakulteEkle.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.Fakulte.FakulteEkle" %>
+<%@ Import Namespace="KutuphaneOtomasyon.Entities.ComplexType.PostModels.Fakulte" %>
+
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop m-body align-custom">
@@ -15,23 +18,47 @@
 
             <!-- END: Subheader -->
             <div class="m-content">
-
-
                 <!--Begin::Section-->
-                <div class="row justify-content-center">
-                    <div class="col-4">
+                <form id="fakulteForm" runat="server">
+                    <dav:metadatasource
+                        id="msFakulteEkleModel" 
+                        objecttype="<%$ Code: typeof(FakulteEkleModel) %>" 
+                        runat="server" />
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <div class="form-group m-form__group">
+                                <label for="FakulteAdi">Fakülte Adı</label>
+                                <asp:TextBox 
+                                    CssClass="form-control m-input m-input--air m-input--pill" 
+                                    type="text" 
+                                    ID="FakulteAdi"
+                                    ValidationGroup="FakulteEkleModel" 
+                                    placeholder="Fakülte adı yazın..." 
+                                    runat="server">
+                                </asp:TextBox>
+                                <dav:dataannotationsvalidator 
+                                    id="Dataannotationsvalidator2" 
+                                    cssclass="m-form__help"
+                                    validationgroup="FakulteEkleModel" 
+                                    metadatasourceid="msFakulteEkleModel"
+                                    controltovalidate="FakulteAdi" 
+                                    objectproperty="FakulteAdi" 
+                                    runat="server" />
+                            </div>
+                            <br />
+                            <div class="form-group m-form__group text-center">
+                                <asp:Button 
+                                    ValidationGroup="FakulteEkleModel" 
+                                    OnClick="FakulteKaydetButton_OnClick" 
+                                    ID="FakulteKaydetButton" 
+                                    Text="Kaydet"
+                                    CssClass="btn btn-accent"
+                                    runat="server" />
 
-                        <div class="form-group m-form__group">
-                            <label for="fakulteAdi">Fakülte Adı</label>
-                            <input type="text" class="form-control m-input m-input--air m-input--pill" id="fakulteAdi" name="Adi" placeholder="Fakülte adını yazın...">
-                        </div>
-                        <br />
-                        <div class="form-group m-form__group text-center">
-                            <button type="submit" class="btn btn-accent">Kaydet</button>
+                            </div>
                         </div>
                     </div>
-
-                </div>
+                </form>
 
                 <!--End::Section-->
 

@@ -9,6 +9,7 @@ namespace KutuphaneOtomasyon.Entities.BaseType.ApiRelations
             //schema farklı olsun ki izinleri kolayca set edelim
             ToTable("Loglar", "AkinsoftAdmin");
             HasKey(s => s.Id);
+            
 
         }
     }

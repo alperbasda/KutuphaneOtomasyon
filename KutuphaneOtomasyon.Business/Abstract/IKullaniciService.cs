@@ -6,5 +6,7 @@ namespace KutuphaneOtomasyon.Business.Abstract
     public interface IKullaniciService
     {
         DataResponse GirisYap(GirisModel model);
+
+        DataResponse CikisYap();
     }
 }

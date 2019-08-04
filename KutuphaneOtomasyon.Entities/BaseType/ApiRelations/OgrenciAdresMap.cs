@@ -10,7 +10,7 @@ namespace KutuphaneOtomasyon.Entities.BaseType.ApiRelations
             HasKey(s => s.Id);
             Property(s => s.Adres).IsRequired().HasColumnType("nvarchar").HasMaxLength(1000);
             Property(s => s.AdresTipi).IsRequired().HasColumnType("int");
-
+            Property(s => s.SonGuncelleme).IsOptional().HasColumnType("datetime");
             #region Relations
 
             HasRequired(s => s.Ogrenci)

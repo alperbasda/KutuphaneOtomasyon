@@ -56,6 +56,7 @@
     <Compile Include="BaseType\ApiRelations\KitapMap.cs" />
     <Compile Include="BaseType\ApiRelations\KullaniciMap.cs" />
     <Compile Include="BaseType\ApiRelations\KullaniciRolMap.cs" />
+    <Compile Include="BaseType\ApiRelations\KullaniciSifreMap.cs" />
     <Compile Include="BaseType\ApiRelations\LogMap.cs" />
     <Compile Include="BaseType\ApiRelations\OgrenciAdresMap.cs" />
     <Compile Include="BaseType\ApiRelations\OgrenciMailMap.cs" />
@@ -70,12 +71,15 @@
     <Compile Include="BaseType\KitapKategori.cs" />
     <Compile Include="BaseType\Kullanici.cs" />
     <Compile Include="BaseType\KullaniciRol.cs" />
+    <Compile Include="BaseType\KullaniciSifre.cs" />
     <Compile Include="BaseType\Log.cs" />
     <Compile Include="BaseType\Rol.cs" />
     <Compile Include="BaseType\Ogrenci.cs" />
     <Compile Include="BaseType\OgrenciAdres.cs" />
     <Compile Include="BaseType\OgrenciMail.cs" />
     <Compile Include="BaseType\OgrenciTelefon.cs" />
+    <Compile Include="ComplexType\GetModels\SiteStats.cs" />
+    <Compile Include="ComplexType\PostModels\Fakulte\FakulteEkleModel.cs" />
     <Compile Include="ComplexType\PostModels\Kullanici\GirisModel.cs" />
     <Compile Include="Enum\AdresTipleri.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,8 +96,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ComplexType\GetModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

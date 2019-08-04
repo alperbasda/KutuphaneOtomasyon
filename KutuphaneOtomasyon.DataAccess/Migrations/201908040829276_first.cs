@@ -14,10 +14,12 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Adi = c.String(nullable: false, maxLength: 100),
                         FakulteId = c.Int(nullable: false),
-                        Silindi = c.Boolean(nullable: false,defaultValue:false)
+                        SonGuncelleme = c.DateTime(),
+                        Silindi = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("Akinsoft.Fakulteler", t => t.FakulteId, cascadeDelete: true)
+                .Index(t => t.Adi)
                 .Index(t => t.FakulteId);
             
             CreateTable(
@@ -30,10 +32,14 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
                         Numara = c.String(nullable: false, maxLength: 50),
                         KayitTarihi = c.DateTime(),
                         BolumId = c.Int(nullable: false),
-                        Silindi = c.Boolean(nullable: false,defaultValue:false)
+                        SonGuncelleme = c.DateTime(),
+                        Silindi = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("Akinsoft.Bolumler", t => t.BolumId, cascadeDelete: true)
+                .Index(t => t.Ad)
+                .Index(t => t.Soyad)
+                .Index(t => t.Numara)
                 .Index(t => t.BolumId);
             
             CreateTable(
@@ -44,7 +50,8 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
                         Adres = c.String(nullable: false, maxLength: 1000),
                         AdresTipi = c.Int(nullable: false),
                         OgrenciId = c.Int(nullable: false),
-                        Silindi = c.Boolean(nullable: false,defaultValue:false)
+                        SonGuncelleme = c.DateTime(),
+                        Silindi = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("Akinsoft.Ogrenciler", t => t.OgrenciId, cascadeDelete: true)
@@ -58,15 +65,17 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
                         OgrenciId = c.Int(nullable: false),
                         KitapId = c.Int(nullable: false),
                         AlinmaTarihi = c.DateTime(),
-                        TeslimTarihi = c.DateTime(),
+                        TeslimTarihi = c.DateTime(precision: 7, storeType: "datetime2"),
                         EsZamanli = c.Guid(),
-                        Silindi = c.Boolean(nullable: false,defaultValue:false)
+                        SonGuncelleme = c.DateTime(),
+                        Silindi = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("Akinsoft.Kitaplar", t => t.KitapId, cascadeDelete: true)
                 .ForeignKey("Akinsoft.Ogrenciler", t => t.OgrenciId, cascadeDelete: true)
                 .Index(t => t.OgrenciId)
-                .Index(t => t.KitapId);
+                .Index(t => t.KitapId)
+                .Index(t => t.AlinmaTarihi);
             
             CreateTable(
                 "Akinsoft.Kitaplar",
@@ -78,13 +87,17 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
                         Yazar = c.String(nullable: false, maxLength: 150),
                         YayinYili = c.Int(nullable: false),
                         ISBN = c.String(nullable: false, maxLength: 13),
-                        BostaMi = c.Boolean(nullable: false,defaultValue:true),
+                        BostaMi = c.Boolean(nullable: false,defaultValue:true,defaultValueSql:"true"),
                         SayfaSayisi = c.Int(nullable: false),
                         KitapKategoriId = c.Int(nullable: false),
-                        Silindi = c.Boolean(nullable: false,defaultValue:false)
+                        SonGuncelleme = c.DateTime(),
+                        Silindi = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("Akinsoft.KitapKategoriler", t => t.KitapKategoriId, cascadeDelete: true)
+                .Index(t => t.Adi)
+                .Index(t => t.Yazar)
+                .Index(t => t.ISBN, unique: true)
                 .Index(t => t.KitapKategoriId);
             
             CreateTable(
@@ -94,10 +107,12 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Anahtar = c.String(nullable: false, maxLength: 50),
                         KitapId = c.Int(nullable: false),
-                        Silindi = c.Boolean(nullable: false,defaultValue:false)
+                        SonGuncelleme = c.DateTime(),
+                        Silindi = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("Akinsoft.Kitaplar", t => t.KitapId, cascadeDelete: true)
+                .Index(t => t.Anahtar)
                 .Index(t => t.KitapId);
             
             CreateTable(
@@ -106,7 +121,8 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Adi = c.String(nullable: false, maxLength: 200),
-                        Silindi = c.Boolean(nullable: false,defaultValue:false)
+                        SonGuncelleme = c.DateTime(),
+                        Silindi = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -117,7 +133,8 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         MailAdresi = c.String(nullable: false, maxLength: 100),
                         OgrenciId = c.Int(nullable: false),
-                        Silindi = c.Boolean(nullable: false,defaultValue:false)
+                        SonGuncelleme = c.DateTime(),
+                        Silindi = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("Akinsoft.Ogrenciler", t => t.OgrenciId, cascadeDelete: true)
@@ -130,7 +147,8 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Telefon = c.String(nullable: false, maxLength: 11),
                         OgrenciId = c.Int(nullable: false),
-                        Silindi = c.Boolean(nullable: false,defaultValue:false)
+                        SonGuncelleme = c.DateTime(),
+                        Silindi = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("Akinsoft.Ogrenciler", t => t.OgrenciId, cascadeDelete: true)
@@ -142,9 +160,11 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Adi = c.String(nullable: false, maxLength: 100),
-                        Silindi = c.Boolean(nullable: false,defaultValue:false)
+                        SonGuncelleme = c.DateTime(),
+                        Silindi = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Adi);
             
             CreateTable(
                 "Akinsoft.Kullanicilar",
@@ -152,8 +172,9 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         KullaniciAdi = c.String(nullable: false, maxLength: 50),
-                        Sifre = c.String(nullable: false, maxLength: 4000),
-                        Silindi = c.Boolean(nullable: false,defaultValue:false)
+                        KullaniciSifreId = c.Int(nullable: false),
+                        SonGuncelleme = c.DateTime(),
+                        Silindi = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -164,7 +185,8 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         KullaniciId = c.Int(nullable: false),
                         RolId = c.Int(nullable: false),
-                        Silindi = c.Boolean(nullable: false,defaultValue:false)
+                        SonGuncelleme = c.DateTime(),
+                        Silindi = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("Akinsoft.Kullanicilar", t => t.KullaniciId, cascadeDelete: true)
@@ -178,9 +200,24 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         RolAdi = c.String(nullable: false, maxLength: 10),
-                        Silindi = c.Boolean(nullable: false,defaultValue:false)
+                        SonGuncelleme = c.DateTime(),
+                        Silindi = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "Akinsoft.KullaniciSifre",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Sifre = c.String(nullable: false, maxLength: 4000),
+                        KullaniciId = c.Int(nullable: false),
+                        SonGuncelleme = c.DateTime(),
+                        Silindi = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("Akinsoft.Kullanicilar", t => t.KullaniciId, cascadeDelete: true)
+                .Index(t => t.KullaniciId);
             
             CreateTable(
                 "AkinsoftAdmin.Loglar",
@@ -197,6 +234,7 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
         
         public override void Down()
         {
+            DropForeignKey("Akinsoft.KullaniciSifre", "KullaniciId", "Akinsoft.Kullanicilar");
             DropForeignKey("Akinsoft.KullaniciRoller", "RolId", "Akinsoft.Roller");
             DropForeignKey("Akinsoft.KullaniciRoller", "KullaniciId", "Akinsoft.Kullanicilar");
             DropForeignKey("Akinsoft.Bolumler", "FakulteId", "Akinsoft.Fakulteler");
@@ -208,18 +246,30 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
             DropForeignKey("Akinsoft.KitapAnahtarlar", "KitapId", "Akinsoft.Kitaplar");
             DropForeignKey("Akinsoft.OgrenciAdresler", "OgrenciId", "Akinsoft.Ogrenciler");
             DropForeignKey("Akinsoft.Ogrenciler", "BolumId", "Akinsoft.Bolumler");
+            DropIndex("Akinsoft.KullaniciSifre", new[] { "KullaniciId" });
             DropIndex("Akinsoft.KullaniciRoller", new[] { "RolId" });
             DropIndex("Akinsoft.KullaniciRoller", new[] { "KullaniciId" });
+            DropIndex("Akinsoft.Fakulteler", new[] { "Adi" });
             DropIndex("Akinsoft.OgrenciTelefonlar", new[] { "OgrenciId" });
             DropIndex("Akinsoft.OgrenciMailler", new[] { "OgrenciId" });
             DropIndex("Akinsoft.KitapAnahtarlar", new[] { "KitapId" });
+            DropIndex("Akinsoft.KitapAnahtarlar", new[] { "Anahtar" });
             DropIndex("Akinsoft.Kitaplar", new[] { "KitapKategoriId" });
+            DropIndex("Akinsoft.Kitaplar", new[] { "ISBN" });
+            DropIndex("Akinsoft.Kitaplar", new[] { "Yazar" });
+            DropIndex("Akinsoft.Kitaplar", new[] { "Adi" });
+            DropIndex("Akinsoft.KitapHareketler", new[] { "AlinmaTarihi" });
             DropIndex("Akinsoft.KitapHareketler", new[] { "KitapId" });
             DropIndex("Akinsoft.KitapHareketler", new[] { "OgrenciId" });
             DropIndex("Akinsoft.OgrenciAdresler", new[] { "OgrenciId" });
             DropIndex("Akinsoft.Ogrenciler", new[] { "BolumId" });
+            DropIndex("Akinsoft.Ogrenciler", new[] { "Numara" });
+            DropIndex("Akinsoft.Ogrenciler", new[] { "Soyad" });
+            DropIndex("Akinsoft.Ogrenciler", new[] { "Ad" });
             DropIndex("Akinsoft.Bolumler", new[] { "FakulteId" });
+            DropIndex("Akinsoft.Bolumler", new[] { "Adi" });
             DropTable("AkinsoftAdmin.Loglar");
+            DropTable("Akinsoft.KullaniciSifre");
             DropTable("Akinsoft.Roller");
             DropTable("Akinsoft.KullaniciRoller");
             DropTable("Akinsoft.Kullanicilar");

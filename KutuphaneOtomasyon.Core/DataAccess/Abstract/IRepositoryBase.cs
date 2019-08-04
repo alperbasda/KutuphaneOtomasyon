@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using System.Linq.Expressions;
 using KutuphaneOtomasyon.Core.Entity.Abstract;
 
@@ -11,8 +10,10 @@ namespace KutuphaneOtomasyon.Core.DataAccess.Abstract
     {
         T Find(int id);
 
-        T Get<TOrd>(Expression<Func<T, bool>> filter, Expression<Func<T, TOrd>> order=null);
+        T Get(Expression<Func<T, bool>> filter);
 
+        T Get<TOrd>(Expression<Func<T, bool>> filter, Expression<Func<T, TOrd>> order=null);
+        
         IEnumerable<T> GetList(Expression<Func<T, bool>> filter = null);
 
         IEnumerable<T> GetList<TOrd>(Expression<Func<T, TOrd>> order, Expression<Func<T, bool>> filter = null);

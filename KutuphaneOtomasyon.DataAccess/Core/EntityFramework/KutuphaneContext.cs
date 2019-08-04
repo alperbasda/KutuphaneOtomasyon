@@ -8,6 +8,8 @@ namespace KutuphaneOtomasyon.DataAccess.Core.EntityFramework
     {
         public DbSet<Kullanici> Kullanicilar { get; set; }
 
+        public DbSet<KullaniciSifre> KullanicilarSifreler { get; set; }
+
         public DbSet<Rol> Roller { get; set; }
 
         public DbSet<KullaniciRol> KullaniciRoller { get; set; }
@@ -44,6 +46,7 @@ namespace KutuphaneOtomasyon.DataAccess.Core.EntityFramework
         {
             modelBuilder.Configurations.Add(new RolMap());
             modelBuilder.Configurations.Add(new KullaniciMap());
+            modelBuilder.Configurations.Add(new KullaniciSifreMap());
             modelBuilder.Configurations.Add(new KullaniciRolMap());
             modelBuilder.Configurations.Add(new FakulteMap());
             modelBuilder.Configurations.Add(new BolumMap());

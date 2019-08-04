@@ -59,6 +59,7 @@
     <Compile Include="Abstract\IOgrenciDal.cs" />
     <Compile Include="Abstract\IOgrenciMailDal.cs" />
     <Compile Include="Abstract\IOgrenciTelefonDal.cs" />
+    <Compile Include="Abstract\IViewDal.cs" />
     <Compile Include="Concrete\BolumDal.cs" />
     <Compile Include="Concrete\FakulteDal.cs" />
     <Compile Include="Concrete\KitapAnahtarDal.cs" />
@@ -70,10 +71,12 @@
     <Compile Include="Concrete\OgrenciDal.cs" />
     <Compile Include="Concrete\OgrenciMailDal.cs" />
     <Compile Include="Concrete\OgrenciTelefonDal.cs" />
+    <Compile Include="Concrete\ViewDal.cs" />
+    <Compile Include="Core\EntityFramework\InitializeData.cs" />
     <Compile Include="Core\EntityFramework\KutuphaneContext.cs" />
-    <Compile Include="Migrations\201908021239221_first.cs" />
-    <Compile Include="Migrations\201908021239221_first.Designer.cs">
-      <DependentUpon>201908021239221_first.cs</DependentUpon>
+    <Compile Include="Migrations\201908040829276_first.cs" />
+    <Compile Include="Migrations\201908040829276_first.Designer.cs">
+      <DependentUpon>201908040829276_first.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,8 +96,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908021239221_first.resx">
-      <DependentUpon>201908021239221_first.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908040829276_first.resx">
+      <DependentUpon>201908040829276_first.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

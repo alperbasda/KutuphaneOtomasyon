@@ -8,7 +8,7 @@ namespace KutuphaneOtomasyon.Entities.BaseType.ApiRelations
         {
             ToTable("KullaniciRoller", "Akinsoft");
             HasKey(s => s.Id);
-
+            Property(s => s.SonGuncelleme).IsOptional().HasColumnType("datetime");
             #region Relations
             HasRequired(s=>s.Kullanici)
                 .WithMany(s=>s.KullaniciRolleri)

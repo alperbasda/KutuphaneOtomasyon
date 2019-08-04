@@ -26,6 +26,8 @@ namespace KutuphaneOtomasyon.Business.DependencyResolvers.Ninject
             Bind<IOgrenciMailService>().To<OgrenciMailManager>();
             Bind<IOgrenciService>().To<OgrenciManager>();
             Bind<IOgrenciTelefonService>().To<OgrenciTelefonManager>();
+            Bind<IViewService>().To<ViewManager>();
+
             #endregion
 
             #region DataAccessBindings
@@ -40,6 +42,7 @@ namespace KutuphaneOtomasyon.Business.DependencyResolvers.Ninject
             Bind<IOgrenciMailDal>().To<OgrenciMailDal>();
             Bind<IOgrenciDal>().To<OgrenciDal>();
             Bind<IOgrenciTelefonDal>().To<OgrenciTelefonDal>();
+            Bind<IViewDal>().To<ViewDal>();
 
             #endregion
 

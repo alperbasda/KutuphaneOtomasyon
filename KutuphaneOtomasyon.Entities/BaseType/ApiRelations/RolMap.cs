@@ -9,6 +9,7 @@ namespace KutuphaneOtomasyon.Entities.BaseType.ApiRelations
             ToTable("Roller", "Akinsoft");
             HasKey(s => s.Id);
             Property(s => s.RolAdi).IsRequired().HasColumnType("nvarchar").HasMaxLength(10);
+            Property(s => s.SonGuncelleme).IsOptional().HasColumnType("datetime");
 
         }
     }

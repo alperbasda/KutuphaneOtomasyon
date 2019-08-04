@@ -81,12 +81,14 @@
     <Compile Include="Abstract\IOgrenciMailService.cs" />
     <Compile Include="Abstract\IOgrenciService.cs" />
     <Compile Include="Abstract\IOgrenciTelefonService.cs" />
+    <Compile Include="Abstract\IViewService.cs" />
     <Compile Include="Aspects\AuthorizationAspects\SecuredOperationAspect.cs" />
     <Compile Include="Aspects\ExceptionAspects\ExceptionLogAspect.cs" />
     <Compile Include="Aspects\LogAspects\Log4Net\LogAspect.cs" />
     <Compile Include="Aspects\TransactionAspects\TransactionScopeAspect.cs" />
     <Compile Include="Concrete\BolumManager.cs" />
     <Compile Include="Concrete\FakulteManager.cs" />
+    <Compile Include="Concrete\ViewManager.cs" />
     <Compile Include="Concrete\KitapAnahtarManager.cs" />
     <Compile Include="Concrete\KitapHareketManager.cs" />
     <Compile Include="Concrete\KitapKategoriManager.cs" />

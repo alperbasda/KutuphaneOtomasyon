@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using KutuphaneOtomasyon.Entities.BaseType;
+using KutuphaneOtomasyon.Entities.ComplexType.PostModels.Fakulte;
 
 namespace KutuphaneOtomasyon.Business.Mappings.AutoMapper.Profiles
 {
@@ -6,8 +8,9 @@ namespace KutuphaneOtomasyon.Business.Mappings.AutoMapper.Profiles
     {
         public BusinessProfile()
         {
-            //CreateMap<User, GetUserInformationModel>()
-              //  .ForMember(s => s.Notification, w => w.MapFrom(e => e.MailNotification));
+            CreateMap<FakulteEkleModel, Fakulte>()
+                .ForMember(d => d.Adi, t => t.MapFrom(v => v.FakulteAdi));
+            
         }
     }
 }
