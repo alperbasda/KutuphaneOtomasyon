@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Bölüm Ekle" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BolumEkle.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.Bolum.BolumEkle" %>
 <%@ Import Namespace="KutuphaneOtomasyon.Entities.ComplexType.PostModels.Bolum" %>
-
+<%@ Register Src="../Fakulte/FakulteSecici.ascx" TagName="FakulteSecici" TagPrefix="UserControl"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop m-body align-custom">
         <div class="m-grid__item m-grid__item--fluid m-wrapper">
@@ -27,12 +27,8 @@
                     <div class="row justify-content-center">
                         <div class="col-4">
                             <div class="form-group m-form__group">
-                                <label for="fakulteSec">Fakülte Seçin</label>
-                                <select class="form-control m-input m-input--air m-input--pill" id="fakulteSec">
-                                    <option>Mühendislik Fakültesi</option>
-                                    <option>Fen Edebiyat Fakültesi</option>
-                                    <option>İktisadi ve İdari Bilimler Fakültesi</option>
-                                </select>
+                                <label>Fakülte Seçin</label>
+                                <UserControl:FakulteSecici ID="FakulteId" runat="server" />
                             </div>
                             <div class="form-group m-form__group">
                                 <label for="BolumAdi">Bölüm Adı</label>

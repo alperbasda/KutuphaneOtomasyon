@@ -1,8 +1,11 @@
 ﻿<%@ Page Title="Ögrenci Ekle" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OgrenciEkle.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.Ogrenci.OgrenciEkle" %>
+<%@ Import Namespace="KutuphaneOtomasyon.Entities.ComplexType.PostModels.Ogrenci" %>
+<%@ Register Src="../Fakulte/OgrenciEkleFakulteBolumSecici.ascx" TagName="OgrenciEkleFakulteBolumSecici" TagPrefix="UserControl"%>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-       <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop m-body align-custom">
+    <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop m-body align-custom">
         <div class="m-grid__item m-grid__item--fluid m-wrapper">
 
             <!-- BEGIN: Subheader -->
@@ -16,82 +19,168 @@
 
             <!-- END: Subheader -->
             <div class="m-content">
-
-
                 <!--Begin::Section-->
-                <div class="row justify-content-center">
-                    <div class="col-6">
-                        <div class="form-group m-form__group">
-                            <label for="fakülteSec">Fakülte Seçin</label>
-                            <select class="form-control m-input m-input--air m-input--pill" id="fakülteSec">
-                                <option>Mühendislik Fakültesi</option>
-                                <option>Fen Edebiyat Fakültesi</option>
-                                <option>İktisadi ve İdari Bilimler Fakültesi</option>
-                            </select>
+                <form id="OgrenciEkleForm" runat="server">
+                    <dav:MetadataSource
+                        ID="msOgrenciEkleModel"
+                        ObjectType="<%$ Code: typeof(OgrenciEkleModel) %>"
+                        runat="server" />
+                    <div class="row justify-content-center">
+                        <UserControl:OgrenciEkleFakulteBolumSecici ID="BolumId" runat="server" />
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <div class="form-group m-form__group">
+                                <label for="Ad">Adı</label>
+                                <asp:TextBox
+                                    ID="Ad"
+                                    placeholder="Ögrencinin adını yazın..."
+                                    type="text"
+                                    CssClass="form-control m-input m-input--air m-input--pill"
+                                    ValidationGroup="OgrenciEkleGroup"
+                                    runat="server"></asp:TextBox>
+                                <dav:DataAnnotationsValidator 
+                                    ValidationGroup="OgrenciEkleGroup"
+                                    MetadataSourceID="msOgrenciEkleModel"
+                                    ID="OgrenciEkleAdValidator"
+                                    CssClass="m-form__help"
+                                    ObjectProperty="Ad"
+                                    ControlToValidate="Ad"
+                                    runat="server"></dav:DataAnnotationsValidator>
+                                
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="Soyad">Soyadı</label>
+                                <asp:TextBox
+                                    ID="Soyad"
+                                    placeholder="Ögrencinin soyadını yazın..."
+                                    type="text"
+                                    CssClass="form-control m-input m-input--air m-input--pill"
+                                    ValidationGroup="OgrenciEkleGroup"
+                                    runat="server"></asp:TextBox>
+                                <dav:DataAnnotationsValidator 
+                                    ValidationGroup="OgrenciEkleGroup"
+                                    MetadataSourceID="msOgrenciEkleModel"
+                                    ID="OgrenciEkleSoyadValidator"
+                                    CssClass="m-form__help"
+                                    ObjectProperty="Soyad"
+                                    ControlToValidate="Soyad"
+                                    runat="server"></dav:DataAnnotationsValidator>
+                                
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="numara">Numara</label>
+                                <asp:TextBox
+                                    ID="Numara"
+                                    placeholder="Ögrencinin numarasını yazın..."
+                                    type="text"
+                                    CssClass="form-control m-input m-input--air m-input--pill"
+                                    ValidationGroup="OgrenciEkleGroup"
+                                    runat="server"></asp:TextBox>
+                                <dav:DataAnnotationsValidator 
+                                    ValidationGroup="OgrenciEkleGroup"
+                                    MetadataSourceID="msOgrenciEkleModel"
+                                    ID="OgrenciEkleNumaraValidator"
+                                    CssClass="m-form__help"
+                                    ObjectProperty="Numara"
+                                    ControlToValidate="Numara"
+                                    runat="server"></dav:DataAnnotationsValidator>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group m-form__group">
+                                <label for="mail">Mail Adresi</label>
+                                <asp:TextBox
+                                    ID="OgrenciMail"
+                                    placeholder="Ögrencinin mail adresini yazın..."
+                                    type="email"
+                                    CssClass="form-control m-input m-input--air m-input--pill"
+                                    ValidationGroup="OgrenciEkleGroup"
+                                    runat="server"></asp:TextBox>
+                                <dav:DataAnnotationsValidator 
+                                    ValidationGroup="OgrenciEkleGroup"
+                                    MetadataSourceID="msOgrenciEkleModel"
+                                    ID="OgrenciEkleMailValidator"
+                                    CssClass="m-form__help"
+                                    ObjectProperty="OgrenciMail"
+                                    ControlToValidate="OgrenciMail"
+                                    runat="server"></dav:DataAnnotationsValidator>
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="tel">Telefon Numarası</label>
+                                <asp:TextBox
+                                    ID="OgrenciTelefon"
+                                    placeholder="Ögrencinin telefon numarasını yazın..."
+                                    type="tel"
+                                    CssClass="form-control m-input m-input--air m-input--pill"
+                                    ValidationGroup="OgrenciEkleGroup"
+                                    runat="server"></asp:TextBox>
+                                <dav:DataAnnotationsValidator 
+                                    ValidationGroup="OgrenciEkleGroup"
+                                    MetadataSourceID="msOgrenciEkleModel"
+                                    ID="OgrenciEkleTelefonValidator"
+                                    CssClass="m-form__help"
+                                    ObjectProperty="OgrenciTelefon"
+                                    ControlToValidate="OgrenciTelefon"
+                                    runat="server"></dav:DataAnnotationsValidator>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group m-form__group">
+                                <label for="memleketAdres">Memleket Adres</label>
+                                <asp:TextBox
+                                    placeholder="Memleket Adresini yazın..."
+                                    rows="3"
+                                    ID="OgrenciMemleketAdres"
+                                    type="text"
+                                    CssClass="form-control m-input m-input--air m-input--pill"
+                                    ValidationGroup="OgrenciEkleGroup"
+                                    runat="server"></asp:TextBox>
+                                <dav:DataAnnotationsValidator 
+                                    ValidationGroup="OgrenciEkleGroup"
+                                    MetadataSourceID="msOgrenciEkleModel"
+                                    ID="OgrenciEkleMemleketAdresValidator"
+                                    CssClass="m-form__help"
+                                    ObjectProperty="OgrenciMemleketAdres"
+                                    ControlToValidate="OgrenciMemleketAdres"
+                                    runat="server"></dav:DataAnnotationsValidator>
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="adresOkul">Adres</label>
+                                <asp:TextBox
+                                    placeholder="Adresi yazın..."
+                                    rows="3"
+                                    ID="OgrenciAdres"
+                                    type="text"
+                                    CssClass="form-control m-input m-input--air m-input--pill"
+                                    ValidationGroup="OgrenciEkleGroup"
+                                    runat="server"></asp:TextBox>
+                                <dav:DataAnnotationsValidator 
+                                    ValidationGroup="OgrenciEkleGroup"
+                                    MetadataSourceID="msOgrenciEkleModel"
+                                    ID="OgrenciEkleAdresValidator"
+                                    CssClass="m-form__help"
+                                    ObjectProperty="OgrenciAdres"
+                                    ControlToValidate="OgrenciAdres"
+                                    runat="server"></dav:DataAnnotationsValidator>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="form-group m-form__group">
-                            <label for="bolumSec">Bölüm Seçin</label>
-                            <select class="form-control m-input m-input--air m-input--pill" id="bolumSec">
-                                <option>Bilgisayar Mühendisliği</option>
-                                <option>İnşaat Mühendisliği</option>
-                                <option>Endüstri Mühendisliği</option>
-                            </select>
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <div class="form-group m-form__group text-center">
+                                <asp:Button 
+                                    CssClass="btn btn-accent col-4"
+                                    ID="OgrenciEkleButton"
+                                    Text="Kaydet"
+                                    ValidationGroup="OgrenciEkleGroup"
+                                    OnClick="OgrenciEkleButton_OnClick"
+                                    runat="server"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-4">
-                        <div class="form-group m-form__group">
-                            <label for="Adi">Adı</label>
-                            <input type="text" class="form-control m-input m-input--air m-input--pill" id="Adi" name="Adi" placeholder="Ögrencinin adını yazın...">
-                        </div>
-                        <div class="form-group m-form__group">
-                            <label for="soyad">Soyadı</label>
-                            <input type="text" class="form-control m-input m-input--air m-input--pill" id="soyad" name="Soyad" placeholder="Ögrencinin soyadını yazın...">
-                        </div>
-                        <div class="form-group m-form__group">
-                            <label for="numara">Numara</label>
-                            <input type="text" class="form-control m-input m-input--air m-input--pill" id="numara" name="Numara" placeholder="Ögrencinin numarasını yazın...">
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="form-group m-form__group">
-                            <label for="mail">Mail Adresi</label>
-                            <input type="email" class="form-control m-input m-input--air m-input--pill" id="mail" name="Mail" placeholder="Ögrencinin mail adresini yazın...">
-                        </div>
-                        <div class="form-group m-form__group">
-                            <label for="tel">Telefon Numarası</label>
-                            <input type="tel" class="form-control m-input m-input--air m-input--pill" id="tel" name="ISBN" placeholder="Ögrencinin telefon numarasını yazın...">
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="form-group m-form__group">
-                            <label for="memleketOkul">Memleket Adres</label>
-                            <textarea class="form-control m-input m-input--air m-input--pill"  id="memleketOkul" name="MemleketOkul" placeholder="Memleket Adresini yazın..." rows="3"></textarea>
-                        </div>
-                        <div class="form-group m-form__group">
-                            <label for="adresOkul">Adres</label>
-                            <textarea class="form-control m-input m-input--air m-input--pill"  id="adresOkul" name="AdresOkul" placeholder="Adres yazın..." rows="3"></textarea>
-                        </div>
-                    </div>
-                    
-
-
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-4">
-                        <div class="form-group m-form__group text-center">
-                            <button type="submit" class="btn btn-accent col-4">Kaydet</button>
-                        </div>
-                    </div>
-                </div>
-
-
-
+                </form>
                 <!--End::Section-->
-
             </div>
         </div>
     </div>

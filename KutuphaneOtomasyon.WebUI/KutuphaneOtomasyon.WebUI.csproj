@@ -162,6 +162,8 @@
     <Content Include="Fakulte\FakulteDuzenle.aspx" />
     <Content Include="Fakulte\FakulteEkle.aspx" />
     <Content Include="Fakulte\FakulteListesi.aspx" />
+    <Content Include="Fakulte\FakulteSecici.ascx" />
+    <Content Include="Fakulte\OgrenciEkleFakulteBolumSecici.ascx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Giris\GirisYap.aspx" />
@@ -180,6 +182,8 @@
     <Content Include="KitapKategori\KitapKategoriDuzenle.aspx" />
     <Content Include="KitapKategori\KitapKategoriEkle.aspx" />
     <Content Include="KitapKategori\KitapKategoriListesi.aspx" />
+    <Content Include="KitapKategori\KitapKategoriSecici.ascx" />
+    <Content Include="Kitap\KitapSecici.ascx" />
     <Content Include="Odunc\OduncEkle.aspx" />
     <Content Include="Odunc\OduncListesi.aspx" />
     <Content Include="Kitap\KitapDuzenle.aspx" />
@@ -315,6 +319,20 @@
     <Compile Include="Fakulte\FakulteListesi.aspx.designer.cs">
       <DependentUpon>FakulteListesi.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Fakulte\FakulteSecici.ascx.cs">
+      <DependentUpon>FakulteSecici.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fakulte\FakulteSecici.ascx.designer.cs">
+      <DependentUpon>FakulteSecici.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Fakulte\OgrenciEkleFakulteBolumSecici.ascx.cs">
+      <DependentUpon>OgrenciEkleFakulteBolumSecici.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fakulte\OgrenciEkleFakulteBolumSecici.ascx.designer.cs">
+      <DependentUpon>OgrenciEkleFakulteBolumSecici.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Giris\GirisYap.aspx.cs">
       <DependentUpon>GirisYap.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -326,6 +344,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ObjectCreator.cs" />
+    <Compile Include="Helpers\QueryStringHelper.cs" />
     <Compile Include="KitapAnahtari\KitapAnahtariDuzenle.aspx.cs">
       <DependentUpon>KitapAnahtariDuzenle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -367,6 +386,20 @@
     </Compile>
     <Compile Include="KitapKategori\KitapKategoriListesi.aspx.designer.cs">
       <DependentUpon>KitapKategoriListesi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KitapKategori\KitapKategoriSecici.ascx.cs">
+      <DependentUpon>KitapKategoriSecici.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KitapKategori\KitapKategoriSecici.ascx.designer.cs">
+      <DependentUpon>KitapKategoriSecici.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Kitap\KitapSecici.ascx.cs">
+      <DependentUpon>KitapSecici.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kitap\KitapSecici.ascx.designer.cs">
+      <DependentUpon>KitapSecici.ascx</DependentUpon>
     </Compile>
     <Compile Include="Odunc\OduncEkle.aspx.cs">
       <DependentUpon>OduncEkle.aspx</DependentUpon>

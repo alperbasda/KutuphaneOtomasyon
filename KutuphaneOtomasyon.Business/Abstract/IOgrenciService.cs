@@ -1,7 +1,10 @@
-﻿namespace KutuphaneOtomasyon.Business.Abstract
+﻿using KutuphaneOtomasyon.Entities.ComplexType.PostModels.Ogrenci;
+using KutuphaneOtomasyon.Entities.Response.Concrete;
+
+namespace KutuphaneOtomasyon.Business.Abstract
 {
     public interface IOgrenciService
     {
-        string Get(string a);
+        DataResponse OgrenciEkle(OgrenciEkleModel model);
     }
 }

@@ -18,22 +18,22 @@
             <!-- END: Subheader -->
             <div class="m-content">
                 <!--Begin::SearchArea-->
-                <form class="m-form m-form--fit">
+                <form method="get" class="m-form m-form--fit">
                     <div class="row m--margin-bottom-20 text-center justify-content-center">
                         <div class="col-lg-3 m--margin-bottom-10-tablet-and-mobile">
                             <label>Fakülte Adı:</label>
-                            <input type="text" class="form-control m-input" placeholder="Örn : Mühendislik Fakültesi" data-col-index="0">
+                            <input type="text" class="form-control m-input" name="FakulteAdi" placeholder="Örn : Mühendislik Fakültesi">
                         </div>
                     </div>
                     <div class="row text-center">
                         <div class="col-lg-12">
-                            <button class="btn btn-brand m-btn m-btn--icon" id="m_search">
+                            <button type="submit" class="btn btn-brand m-btn m-btn--icon" id="m_search">
                                 <span>
                                     <i class="la la-search"></i>
                                     <span>Ara</span>
                                 </span>
                             </button>
-                            <button class="btn btn-secondary m-btn m-btn--icon" id="m_reset">
+                            <button type="reset" class="btn btn-secondary m-btn m-btn--icon" id="m_reset">
                                 <span>
                                     <span>Sıfırla</span>
                                 </span>
@@ -46,37 +46,31 @@
 
                 <!--Begin::Section-->
                 <div class="row table-responsive dataTables_wrapper dt-bootstrap4">
-
-                    <!-- Begin::List-->
                     <table class="table table-striped">
-                        <tr>
-                            <th>#</th>
-                            <th>Fakülte Adı</th>
-                            <th>Bölümleri Gör</th>
-                            <th>Düzenle</th>
-                            <th>Sil</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Mühendislik Fakültesi</td>
-                            <td><a href="../Bolum/BolumListesi.aspx"><i class="fa fa-eye" style="color:cadetblue"></i></a></td>
-                            <td><a href="../Fakulte/FakulteDuzenle.aspx"><i class="fa fa-edit" style="color:coral"></i></a></td>
-                            <td><a href="../Fakulte/FakulteDuzenle.aspx"><i class="fa fa-trash-alt" style="color:red"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Fen Edebiyat Fakültesi</td>
-                            <td><a href="../Bolum/BolumListesi.aspx"><i class="fa fa-eye" style="color:cadetblue"></i></a></td>
-                            <td><a href="../Fakulte/FakulteDuzenle.aspx"><i class="fa fa-edit" style="color:coral"></i></a></td>
-                            <td><a href="../Fakulte/FakulteDuzenle.aspx"><i class="fa fa-trash-alt" style="color:red"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>İktisadi ve İdari Bilimler Fakültesi</td>
-                            <td><a href="../Bolum/BolumListesi.aspx"><i class="fa fa-eye" style="color:cadetblue"></i></a></td>
-                            <td><a href="../Fakulte/FakulteDuzenle.aspx"><i class="fa fa-edit" style="color:coral"></i></a></td>
-                            <td><a href="../Fakulte/FakulteDuzenle.aspx"><i class="fa fa-trash-alt" style="color:red"></i></a></td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Fakülte Adı</th>
+                                <th>Bölümleri Gör</th>
+                                <th>Düzenle</th>
+                                <th>Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Begin::List-->
+                            <asp:Repeater ID="Fakulteler" runat="server">
+                                <ItemTemplate>
+                                    <tr>
+                                        <td><%# Eval("Id") %></td>
+                                        <td><%# Eval("FakulteAdi") %></td>
+                                        <td><a href="../Bolum/BolumListesi.aspx?Fakulte=<%# Eval("Id") %>"><i class="fa fa-eye" style="color:cadetblue"></i></a></td>
+                                        <td><a href="../Fakulte/FakulteDuzenle.aspx?Fakulte=<%# Eval("Id") %>"><i class="fa fa-edit" style="color:coral"></i></a></td>
+                                        <td><a href="../Fakulte/FakulteDuzenle.aspx?Fakulte=<%# Eval("Id") %>"><i class="fa fa-trash-alt" style="color:red"></i></a></td>
+                                    </tr>
+                                </ItemTemplate>
+                            </asp:Repeater>
+
+                        </tbody>
                     </table>
                     <!--End::Table-->
                     <!--Begin::Pager-->

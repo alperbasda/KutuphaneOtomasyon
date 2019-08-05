@@ -10,7 +10,7 @@ namespace KutuphaneOtomasyon.WebUI
     public partial class Anasayfa : PageBase
     {
         [Inject]
-        public IViewService ViewService { get; set; }
+        public IViewService ViewService { private get; set; }
 
         private SiteStats _stats;
 

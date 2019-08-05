@@ -18,6 +18,7 @@ namespace KutuphaneOtomasyon.Business.DependencyResolvers.Ninject
             #region ServiceBindings
             Bind<IBolumService>().To<BolumManager>();
             Bind<IFakulteService>().To<FakulteManager>();
+            Bind<IKitapKategoriService>().To<KitapKategoriManager>();
             Bind<IKitapAnahtarService>().To<KitapAnahtarManager>();
             Bind<IKitapHareketService>().To<KitapHareketManager>();
             Bind<IKitapService>().To<KitapManager>();
@@ -34,6 +35,7 @@ namespace KutuphaneOtomasyon.Business.DependencyResolvers.Ninject
 
             Bind<IBolumDal>().To<BolumDal>().InSingletonScope();
             Bind<IFakulteDal>().To<FakulteDal>().InSingletonScope();
+            Bind<IKitapKategoriDal>().To<KitapKategoriDal>();
             Bind<IKitapAnahtarDal>().To<KitapAnahtarDal>().InSingletonScope();
             Bind<IKitapHareketDal>().To<KitapHareketDal>().InSingletonScope();
             Bind<IKitapDal>().To<KitapDal>().InSingletonScope();

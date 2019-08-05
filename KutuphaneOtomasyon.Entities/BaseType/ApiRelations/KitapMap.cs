@@ -21,9 +21,9 @@ namespace KutuphaneOtomasyon.Entities.BaseType.ApiRelations
             Property(s => s.SayfaSayisi).IsRequired().HasColumnType("int");
             Property(s => s.YayinYili).IsRequired().HasColumnType("int");
             Property(s => s.Yazar).IsRequired().HasColumnType("nvarchar").HasMaxLength(150);
-            //default value değerini migration oluşturulduğunda true atamak gerekir.
+            //default kütüphanede
             //data annotation ile atanabilir fakat kod yönetimini tek yerden yürütmek en doğrusu.
-            Property(s => s.BostaMi).IsRequired();
+            Property(s => s.KitapDurum).IsOptional();
             HasIndex(s => s.Adi);
             HasIndex(s => s.Yazar);
 

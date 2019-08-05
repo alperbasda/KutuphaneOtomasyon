@@ -218,10 +218,10 @@
 
 
         <!-- Body -->
-
+    <div>
         <asp:ContentPlaceHolder ID="MainContent" runat="server">
         </asp:ContentPlaceHolder>
-
+    </div>
         <!-- Body End-->
         <br />
 
@@ -285,7 +285,7 @@
             </Scripts>
         </asp:ScriptManager>--%>
     
-    <script src="Scripts/jquery-3.3.1.js"></script>
+    <script src="../Scripts/jquery-3.3.1.js"></script>
     <script src="../Scripts/jquery.validate.min.js"></script>
     <script src="../Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="../Scripts/Metronic/vendors.bundle.js"></script>

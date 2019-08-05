@@ -8,7 +8,7 @@ namespace KutuphaneOtomasyon.WebUI
     public partial class Cikis : PageBase
     {
         [Inject]
-        public IKullaniciService KullaniciService { get; set; }
+        public IKullaniciService KullaniciService { private get; set; }
 
 
         protected void Page_Load(object sender, EventArgs e)

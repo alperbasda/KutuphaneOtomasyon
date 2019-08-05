@@ -12,7 +12,7 @@ namespace KutuphaneOtomasyon.Entities.BaseType
 
         public string Numara { get; set; }
 
-        public DateTime KayitTarihi { get; set; }
+        public DateTime? KayitTarihi { get; set; }
 
         public int BolumId { get; set; }
 

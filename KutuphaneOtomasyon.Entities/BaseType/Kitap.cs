@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using KutuphaneOtomasyon.Core.Entity.Concrete;
+using KutuphaneOtomasyon.Entities.Enum;
 
 namespace KutuphaneOtomasyon.Entities.BaseType
 {
@@ -16,7 +17,7 @@ namespace KutuphaneOtomasyon.Entities.BaseType
 
         public string ISBN { get; set; }
 
-        public bool BostaMi { get; set; }
+        public KitapDurum KitapDurum { get; set; }
 
         public int SayfaSayisi { get; set; }
 

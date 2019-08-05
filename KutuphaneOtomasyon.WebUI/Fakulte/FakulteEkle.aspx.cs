@@ -11,7 +11,7 @@ namespace KutuphaneOtomasyon.WebUI.Fakulte
     public partial class FakulteEkle : PageBase
     {
         [Inject]
-        public IFakulteService FakulteService { get; set; }
+        public IFakulteService FakulteService {private get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {

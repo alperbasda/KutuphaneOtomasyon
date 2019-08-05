@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using AutoMapper;
 using KutuphaneOtomasyon.Business.Abstract;
@@ -8,6 +9,7 @@ using KutuphaneOtomasyon.Business.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using KutuphaneOtomasyon.Core.DataAccess.Abstract;
 using KutuphaneOtomasyon.DataAccess.Concrete;
 using KutuphaneOtomasyon.Entities.BaseType;
+using KutuphaneOtomasyon.Entities.ComplexType.GetModels.Fakulte;
 using KutuphaneOtomasyon.Entities.ComplexType.PostModels.Fakulte;
 using KutuphaneOtomasyon.Entities.Response.Concrete;
 
@@ -46,14 +48,14 @@ namespace KutuphaneOtomasyon.Business.Concrete
 
         [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
         [SecuredOperationAspect(Roles = "Kullanici")]
-        public DataResponse FakulteleriGetir(FakulteAraModel model)
+        public DataResponse FakulteleriGetir(FakulteAraModel model = null)
         {
-            var fakulteler = model != null ? model.ExecuteQueryables(_queryable.Table).ToList() : _fakulteDal.GetList();
+            var fakulteler = model?.ExecuteQueryables(_queryable.Table).ToList() ?? _fakulteDal.GetList();
             return new DataResponse
             {
                 Tamamlandi = true,
                 Mesaj = "Fakulteler Listelendi !!!",
-                Data = fakulteler
+                Data = _mapper.Map<List<FakulteModel>>(fakulteler)
             };
         }
     }

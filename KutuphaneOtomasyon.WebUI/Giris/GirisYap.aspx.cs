@@ -10,7 +10,7 @@ namespace KutuphaneOtomasyon.WebUI.Giris
     public partial class GirisYap : PageBase
     {
         [Inject]
-        public IKullaniciService KullaniciService { get; set; }
+        public IKullaniciService KullaniciService { private get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {

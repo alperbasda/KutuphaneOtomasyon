@@ -1,8 +1,13 @@
-﻿<%@ Page Title="Kitap Anahtarı Ekle" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="KitapAnahtariEkle.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.KitapAnahtariEkle" %>
+﻿<%@ Page Title="Kitap Anahtar Ekle" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="KitapAnahtariEkle.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.KitapAnahtari.KitapAnahtariEkle" %>
+<%@ Import Namespace="KutuphaneOtomasyon.Entities.ComplexType.PostModels.KitapAnahtar" %>
+<%@ Register Src="../Kitap/KitapSecici.ascx" TagName="KitapSecici" TagPrefix="UserControl" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-       <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop m-body align-custom">
+
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+
+    <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop m-body align-custom">
         <div class="m-grid__item m-grid__item--fluid m-wrapper">
 
             <!-- BEGIN: Subheader -->
@@ -16,34 +21,57 @@
 
             <!-- END: Subheader -->
             <div class="m-content">
-
-
-                <!--Begin::Section-->
-                <div class="row justify-content-center">
-                    <div class="col-4">
-                        <div class="form-group m-form__group">
-                            <label for="kitapSec">Kitap Seçin</label>
-                            <select class="form-control m-input m-input--air m-input--pill" id="kitapSec">
-                                <option>Yüzüklerin Efendisi İki Kule</option>
-                                <option>Nutuk</option>
-                                <option>Atatürk</option>
-                            </select>
-                        </div>
-                        <div class="form-group m-form__group">
-                            <label for="anahtar">Anahtar</label>
-                            <input type="text" class="form-control m-input m-input--air m-input--pill" id="anahtar" name="Anahtar" placeholder="Anahtar kelime yazın...">
-                        </div>
-                        <br />
-                        <div class="form-group m-form__group text-center">
-                            <button type="submit" class="btn btn-accent">Ekle</button>
+                <form id="KitapAnahtarEkleForm" runat="server">
+                    <!--Begin::Section-->
+                    <dav:MetadataSource
+                        ID="msKitapAnahtarEkleModel"
+                        ObjectType="<%$ Code: typeof(KitapAnahtarEkleModel) %>"
+                        runat="server" />
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <UserControl:KitapSecici ID="KitapId" runat="server" />
+                            <div class="form-group m-form__group">
+                                <label for="Anahtar">Anahtar</label>
+                                <asp:TextBox 
+                                    CssClass="form-control m-input m-input--air m-input--pill" 
+                                    type="text" 
+                                    ID="Anahtar"
+                                    ValidationGroup="KitapAnahtarEkleGroup" 
+                                    placeholder="Anahtar kelime yazın..." 
+                                    runat="server">
+                                </asp:TextBox>
+                                <dav:dataannotationsvalidator 
+                                    id="KitapAnahtarEkleAnahtarValidation" 
+                                    cssclass="m-form__help"
+                                    validationgroup="KitapAnahtarEkleGroup" 
+                                    metadatasourceid="msKitapAnahtarEkleModel"
+                                    controltovalidate="Anahtar" 
+                                    objectproperty="Anahtar" 
+                                    runat="server" />
+                            </div>
                         </div>
                     </div>
-                    
-                </div>
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <div class="form-group m-form__group text-center">
+                                <asp:Button 
+                                    CausesValidation="True"
+                                    ValidationGroup="KitapAnahtarEkleGroup" 
+                                    OnClick="KitapAnahtarEkleButton_OnClick" 
+                                    ID="KitapAnahtarEkleButton" 
+                                    Text="Kaydet"
+                                    CssClass="btn btn-accent"
+                                    runat="server" />
+                            </div>
+                        </div>
 
-                <!--End::Section-->
+                    </div>
 
+                    <!--End::Section-->
+                </form>
             </div>
         </div>
     </div>
 </asp:Content>
+
+

@@ -31,6 +31,15 @@ namespace KutuphaneOtomasyon.WebUI.Bolum {
         protected global::DAValidation.MetadataSource msBolumEkleModel;
         
         /// <summary>
+        /// FakulteId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::KutuphaneOtomasyon.WebUI.Fakulte.FakulteSecici FakulteId;
+        
+        /// <summary>
         /// BolumAdi control.
         /// </summary>
         /// <remarks>
