@@ -58,5 +58,19 @@ namespace KutuphaneOtomasyon.Business.Concrete
                 Data = _mapper.Map<List<BolumSeciciModel>>(bolumler)
             };
         }
+
+        public DataResponse BolumleriGetirTablo(BolumAraModel model = null)
+        {
+            var bolumler = model != null
+                ? model.ExecuteQueryables(_queryable.Table).Include(s=>s.Fakulte).ToList()
+                : _queryable.Table.Include(s=>s.Fakulte).ToList();
+
+            return new DataResponse
+            {
+                Tamamlandi = true,
+                Mesaj = "Bölümler Listelendi!!!",
+                Data = _mapper.Map<List<BolumTabloModel>>(bolumler)
+            };
+        }
     }
 }

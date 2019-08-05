@@ -132,3 +132,6 @@
         </div>
     </div>
 </asp:Content>
+<asp:Content ID="ScriptContent" ContentPlaceHolderID="ScriptContent" runat="server">
+    <script src="../Scripts/Site/fill-input.js"></script>
+</asp:Content>

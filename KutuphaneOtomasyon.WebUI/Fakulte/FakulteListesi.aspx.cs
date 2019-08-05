@@ -38,7 +38,6 @@ namespace KutuphaneOtomasyon.WebUI.Fakulte
             Fakulteler.DataSource = models.OrderBy(s => s.FakulteAdi);
             Fakulteler.DataBind();
         }
-
-
+        
     }
 }

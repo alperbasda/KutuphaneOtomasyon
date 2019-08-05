@@ -18,20 +18,19 @@
             <!-- END: Subheader -->
             <div class="m-content">
                 <!--Begin::SearchArea-->
-                <form class="m-form m-form--fit">
+                <form method="get" class="m-form m-form--fit">
                     <div class="row m--margin-bottom-20 text-center justify-content-center">
                         <div class="col-lg-3 m--margin-bottom-10-tablet-and-mobile">
-                            <label>Fakülte Seçin </label>
-                            <select class="form-control m-input" id="fakulteSec" data-col-index="0">
-                                <option>Mühendislik Fakültesi</option>
-                                <option>Fen Edebiyat Fakültesi</option>
-                                <option>İktisadi ve İdari Bilimler Fakültesi</option>
-                            </select>
+                            <label>Fakülte Adı </label>
+                            <input value='<%# Request.QueryString["FakulteAdi"] %>' type="text" class="form-control m-input" placeholder="Örn : Mühendislik" name="FakulteAdi"/>
+                            
+
                         </div>
                         <div class="col-lg-3 m--margin-bottom-10-tablet-and-mobile">
                             <label>Bölüm Adı:</label>
-                            <input type="text" class="form-control m-input" placeholder="Örn : Bilgisayar Mühendisliği" data-col-index="1">
+                            <input type="text" class="form-control m-input" name="BolumAdi" value="<%# Request.QueryString["BolumAdi"] %>" placeholder="Örn : Bilgisayar Mühendisliği">
                         </div>
+
                     </div>
                     <div class="row text-center">
                         <div class="col-lg-12">
@@ -41,7 +40,7 @@
                                     <span>Ara</span>
                                 </span>
                             </button>
-                            <button class="btn btn-secondary m-btn m-btn--icon" id="m_reset">
+                            <button type="reset" class="btn btn-secondary m-btn m-btn--icon" id="m_reset">
                                 <span>
                                     <span>Sıfırla</span>
                                 </span>
@@ -51,43 +50,35 @@
                 </form>
                 <div class="m-separator m-separator--md m-separator--dashed"></div>
                 <!--End::SearchArea-->
-                <!--Begin::Section-->
+
                 <div class="row table-responsive dataTables_wrapper dt-bootstrap4">
 
-                    <!-- Begin::List-->
+                    <!--Begin::Table-->
                     <table class="table table-striped">
-                        <tr>
-                            <th>#</th>
-                            <th>Fakülte Adı</th>
-                            <th>Bölümleri Adı</th>
-                            <th>Ögrencileri Gör</th>
-                            <th>Düzenle</th>
-                            <th>Sil</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Mühendislik Fakültesi</td>
-                            <td>Bilgisayar Mühendisliği</td>
-                            <td><a href="../Ogrenci/OgrenciListesi.aspx"><i class="fa fa-eye" style="color: cadetblue"></i></a></td>
-                            <td><a href="../Bolum/BolumDuzenle.aspx"><i class="fa fa-edit" style="color: coral"></i></a></td>
-                            <td><a href="../Bolum/BolumDuzenle.aspx"><i class="fa fa-trash-alt" style="color: red"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Mühendislik Fakültesi</td>
-                            <td>İnşaat Mühendisliği</td>
-                            <td><a href="../Ogrenci/OgrenciListesi.aspx"><i class="fa fa-eye" style="color: cadetblue"></i></a></td>
-                            <td><a href="../Bolum/BolumDuzenle.aspx"><i class="fa fa-edit" style="color: coral"></i></a></td>
-                            <td><a href="../Bolum/BolumDuzenle.aspx"><i class="fa fa-trash-alt" style="color: red"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Fen Edebiyat Fakültesi</td>
-                            <td>İstatistik</td>
-                            <td><a href="../Ogrenci/OgrenciListesi.aspx"><i class="fa fa-eye" style="color: cadetblue"></i></a></td>
-                            <td><a href="../Bolum/BolumDuzenle.aspx"><i class="fa fa-edit" style="color: coral"></i></a></td>
-                            <td><a href="../Bolum/BolumDuzenle.aspx"><i class="fa fa-trash-alt" style="color: red"></i></a></td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Fakülte Adı</th>
+                                <th>Bölümleri Adı</th>
+                                <th>Ögrencileri Gör</th>
+                                <th>Düzenle</th>
+                                <th>Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <asp:Repeater ID="Bolumler" runat="server">
+                                <ItemTemplate>
+                                    <tr>
+                                        <td><%# Eval("Id") %></td>
+                                        <td><%# Eval("FakulteAdi") %></td>
+                                        <td><%# Eval("BolumAdi") %></td>
+                                        <td><a href="../Ogrenci/OgrenciListesi.aspx?BolumId=<%# Eval("Id") %>"><i class="fa fa-eye" style="color: cadetblue"></i></a></td>
+                                        <td><a href="../Bolum/BolumDuzenle.aspx?Id=<%# Eval("Id") %>"><i class="fa fa-edit" style="color: coral"></i></a></td>
+                                        <td><a href="../Bolum/BolumDuzenle.aspx?Id=<%# Eval("Id") %>"><i class="fa fa-trash-alt" style="color: red"></i></a></td>
+                                    </tr>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </tbody>
                     </table>
                     <!--End::Table-->
                     <!--Begin::Pager-->
@@ -113,4 +104,8 @@
             </div>
         </div>
     </div>
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
+    <script src="../Scripts/Site/fill-input.js"></script>
 </asp:Content>

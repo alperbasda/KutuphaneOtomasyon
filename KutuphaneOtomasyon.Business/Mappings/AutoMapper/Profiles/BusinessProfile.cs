@@ -28,7 +28,11 @@ namespace KutuphaneOtomasyon.Business.Mappings.AutoMapper.Profiles
                 .ForMember(d => d.Adi, t => t.MapFrom(v => v.BolumAdi))
                 .ForMember(d => d.FakulteId, t => t.MapFrom(v => v.FakulteId));
             CreateMap<Bolum, BolumSeciciModel>()
-                .ForMember(d=>d.BolumAdi,t=>t.MapFrom(v=>v.Adi));
+                .ForMember(d => d.BolumAdi, t => t.MapFrom(v => v.Adi));
+            CreateMap<Bolum, BolumTabloModel>()
+                .ForMember(d => d.BolumAdi, t => t.MapFrom(v => v.Adi))
+                .ForMember(d => d.FakulteId, t => t.MapFrom(v => v.FakulteId))
+                .ForMember(d => d.FakulteAdi, t => t.MapFrom(v => v.Fakulte.Adi));
             CreateMap<KitapKategoriEkleModel, KitapKategori>()
                 .ForMember(d => d.Adi, t => t.MapFrom(v => v.KitapKategoriAdi));
             CreateMap<KitapKategori, KitapKategoriModel>()

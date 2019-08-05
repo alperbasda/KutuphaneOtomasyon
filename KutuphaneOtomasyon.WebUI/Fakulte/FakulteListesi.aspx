@@ -44,7 +44,7 @@
                 <div class="m-separator m-separator--md m-separator--dashed"></div>
                 <!--End::SearchArea-->
 
-                <!--Begin::Section-->
+                <!--Begin::Table-->
                 <div class="row table-responsive dataTables_wrapper dt-bootstrap4">
                     <table class="table table-striped">
                         <thead>
@@ -57,15 +57,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Begin::List-->
-                            <asp:Repeater ID="Fakulteler" runat="server">
+                        <asp:Repeater ID="Fakulteler" runat="server">
+                                <HeaderTemplate></HeaderTemplate>
                                 <ItemTemplate>
                                     <tr>
                                         <td><%# Eval("Id") %></td>
                                         <td><%# Eval("FakulteAdi") %></td>
-                                        <td><a href="../Bolum/BolumListesi.aspx?Fakulte=<%# Eval("Id") %>"><i class="fa fa-eye" style="color:cadetblue"></i></a></td>
-                                        <td><a href="../Fakulte/FakulteDuzenle.aspx?Fakulte=<%# Eval("Id") %>"><i class="fa fa-edit" style="color:coral"></i></a></td>
-                                        <td><a href="../Fakulte/FakulteDuzenle.aspx?Fakulte=<%# Eval("Id") %>"><i class="fa fa-trash-alt" style="color:red"></i></a></td>
+                                        <td><a href="../Bolum/BolumListesi.aspx?Fakulte=<%# Eval("Id") %>"><i class="fa fa-eye" style="color: cadetblue"></i></a></td>
+                                        <td><a href="../Fakulte/FakulteDuzenle.aspx?Fakulte=<%# Eval("Id") %>"><i class="fa fa-edit" style="color: coral"></i></a></td>
+                                        <td><a href="../Fakulte/FakulteDuzenle.aspx?Fakulte=<%# Eval("Id") %>"><i class="fa fa-trash-alt" style="color: red"></i></a></td>
                                     </tr>
                                 </ItemTemplate>
                             </asp:Repeater>
@@ -91,9 +91,11 @@
                     <!--End::Pager-->
                 </div>
 
-                <!--End::Section-->
-
             </div>
         </div>
     </div>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ScriptContent" runat="server">
+    <script src="../Scripts/Site/fill-input.js"></script>
 </asp:Content>

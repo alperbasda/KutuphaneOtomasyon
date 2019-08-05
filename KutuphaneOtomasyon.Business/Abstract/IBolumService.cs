@@ -8,5 +8,7 @@ namespace KutuphaneOtomasyon.Business.Abstract
         DataResponse BolumEkle(BolumEkleModel model);
 
         DataResponse BolumleriGetir(BolumAraModel model = null);
+
+        DataResponse BolumleriGetirTablo(BolumAraModel model = null);
     }
 }
