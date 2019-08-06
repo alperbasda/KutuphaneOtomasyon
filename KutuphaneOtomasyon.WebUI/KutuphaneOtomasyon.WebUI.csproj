@@ -345,6 +345,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ObjectCreator.cs" />
+    <Compile Include="Helpers\PagerHelper.cs" />
     <Compile Include="Helpers\QueryStringHelper.cs" />
     <Compile Include="KitapAnahtari\KitapAnahtariDuzenle.aspx.cs">
       <DependentUpon>KitapAnahtariDuzenle.aspx</DependentUpon>

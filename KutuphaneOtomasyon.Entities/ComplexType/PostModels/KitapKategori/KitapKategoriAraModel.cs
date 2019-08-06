@@ -16,8 +16,20 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.KitapKategori
 
         public override IQueryable<BaseType.KitapKategori> ExecuteQueryables(IQueryable<BaseType.KitapKategori> queryable)
         {
-            queryable = KitapKategoriAdiQuery(queryable);
+            queryable = WithoutPageExecuteQueryable(queryable);
             queryable = PageQueryable(queryable);
+            return queryable;
+        }
+
+        public override int Count(IQueryable<BaseType.KitapKategori> queryable)
+        {
+            queryable = WithoutPageExecuteQueryable(queryable);
+            return queryable.Count();
+        }
+
+        protected override IQueryable<BaseType.KitapKategori> WithoutPageExecuteQueryable(IQueryable<BaseType.KitapKategori> queryable)
+        {
+            queryable = KitapKategoriAdiQuery(queryable);
             return queryable;
         }
     }

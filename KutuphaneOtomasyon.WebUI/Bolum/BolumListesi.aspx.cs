@@ -23,7 +23,6 @@ namespace KutuphaneOtomasyon.WebUI.Bolum
         {
             if(!IsPostBack)
                 BolumDoldur(BolumGetir());
-                    
         }
       
         private List<BolumTabloModel> BolumGetir()

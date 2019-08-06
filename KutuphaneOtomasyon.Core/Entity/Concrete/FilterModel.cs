@@ -17,6 +17,10 @@ namespace KutuphaneOtomasyon.Core.Entity.Concrete
 
         public abstract IQueryable<T> ExecuteQueryables(IQueryable<T> queryable);
 
+        public abstract int Count(IQueryable<T> queryable);
+
+        protected abstract IQueryable<T> WithoutPageExecuteQueryable(IQueryable<T> queryable);
+
         protected IQueryable<T> PageQueryable(IQueryable<T> queryable)
         {
             int skipCount = (Sayfa-1) * 10;

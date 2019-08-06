@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using AutoMapper;
@@ -10,6 +12,7 @@ using KutuphaneOtomasyon.Core.DataAccess.Abstract;
 using KutuphaneOtomasyon.DataAccess.Concrete;
 using KutuphaneOtomasyon.Entities.BaseType;
 using KutuphaneOtomasyon.Entities.ComplexType.GetModels.Fakulte;
+using KutuphaneOtomasyon.Entities.ComplexType.PageModels;
 using KutuphaneOtomasyon.Entities.ComplexType.PostModels.Fakulte;
 using KutuphaneOtomasyon.Entities.Response.Concrete;
 
@@ -37,7 +40,7 @@ namespace KutuphaneOtomasyon.Business.Concrete
                 return new DataResponse
                 {
                     Tamamlandi = true,
-                    Mesaj = model.FakulteAdi +" Eklendi"
+                    Mesaj = model.FakulteAdi + " Eklendi"
                 };
             return new DataResponse
             {
@@ -57,6 +60,48 @@ namespace KutuphaneOtomasyon.Business.Concrete
                 Mesaj = "Fakulteler Listelendi !!!",
                 Data = _mapper.Map<List<FakulteModel>>(fakulteler)
             };
+        }
+
+        public DataResponse FakulteleriGetirTablo(FakulteAraModel model = null)
+        {
+
+            var response = FakulteleriGetir(model);
+            int toplamData = ToplamDataGetir(model);
+            if (response.Tamamlandi)
+                return new DataResponse
+                {
+                    Tamamlandi = true,
+                    Mesaj = "Fakulteler Listelendi",
+                    Data = new PageModel
+                    {
+                        CurrentPage = model?.Sayfa ?? 1,
+                        TableData = response.Data,
+                        TotalPage = ToplamSayfaGetir(toplamData),
+                        TotalData = toplamData
+                    }
+                };
+            return new DataResponse
+            {
+                Tamamlandi = false,
+                Mesaj = "Fakulteler Listelenemedi",
+                Data = new PageModel
+                {
+                    CurrentPage = 1,
+                    TableData = null,
+                    TotalPage = 1,
+                    TotalData = 0,
+                }
+            };
+        }
+
+
+        private int ToplamDataGetir(FakulteAraModel model = null)
+        {
+            return model?.Count(_queryable.Table) ?? _fakulteDal.Count();
+        }
+        private int ToplamSayfaGetir(int toplamData)
+        {
+            return (int)Math.Ceiling((decimal)toplamData / Convert.ToInt32(ConfigurationManager.AppSettings["DataPerPage"]));
         }
     }
 }

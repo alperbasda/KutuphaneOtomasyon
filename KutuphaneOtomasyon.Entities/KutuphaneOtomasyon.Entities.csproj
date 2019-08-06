@@ -84,6 +84,7 @@
     <Compile Include="ComplexType\GetModels\KitapKategori\KitapKategoriModel.cs" />
     <Compile Include="ComplexType\GetModels\Kitap\KitapSeciciModel.cs" />
     <Compile Include="ComplexType\GetModels\SiteStats.cs" />
+    <Compile Include="ComplexType\PageModels\PageModel.cs" />
     <Compile Include="ComplexType\PostModels\Bolum\BolumAraModel.cs" />
     <Compile Include="ComplexType\PostModels\Bolum\BolumEkleModel.cs" />
     <Compile Include="ComplexType\PostModels\Fakulte\FakulteAraModel.cs" />

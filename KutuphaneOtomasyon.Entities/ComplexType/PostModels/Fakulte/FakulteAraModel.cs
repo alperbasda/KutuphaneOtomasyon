@@ -17,9 +17,21 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.Fakulte
 
         public override IQueryable<BaseType.Fakulte> ExecuteQueryables(IQueryable<BaseType.Fakulte> queryable)
         {
-            queryable = FakulteAdiQuery(queryable);
+
+            queryable = WithoutPageExecuteQueryable(queryable);
             queryable = PageQueryable(queryable);
             return queryable;
+        }
+
+        public override int Count(IQueryable<BaseType.Fakulte> queryable)
+        {
+            queryable = WithoutPageExecuteQueryable(queryable);
+            return queryable.Count();
+        }
+
+        protected override IQueryable<BaseType.Fakulte> WithoutPageExecuteQueryable(IQueryable<BaseType.Fakulte> queryable)
+        {
+            return FakulteAdiQuery(queryable);
         }
     }
 }

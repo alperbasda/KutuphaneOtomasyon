@@ -34,10 +34,22 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.Bolum
 
         public override IQueryable<BaseType.Bolum> ExecuteQueryables(IQueryable<BaseType.Bolum> queryable)
         {
+            queryable = WithoutPageExecuteQueryable(queryable);
+            queryable = PageQueryable(queryable);
+            return queryable;
+        }
+
+        public override int Count(IQueryable<BaseType.Bolum> queryable)
+        {
+            queryable = WithoutPageExecuteQueryable(queryable);
+            return queryable.Count();
+        }
+
+        protected override IQueryable<BaseType.Bolum> WithoutPageExecuteQueryable(IQueryable<BaseType.Bolum> queryable)
+        {
             queryable = FakulteIdQuery(queryable);
             queryable = BolumAdiQuery(queryable);
             queryable = FakulteAdiQuery(queryable);
-            queryable = PageQueryable(queryable);
             return queryable;
         }
     }

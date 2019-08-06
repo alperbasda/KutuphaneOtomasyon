@@ -20,5 +20,23 @@ namespace KutuphaneOtomasyon.WebUI.Fakulte {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater Fakulteler;
+        
+        /// <summary>
+        /// sayfaSayisi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label sayfaSayisi;
+        
+        /// <summary>
+        /// toplamData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label toplamData;
     }
 }

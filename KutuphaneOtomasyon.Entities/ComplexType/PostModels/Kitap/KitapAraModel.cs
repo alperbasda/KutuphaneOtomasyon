@@ -74,6 +74,19 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.Kitap
 
         public override IQueryable<BaseType.Kitap> ExecuteQueryables(IQueryable<BaseType.Kitap> queryable)
         {
+            queryable = WithoutPageExecuteQueryable(queryable);
+            queryable = PageQueryable(queryable);
+            return queryable;
+        }
+
+        public override int Count(IQueryable<BaseType.Kitap> queryable)
+        {
+            queryable = WithoutPageExecuteQueryable(queryable);
+            return queryable.Count();
+        }
+
+        protected override IQueryable<BaseType.Kitap> WithoutPageExecuteQueryable(IQueryable<BaseType.Kitap> queryable)
+        {
             queryable = KitapAdiQuery(queryable);
             queryable = ISBNQuery(queryable);
             queryable = KodQuery(queryable);
@@ -81,7 +94,6 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.Kitap
             queryable = KategoriIdQuery(queryable);
             queryable = YayinYiliQuery(queryable);
             queryable = KitapDurumQuery(queryable);
-            queryable = PageQueryable(queryable);
             return queryable;
         }
     }
