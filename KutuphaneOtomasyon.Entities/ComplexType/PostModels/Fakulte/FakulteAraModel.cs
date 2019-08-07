@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Configuration;
+using System.Linq;
 using KutuphaneOtomasyon.Core.Entity.Concrete;
 
 namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.Fakulte
@@ -10,7 +12,7 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.Fakulte
         private IQueryable<BaseType.Fakulte> FakulteAdiQuery(IQueryable<BaseType.Fakulte> queryable)
         {
             if (!string.IsNullOrEmpty(FakulteAdi))
-                return queryable.Where(s => s.Adi.ToLower().Contains(FakulteAdi.ToLower()));
+                return queryable.Where(s => s.Adi.ToLower().Trim().Contains(FakulteAdi.ToLower().Trim()));
             return queryable;
         }
 
@@ -22,12 +24,7 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.Fakulte
             queryable = PageQueryable(queryable);
             return queryable;
         }
-
-        public override int Count(IQueryable<BaseType.Fakulte> queryable)
-        {
-            queryable = WithoutPageExecuteQueryable(queryable);
-            return queryable.Count();
-        }
+        
 
         protected override IQueryable<BaseType.Fakulte> WithoutPageExecuteQueryable(IQueryable<BaseType.Fakulte> queryable)
         {

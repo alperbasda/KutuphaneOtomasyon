@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Ödünç Kitap Ekle" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OduncEkle.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.KitapOdunc.OduncEkle" %>
+﻿<%@ Page Title="Ödünç Kitap Ekle" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OduncEkle.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.Odunc.OduncEkle" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>

@@ -19,7 +19,7 @@
             <!-- END: Subheader -->
             <div class="m-content">
                 <!--Begin::SearchArea-->
-                <form method="get" class="m-form m-form--fit" accept-charset="UTF-8">
+                <form method="get" class="m-form m-form--fit">
                     <div class="row m--margin-bottom-20 text-center justify-content-center">
                         <div class="col-lg-3 m--margin-bottom-10-tablet-and-mobile">
                             <label>Fakülte Adı:</label>

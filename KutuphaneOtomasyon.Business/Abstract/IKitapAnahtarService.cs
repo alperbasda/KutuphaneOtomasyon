@@ -6,5 +6,7 @@ namespace KutuphaneOtomasyon.Business.Abstract
     public interface IKitapAnahtarService
     {
         DataResponse KitapAnahtarEkle(KitapAnahtarEkleModel model);
+
+        DataResponse KitapAnahtarGetirTablo(KitapAnahtarAraModel model);
     }
 }

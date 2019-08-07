@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using AutoMapper;
@@ -62,46 +60,28 @@ namespace KutuphaneOtomasyon.Business.Concrete
             };
         }
 
-        public DataResponse FakulteleriGetirTablo(FakulteAraModel model = null)
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse FakulteleriGetirTablo(FakulteAraModel model)
         {
+            var response = model.ExecuteQueryables(_queryable.Table).ToList();
+            int toplamData = model.Count(_queryable.Table);
 
-            var response = FakulteleriGetir(model);
-            int toplamData = ToplamDataGetir(model);
-            if (response.Tamamlandi)
-                return new DataResponse
-                {
-                    Tamamlandi = true,
-                    Mesaj = "Fakulteler Listelendi",
-                    Data = new PageModel
-                    {
-                        CurrentPage = model?.Sayfa ?? 1,
-                        TableData = response.Data,
-                        TotalPage = ToplamSayfaGetir(toplamData),
-                        TotalData = toplamData
-                    }
-                };
             return new DataResponse
             {
-                Tamamlandi = false,
-                Mesaj = "Fakulteler Listelenemedi",
+                Tamamlandi = true,
+                Mesaj = "Fakulteler Listelendi",
                 Data = new PageModel
                 {
-                    CurrentPage = 1,
-                    TableData = null,
-                    TotalPage = 1,
-                    TotalData = 0,
+                    SuankiSayfa = model.Sayfa,
+                    TabloData = _mapper.Map<List<FakulteModel>>(response),
+                    ToplamSayfa = model.PageCount(toplamData),
+                    ToplamData = toplamData
                 }
             };
+
         }
 
 
-        private int ToplamDataGetir(FakulteAraModel model = null)
-        {
-            return model?.Count(_queryable.Table) ?? _fakulteDal.Count();
-        }
-        private int ToplamSayfaGetir(int toplamData)
-        {
-            return (int)Math.Ceiling((decimal)toplamData / Convert.ToInt32(ConfigurationManager.AppSettings["DataPerPage"]));
-        }
     }
 }

@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using KutuphaneOtomasyon.Business.Abstract;
 using KutuphaneOtomasyon.Entities.ComplexType.GetModels.Bolum;
+using KutuphaneOtomasyon.Entities.ComplexType.PageModels;
 using KutuphaneOtomasyon.Entities.ComplexType.PostModels.Bolum;
 using KutuphaneOtomasyon.WebUI.Helpers;
 using Ninject;
@@ -18,25 +19,36 @@ namespace KutuphaneOtomasyon.WebUI.Bolum
     {
         [Inject]
         public IBolumService BolumService { get; set; }
-        
+
+        private PageModel _pageModel;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
-                BolumDoldur(BolumGetir());
-        }
-      
-        private List<BolumTabloModel> BolumGetir()
-        {
+            if (!IsPostBack)
+            {
+                BolumGetir();
+                BolumDoldur();
+            }
 
-            var response = BolumService.BolumleriGetirTablo(QueryStringHelper.QueryByName<BolumAraModel>(Request.QueryString.ToString()));
+        }
+
+        private void BolumGetir()
+        {
+            var response = BolumService.BolumleriGetirTablo(QueryStringHelper.QueryByName<BolumAraModel>(Server.UrlDecode(Request.QueryString.ToString())));
             if (response.Tamamlandi)
-                return (List<BolumTabloModel>)response.Data;
-            return null;
+            {
+                _pageModel = (PageModel)response.Data;
+                return;
+            }
+
+            Response.Redirect("../Anasayfa.aspx?notificationError=" + response.Mesaj);
         }
 
-        private void BolumDoldur(List<BolumTabloModel> models)
+        private void BolumDoldur()
         {
-            Bolumler.DataSource = models.OrderBy(s => s.BolumAdi);
+            sayfaSayisi.Text = _pageModel.ToplamSayfa.ToString();
+            toplamData.Text = _pageModel.ToplamData.ToString();
+            Bolumler.DataSource = _pageModel.TabloData;
             Bolumler.DataBind();
         }
     }

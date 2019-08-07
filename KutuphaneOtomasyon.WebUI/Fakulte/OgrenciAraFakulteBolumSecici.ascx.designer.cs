@@ -7,45 +7,63 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KutuphaneOtomasyon.WebUI.Kitap {
+namespace KutuphaneOtomasyon.WebUI.Fakulte {
     
     
-    public partial class KitapListele {
+    public partial class OgrenciAraFakulteBolumSecici {
         
         /// <summary>
-        /// KitapAraKategoriUserControl control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::KutuphaneOtomasyon.WebUI.KitapKategori.KitapAraKitapKategoriSecici KitapAraKategoriUserControl;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// kitapRepeater control.
+        /// FakulteId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater kitapRepeater;
+        protected global::System.Web.UI.WebControls.DropDownList FakulteId;
         
         /// <summary>
-        /// sayfaSayisi control.
+        /// OgrenciEkleUpdatePanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label sayfaSayisi;
+        protected global::System.Web.UI.UpdatePanel OgrenciEkleUpdatePanel;
         
         /// <summary>
-        /// toplamData control.
+        /// BolumListe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label toplamData;
+        protected global::System.Web.UI.WebControls.DropDownList BolumListe;
+        
+        /// <summary>
+        /// infoLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label infoLabel;
+        
+        /// <summary>
+        /// OgrenciEkleUpdatePanelProgress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdateProgress OgrenciEkleUpdatePanelProgress;
     }
 }

@@ -8,5 +8,7 @@ namespace KutuphaneOtomasyon.Business.Abstract
         DataResponse KitapKategoriEkle(KitapKategoriEkleModel model);
 
         DataResponse KitapKategoriGetir(KitapKategoriAraModel model = null);
+
+        DataResponse KitapKategoriGetirTablo(KitapKategoriAraModel model);
     }
 }

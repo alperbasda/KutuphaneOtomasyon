@@ -2,12 +2,12 @@
 {
     public class PageModel 
     {
-        public object TableData { get; set; }
+        public object TabloData { get; set; }
 
-        public int TotalPage { get; set; }
+        public int ToplamSayfa { get; set; }
 
-        public int TotalData { get; set; }
+        public int ToplamData { get; set; }
 
-        public int CurrentPage { get; set; }
+        public int SuankiSayfa { get; set; }
     }
 }

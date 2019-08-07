@@ -163,6 +163,7 @@
     <Content Include="Fakulte\FakulteEkle.aspx" />
     <Content Include="Fakulte\FakulteListesi.aspx" />
     <Content Include="Fakulte\FakulteSecici.ascx" />
+    <Content Include="Fakulte\OgrenciAraFakulteBolumSecici.ascx" />
     <Content Include="Fakulte\OgrenciEkleFakulteBolumSecici.ascx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -179,6 +180,7 @@
     <Content Include="KitapAnahtari\KitapAnahtariDuzenle.aspx" />
     <Content Include="KitapAnahtari\KitapAnahtariEkle.aspx" />
     <Content Include="KitapAnahtari\KitapAnahtariListesi.aspx" />
+    <Content Include="KitapKategori\KitapAraKitapKategoriSecici.ascx" />
     <Content Include="KitapKategori\KitapKategoriDuzenle.aspx" />
     <Content Include="KitapKategori\KitapKategoriEkle.aspx" />
     <Content Include="KitapKategori\KitapKategoriListesi.aspx" />
@@ -327,6 +329,13 @@
     <Compile Include="Fakulte\FakulteSecici.ascx.designer.cs">
       <DependentUpon>FakulteSecici.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Fakulte\OgrenciAraFakulteBolumSecici.ascx.cs">
+      <DependentUpon>OgrenciAraFakulteBolumSecici.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fakulte\OgrenciAraFakulteBolumSecici.ascx.designer.cs">
+      <DependentUpon>OgrenciAraFakulteBolumSecici.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Fakulte\OgrenciEkleFakulteBolumSecici.ascx.cs">
       <DependentUpon>OgrenciEkleFakulteBolumSecici.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -367,6 +376,13 @@
     </Compile>
     <Compile Include="KitapAnahtari\KitapAnahtariListesi.aspx.designer.cs">
       <DependentUpon>KitapAnahtariListesi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KitapKategori\KitapAraKitapKategoriSecici.ascx.cs">
+      <DependentUpon>KitapAraKitapKategoriSecici.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KitapKategori\KitapAraKitapKategoriSecici.ascx.designer.cs">
+      <DependentUpon>KitapAraKitapKategoriSecici.ascx</DependentUpon>
     </Compile>
     <Compile Include="KitapKategori\KitapKategoriDuzenle.aspx.cs">
       <DependentUpon>KitapKategoriDuzenle.aspx</DependentUpon>

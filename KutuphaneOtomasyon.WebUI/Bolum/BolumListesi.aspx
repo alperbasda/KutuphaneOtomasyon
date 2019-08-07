@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="Bölüm Listesi" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BolumListesi.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.Bolum.BolumListesi" %>
 
+<%@ Import Namespace="KutuphaneOtomasyon.WebUI.Helpers" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -22,8 +24,8 @@
                     <div class="row m--margin-bottom-20 text-center justify-content-center">
                         <div class="col-lg-3 m--margin-bottom-10-tablet-and-mobile">
                             <label>Fakülte Adı </label>
-                            <input value='<%# Request.QueryString["FakulteAdi"] %>' type="text" class="form-control m-input" placeholder="Örn : Mühendislik" name="FakulteAdi"/>
-                            
+                            <input value='<%# Request.QueryString["FakulteAdi"] %>' type="text" class="form-control m-input" placeholder="Örn : Mühendislik" name="FakulteAdi" />
+
 
                         </div>
                         <div class="col-lg-3 m--margin-bottom-10-tablet-and-mobile">
@@ -85,16 +87,17 @@
                     <div class="col-sm-12 col-md-7 dataTables_pager">
                         <div class="dataTables_paginate paging_simple_numbers" id="m_table_1_paginate">
                             <ul class="pagination">
-                                <li class="page-item previous"><a href="#" class="page-link"><i class="la la-angle-left"></i><i class="la la-angle-left"></i></a></li>
-                                <li class="page-item previous"><a href="#" class="page-link"><i class="la la-angle-left"></i></a></li>
-                                <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                                <li class="page-item next"><a href="#" class="page-link"><i class="la la-angle-right"></i></a></li>
-                                <li class="page-item next"><a href="#" class="page-link"><i class="la la-angle-right"></i><i class="la la-angle-right"></i></a></li>
+                                <%= PagerHelper.Paging(Convert.ToInt32(sayfaSayisi.Text), Request.QueryString) %>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-5">
-                        <div class="dataTables_info" id="m_table_1_info" role="status" aria-live="polite">Toplam 15 Sayfa</div>
+                        <div class="dataTables_info" id="m_table_1_info" role="status" aria-live="polite">
+                            Toplam
+                            <asp:Label ID="sayfaSayisi" runat="server"></asp:Label>
+                            Sayfada
+                            <asp:Label ID="toplamData" runat="server"></asp:Label>
+                        </div>
                     </div>
                     <!--End::Pager-->
                 </div>

@@ -108,10 +108,9 @@
     <Compile Include="DependencyResolvers\Ninject\AutoMapperModule.cs" />
     <Compile Include="DependencyResolvers\Ninject\BusinessModule.cs" />
     <Compile Include="Helpers\AuthenticationHelper.cs" />
-    <Compile Include="Helpers\BusinessWebHelper.cs" />
     <Compile Include="Helpers\CryptoTool.cs" />
+    <Compile Include="Helpers\EnumDescription.cs" />
     <Compile Include="Helpers\SecurityUtilities.cs" />
-    <Compile Include="Helpers\Utilities\Mappings\AutoMapperHelper.cs" />
     <Compile Include="Mappings\AutoMapper\Profiles\BusinessProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

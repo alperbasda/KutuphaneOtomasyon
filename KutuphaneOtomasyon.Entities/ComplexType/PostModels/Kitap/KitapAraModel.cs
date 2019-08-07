@@ -25,14 +25,14 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.Kitap
         public IQueryable<BaseType.Kitap> KitapAdiQuery(IQueryable<BaseType.Kitap> queryable)
         {
             if (!string.IsNullOrEmpty(KitapAdi))
-                return queryable.Where(s => s.Adi.ToLower().Contains(KitapAdi.ToLower()) || s.KitapAnahtarlari.Any(w=>w.Anahtar.ToLower().Contains(KitapAdi)));
+                return queryable.Where(s => s.Adi.ToLower().Trim().Contains(KitapAdi.ToLower().Trim()) || s.KitapAnahtarlari.Any(w=>w.Anahtar.Trim().ToLower().Contains(KitapAdi.Trim())));
             return queryable;
         }
 
         public IQueryable<BaseType.Kitap> ISBNQuery(IQueryable<BaseType.Kitap> queryable)
         {
             if (!string.IsNullOrEmpty(ISBN))
-                return queryable.Where(s => s.ISBN == ISBN);
+                return queryable.Where(s => s.ISBN.Trim() == ISBN.Trim());
             return queryable;
         }
 
@@ -40,14 +40,14 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.Kitap
         public IQueryable<BaseType.Kitap> KodQuery(IQueryable<BaseType.Kitap> queryable)
         {
             if (!string.IsNullOrEmpty(Kod))
-                return queryable.Where(s => s.Kod == Kod);
+                return queryable.Where(s => s.Kod.Trim() == Kod.Trim());
             return queryable;
         }
 
         public IQueryable<BaseType.Kitap> YazarQuery(IQueryable<BaseType.Kitap> queryable)
         {
             if (!string.IsNullOrEmpty(Yazar))
-                return queryable.Where(s => s.Yazar == Yazar);
+                return queryable.Where(s => s.Yazar.Trim() == Yazar.Trim());
             return queryable;
         }
 
@@ -77,12 +77,6 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.Kitap
             queryable = WithoutPageExecuteQueryable(queryable);
             queryable = PageQueryable(queryable);
             return queryable;
-        }
-
-        public override int Count(IQueryable<BaseType.Kitap> queryable)
-        {
-            queryable = WithoutPageExecuteQueryable(queryable);
-            return queryable.Count();
         }
 
         protected override IQueryable<BaseType.Kitap> WithoutPageExecuteQueryable(IQueryable<BaseType.Kitap> queryable)

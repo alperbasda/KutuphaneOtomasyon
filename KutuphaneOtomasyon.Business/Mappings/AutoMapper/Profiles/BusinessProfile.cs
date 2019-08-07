@@ -3,7 +3,10 @@ using KutuphaneOtomasyon.Entities.BaseType;
 using KutuphaneOtomasyon.Entities.ComplexType.GetModels.Bolum;
 using KutuphaneOtomasyon.Entities.ComplexType.GetModels.Fakulte;
 using KutuphaneOtomasyon.Entities.ComplexType.GetModels.Kitap;
+using KutuphaneOtomasyon.Entities.ComplexType.GetModels.KitapAnahtar;
 using KutuphaneOtomasyon.Entities.ComplexType.GetModels.KitapKategori;
+using KutuphaneOtomasyon.Entities.ComplexType.GetModels.Odunc;
+using KutuphaneOtomasyon.Entities.ComplexType.GetModels.Ogrenci;
 using KutuphaneOtomasyon.Entities.ComplexType.PostModels.Bolum;
 using KutuphaneOtomasyon.Entities.ComplexType.PostModels.Fakulte;
 using KutuphaneOtomasyon.Entities.ComplexType.PostModels.Kitap;
@@ -40,12 +43,24 @@ namespace KutuphaneOtomasyon.Business.Mappings.AutoMapper.Profiles
             CreateMap<KitapEkleModel, Kitap>();
             CreateMap<Kitap, KitapSeciciModel>()
                 .ForMember(d => d.KitapAdi, t => t.MapFrom(v => v.Adi));
+            CreateMap<Kitap, KitapTabloModel>()
+                .ForMember(d => d.KitapKategoriAdi, t => t.MapFrom(v => v.KitapKategori.Adi));
             CreateMap<KitapAnahtarEkleModel, KitapAnahtar>();
+            CreateMap<KitapAnahtar, KitapAnahtarTabloModel>()
+                .ForMember(d => d.KitapAdi, t => t.MapFrom(v => v.Kitap.Adi));
+
+            CreateMap<Ogrenci, OgrenciTabloModel>()
+                .ForMember(d => d.BolumAdi, t => t.MapFrom(v => v.Bolum.Adi));
 
             CreateMap<OgrenciEkleModel, Ogrenci>();
             CreateMap<OgrenciAdresEkleModel, OgrenciAdres>();
             CreateMap<OgrenciMailEkleModel, OgrenciMail>();
             CreateMap<OgrenciTelefonEkleModel, OgrenciTelefon>();
+
+            CreateMap<KitapHareket, OduncTabloModel>()
+                .ForMember(d => d.KitapAdi, t => t.MapFrom(v => v.Kitap.Adi))
+                .ForMember(d => d.KitapDurum, t => t.MapFrom(v => v.Kitap.KitapDurum))
+                .ForMember(d => d.OgrenciAdi, t => t.MapFrom(v => v.Ogrenci.Ad + " " + v.Ogrenci.Soyad));
         }
     }
 }

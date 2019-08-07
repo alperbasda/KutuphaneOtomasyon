@@ -1,14 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
+using System.Linq;
 using AutoMapper;
 using KutuphaneOtomasyon.Business.Abstract;
 using KutuphaneOtomasyon.Business.Aspects.AuthorizationAspects;
 using KutuphaneOtomasyon.Business.Aspects.ExceptionAspects;
 using KutuphaneOtomasyon.Business.Aspects.TransactionAspects;
 using KutuphaneOtomasyon.Business.CrossCuttingConcerns.Logging.Log4Net.Loggers;
+using KutuphaneOtomasyon.Core.DataAccess.Abstract;
 using KutuphaneOtomasyon.DataAccess.Abstract;
 using KutuphaneOtomasyon.Entities.BaseType;
+using KutuphaneOtomasyon.Entities.ComplexType.GetModels.Ogrenci;
+using KutuphaneOtomasyon.Entities.ComplexType.PageModels;
 using KutuphaneOtomasyon.Entities.ComplexType.PostModels.Ogrenci;
 using KutuphaneOtomasyon.Entities.ComplexType.PostModels.OgrenciAdres;
 using KutuphaneOtomasyon.Entities.ComplexType.PostModels.OgrenciMail;
@@ -21,12 +25,15 @@ namespace KutuphaneOtomasyon.Business.Concrete
     public class OgrenciManager : IOgrenciService
     {
         private IOgrenciDal _ogrenciDal;
+        private IQueryableRepositoryBase<Ogrenci> _queryable;
         private IMapper _mapper;
 
-        public OgrenciManager(IOgrenciDal ogrenciDal, IMapper mapper)
+
+        public OgrenciManager(IOgrenciDal ogrenciDal, IMapper mapper, IQueryableRepositoryBase<Ogrenci> queryable)
         {
             _ogrenciDal = ogrenciDal;
             _mapper = mapper;
+            _queryable = queryable;
         }
 
         [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
@@ -48,6 +55,27 @@ namespace KutuphaneOtomasyon.Business.Concrete
                 Mesaj = model.Numara + " numaralı ögrenci kayıt edilirken hata oluştu",
             };
 
+
+        }
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse OgrenciGetirTablo(OgrenciAraModel model)
+        {
+            var response = model.ExecuteQueryables(_queryable.Table).Include(s=>s.Bolum).ToList();
+            var toplamData = model.Count(_queryable.Table);
+            return new DataResponse
+            {
+                Tamamlandi = true,
+                Mesaj = "Ögrenciler Listelendi",
+                Data = new PageModel
+                {
+                    SuankiSayfa = model.Sayfa,
+                    TabloData = _mapper.Map<List<OgrenciTabloModel>>(response),
+                    ToplamSayfa = model.PageCount(toplamData),
+                    ToplamData = toplamData
+                }
+            };
 
         }
 

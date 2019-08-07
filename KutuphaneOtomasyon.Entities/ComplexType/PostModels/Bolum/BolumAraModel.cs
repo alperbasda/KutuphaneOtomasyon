@@ -14,14 +14,14 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.Bolum
         private IQueryable<BaseType.Bolum> BolumAdiQuery(IQueryable<BaseType.Bolum> queryable)
         {
             if (!string.IsNullOrEmpty(BolumAdi))
-                return queryable.Where(s => s.Adi.ToLower().Contains(BolumAdi));
+                return queryable.Where(s => s.Adi.ToLower().Trim().Contains(BolumAdi.Trim()));
             return queryable;
         }
 
         private IQueryable<BaseType.Bolum> FakulteAdiQuery(IQueryable<BaseType.Bolum> queryable)
         {
             if (!string.IsNullOrEmpty(FakulteAdi))
-                return queryable.Where(s => s.Fakulte.Adi.ToLower().Contains(FakulteAdi));
+                return queryable.Where(s => s.Fakulte.Adi.ToLower().Trim().Contains(FakulteAdi.Trim()));
             return queryable;
         }
 
@@ -38,12 +38,7 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.Bolum
             queryable = PageQueryable(queryable);
             return queryable;
         }
-
-        public override int Count(IQueryable<BaseType.Bolum> queryable)
-        {
-            queryable = WithoutPageExecuteQueryable(queryable);
-            return queryable.Count();
-        }
+        
 
         protected override IQueryable<BaseType.Bolum> WithoutPageExecuteQueryable(IQueryable<BaseType.Bolum> queryable)
         {

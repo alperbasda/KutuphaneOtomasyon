@@ -10,6 +10,7 @@ using KutuphaneOtomasyon.Core.DataAccess.Abstract;
 using KutuphaneOtomasyon.DataAccess.Abstract;
 using KutuphaneOtomasyon.Entities.BaseType;
 using KutuphaneOtomasyon.Entities.ComplexType.GetModels.Kitap;
+using KutuphaneOtomasyon.Entities.ComplexType.PageModels;
 using KutuphaneOtomasyon.Entities.ComplexType.PostModels.Kitap;
 using KutuphaneOtomasyon.Entities.Response.Concrete;
 
@@ -57,6 +58,27 @@ namespace KutuphaneOtomasyon.Business.Concrete
                 Mesaj = "Kitaplar Listelendi !!!",
                 Data = kitapListesi
             };
+        }
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse KitaplariGetirTablo(KitapAraModel model)
+        {
+            var response = model.ExecuteQueryables(_queryable.Table).Include(s=>s.KitapKategori).ToList();
+            int toplamData = model.Count(_queryable.Table);
+            return new DataResponse
+            {
+                Tamamlandi = true,
+                Mesaj = "Kitaplar Listelendi",
+                Data = new PageModel
+                {
+                    SuankiSayfa = model.Sayfa,
+                    TabloData = _mapper.Map<List<KitapTabloModel>>(response),
+                    ToplamSayfa = model.PageCount(toplamData),
+                    ToplamData = toplamData
+                }
+            };
+
         }
     }
 }

@@ -10,7 +10,7 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.KitapKategori
         private IQueryable<BaseType.KitapKategori> KitapKategoriAdiQuery(IQueryable<BaseType.KitapKategori> queryable)
         {
             if (!string.IsNullOrEmpty(KitapKategoriAdi))
-                return queryable.Where(s => s.Adi.ToLower().Contains(KitapKategoriAdi.ToLower()));
+                return queryable.Where(s => s.Adi.ToLower().Trim().Contains(KitapKategoriAdi.ToLower().Trim()));
             return queryable;
         }
 
@@ -21,11 +21,6 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.KitapKategori
             return queryable;
         }
 
-        public override int Count(IQueryable<BaseType.KitapKategori> queryable)
-        {
-            queryable = WithoutPageExecuteQueryable(queryable);
-            return queryable.Count();
-        }
 
         protected override IQueryable<BaseType.KitapKategori> WithoutPageExecuteQueryable(IQueryable<BaseType.KitapKategori> queryable)
         {

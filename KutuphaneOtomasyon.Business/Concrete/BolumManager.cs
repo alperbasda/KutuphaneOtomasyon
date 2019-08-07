@@ -10,6 +10,7 @@ using KutuphaneOtomasyon.Core.DataAccess.Abstract;
 using KutuphaneOtomasyon.DataAccess.Abstract;
 using KutuphaneOtomasyon.Entities.BaseType;
 using KutuphaneOtomasyon.Entities.ComplexType.GetModels.Bolum;
+using KutuphaneOtomasyon.Entities.ComplexType.PageModels;
 using KutuphaneOtomasyon.Entities.ComplexType.PostModels.Bolum;
 using KutuphaneOtomasyon.Entities.Response.Concrete;
 
@@ -59,18 +60,25 @@ namespace KutuphaneOtomasyon.Business.Concrete
             };
         }
 
-        public DataResponse BolumleriGetirTablo(BolumAraModel model = null)
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse BolumleriGetirTablo(BolumAraModel model)
         {
-            var bolumler = model != null
-                ? model.ExecuteQueryables(_queryable.Table).Include(s=>s.Fakulte).ToList()
-                : _queryable.Table.Include(s=>s.Fakulte).ToList();
-
+            var response = model.ExecuteQueryables(_queryable.Table).ToList();
+            int toplamData = model.Count(_queryable.Table);
             return new DataResponse
             {
                 Tamamlandi = true,
-                Mesaj = "Bölümler Listelendi!!!",
-                Data = _mapper.Map<List<BolumTabloModel>>(bolumler)
+                Mesaj = "Bölümler Listelendi",
+                Data = new PageModel
+                {
+                    SuankiSayfa = model.Sayfa,
+                    TabloData = _mapper.Map<List<BolumTabloModel>>(response),
+                    ToplamSayfa = model.PageCount(toplamData),
+                    ToplamData = toplamData
+                }
             };
+
         }
     }
 }

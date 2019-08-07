@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Configuration;
+using System.Linq;
 using KutuphaneOtomasyon.Core.Entity.Abstract;
 
 namespace KutuphaneOtomasyon.Core.Entity.Concrete
@@ -14,16 +16,25 @@ namespace KutuphaneOtomasyon.Core.Entity.Concrete
             set => _sayfa = value <= 0 ? 1 : value;
         }
 
-
         public abstract IQueryable<T> ExecuteQueryables(IQueryable<T> queryable);
-
-        public abstract int Count(IQueryable<T> queryable);
 
         protected abstract IQueryable<T> WithoutPageExecuteQueryable(IQueryable<T> queryable);
 
+        public int Count(IQueryable<T> queryable)
+        {
+            queryable = WithoutPageExecuteQueryable(queryable);
+            return queryable.Count();
+        }
+
+        public int PageCount(int toplamData)
+        {
+            return (int)Math.Ceiling((decimal)toplamData /
+                                            Convert.ToInt32(ConfigurationManager.AppSettings["DataPerPage"]));
+        }
+
         protected IQueryable<T> PageQueryable(IQueryable<T> queryable)
         {
-            int skipCount = (Sayfa-1) * 10;
+            int skipCount = (Sayfa - 1) * 10;
             return queryable.OrderBy(s => s.Id).Skip(skipCount).Take(10);
         }
     }

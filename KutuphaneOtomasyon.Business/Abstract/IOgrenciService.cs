@@ -6,5 +6,7 @@ namespace KutuphaneOtomasyon.Business.Abstract
     public interface IOgrenciService
     {
         DataResponse OgrenciEkle(OgrenciEkleModel model);
+
+        DataResponse OgrenciGetirTablo(OgrenciAraModel model);
     }
 }
