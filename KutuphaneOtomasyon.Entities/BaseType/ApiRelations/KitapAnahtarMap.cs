@@ -9,7 +9,7 @@ namespace KutuphaneOtomasyon.Entities.BaseType.ApiRelations
             ToTable("KitapAnahtarlar", "Akinsoft");
             HasKey(s => s.Id);
             Property(s => s.Anahtar).IsRequired().HasColumnType("nvarchar").HasMaxLength(50);
-            Property(s => s.SonGuncelleme).IsOptional().HasColumnType("datetime");
+            
 
             #region Relations
 

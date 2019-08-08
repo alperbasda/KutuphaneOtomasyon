@@ -9,7 +9,7 @@ namespace KutuphaneOtomasyon.Entities.BaseType.ApiRelations
             ToTable("KullaniciSifre", "Akinsoft");
             HasKey(s => s.Id);
             Property(s => s.Sifre).IsRequired().HasColumnType("nvarchar");
-            Property(s => s.SonGuncelleme).IsOptional().HasColumnType("datetime");
+            
             
             #region Relations
 

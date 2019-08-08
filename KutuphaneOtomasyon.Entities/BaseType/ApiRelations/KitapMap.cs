@@ -13,7 +13,7 @@ namespace KutuphaneOtomasyon.Entities.BaseType.ApiRelations
             Property(s => s.Adi).IsRequired().HasColumnType("nvarchar").HasMaxLength(200);
             HasKey(s => s.Id);
             Property(s => s.Kod).IsRequired().HasColumnType("nvarchar");
-            Property(s => s.SonGuncelleme).IsOptional().HasColumnType("datetime");
+            
             Property(s => s.ISBN).IsRequired().HasColumnType("nvarchar").HasMaxLength(13).HasColumnAnnotation(
                 IndexAnnotation.AnnotationName,
                 new IndexAnnotation(
@@ -24,8 +24,6 @@ namespace KutuphaneOtomasyon.Entities.BaseType.ApiRelations
             //default kütüphanede
             //data annotation ile atanabilir fakat kod yönetimini tek yerden yürütmek en doğrusu.
             Property(s => s.KitapDurum).IsOptional();
-            HasIndex(s => s.Adi);
-            HasIndex(s => s.Yazar);
 
             #region Relations
 

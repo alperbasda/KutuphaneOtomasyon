@@ -63,6 +63,7 @@
     <Compile Include="Entity\Abstract\IFilterModel.cs" />
     <Compile Include="Entity\Abstract\IPostModel.cs" />
     <Compile Include="Entity\Abstract\IViewModel.cs" />
+    <Compile Include="Entity\Concrete\EditModel.cs" />
     <Compile Include="Entity\Concrete\Entity.cs" />
     <Compile Include="Entity\Concrete\FilterModel.cs" />
     <Compile Include="Entity\Concrete\PostModel.cs" />

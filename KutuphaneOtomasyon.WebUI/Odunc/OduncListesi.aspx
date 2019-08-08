@@ -84,10 +84,10 @@
                                 <th>Alınma Tarihi</th>
                                 <th>Teslim Tarihi</th>
                                 <th>Teslim Al</th>
-                                <th>Son İşlemi Geri Al</th>
                             </tr>
                         </thead>
                         <tbody>
+
                             <asp:Repeater ID="OduncListem" runat="server">
                                 <ItemTemplate>
                                     <tr>
@@ -97,23 +97,17 @@
                                         <td><%# Eval("AlinmaTarihi") %></td>
                                         <td><%# Eval("TeslimTarihi") %></td>
                                         <td>
-                                            <%# (KitapDurum)Eval("KitapDurum") == KitapDurum.Ogrenci 
-                                                    ? "<span class='m-badge m-badge--metal m-badge--warning'> Ögrencide </span>" 
-                                                    : "<span class='m-badge m-badge--metal m-badge--info'> Kütüphanede </span>"  %>    
-                                        </td>
-                                        <td><a href="../Ogrenci/OgrenciDetay.aspx">
 
-                                            <%# (KitapDurum)Eval("KitapDurum") == KitapDurum.Ogrenci 
-                                                        ? "<span class='m-badge m-badge--metal m-badge--warning'> Geri Al </span>" 
-                                                        : "<span class='m-badge m-badge--metal m-badge--info'> Son Ögrenciye geri ver </span>"  %>    
-                                            
-                                            
-                                        </a></td>
+                                            <%# Eval("TeslimTarihi") == null ? (KitapDurum)Eval("KitapDurum") == KitapDurum.Ogrenci  
+                                                    ? $"<a href='../Odunc/TeslimAl.aspx?Id={Eval("Id")}' class='trigger-button'><span class='m-badge m-badge--metal m-badge--danger'> Teslim Al </a></span>" 
+                                                    : "<span class='m-badge m-badge--metal m-badge--info'> Kütüphanede </span>" : ""  %>
+                                        </td>
                                     </tr>
                                 </ItemTemplate>
                             </asp:Repeater>
                         </tbody>
                     </table>
+
                     <!--End::Table-->
                     <!--Begin::Pager-->
                     <div class="col-sm-12 col-md-7 dataTables_pager">

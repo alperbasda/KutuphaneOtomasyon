@@ -215,7 +215,7 @@
     <Content Include="Content\Metronic\fonts\metronic\Metronic_fda1334c35d0f5fe2afb3afebbb6774a.ttf" />
     <Content Include="Content\Metronic\fonts\metronic\Metronic_fda1334c35d0f5fe2afb3afebbb6774a.woff" />
     <Content Include="Content\Metronic\fonts\metronic\Metronic_fda1334c35d0f5fe2afb3afebbb6774a.woff2" />
-    <Content Include="Ogrenci\OgrenciDetay.aspx" />
+    <Content Include="Odunc\TeslimAl.aspx" />
     <Content Include="Ogrenci\OgrenciDuzenle.aspx" />
     <Content Include="Ogrenci\OgrenciEkle.aspx" />
     <Content Include="Ogrenci\OgrenciListesi.aspx" />
@@ -353,6 +353,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FormCreator.cs" />
     <Compile Include="Helpers\ObjectCreator.cs" />
     <Compile Include="Helpers\PagerHelper.cs" />
     <Compile Include="Helpers\QueryStringHelper.cs" />
@@ -454,12 +455,12 @@
     <Compile Include="Kitap\KitapListesi.aspx.designer.cs">
       <DependentUpon>KitapListesi.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Ogrenci\OgrenciDetay.aspx.cs">
-      <DependentUpon>OgrenciDetay.aspx</DependentUpon>
+    <Compile Include="Odunc\TeslimAl.aspx.cs">
+      <DependentUpon>TeslimAl.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Ogrenci\OgrenciDetay.aspx.designer.cs">
-      <DependentUpon>OgrenciDetay.aspx</DependentUpon>
+    <Compile Include="Odunc\TeslimAl.aspx.designer.cs">
+      <DependentUpon>TeslimAl.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ogrenci\OgrenciDuzenle.aspx.cs">
       <DependentUpon>OgrenciDuzenle.aspx</DependentUpon>

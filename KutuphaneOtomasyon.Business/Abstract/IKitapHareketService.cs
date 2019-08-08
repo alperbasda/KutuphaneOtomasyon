@@ -6,5 +6,9 @@ namespace KutuphaneOtomasyon.Business.Abstract
     public interface IKitapHareketService
     {
         DataResponse OduncGetirTablo(OduncAraModel model);
+
+        DataResponse OduncEkle(int ogrenciId,int kitapId);
+
+        DataResponse TeslimAl(int id);
     }
 }

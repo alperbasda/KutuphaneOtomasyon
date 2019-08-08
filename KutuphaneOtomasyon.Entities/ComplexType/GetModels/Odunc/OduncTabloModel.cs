@@ -19,6 +19,5 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.GetModels.Odunc
         public DateTime? TeslimTarihi { get; set; }
 
         public KitapDurum KitapDurum { get; set; }
-
     }
 }

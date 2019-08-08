@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using AutoMapper;
@@ -16,7 +17,7 @@ using KutuphaneOtomasyon.Entities.Response.Concrete;
 
 namespace KutuphaneOtomasyon.Business.Concrete
 {
-    public class KitapHareketManager:IKitapHareketService
+    public class KitapHareketManager : IKitapHareketService
     {
         private IKitapHareketDal _kitapHareketDal;
         private IMapper _mapper;
@@ -33,12 +34,12 @@ namespace KutuphaneOtomasyon.Business.Concrete
         [SecuredOperationAspect(Roles = "Kullanici")]
         public DataResponse OduncGetirTablo(OduncAraModel model)
         {
-            var response = model.ExecuteQueryables(_queryable.Table).Include(s=>s.Ogrenci).Include(s=>s.Kitap).ToList();
+            var response = model.ExecuteQueryables(_queryable.Table).Include(s => s.Ogrenci).Include(s => s.Kitap).ToList();
             int toplamData = model.Count(_queryable.Table);
             return new DataResponse
             {
                 Tamamlandi = true,
-                Mesaj = "Bölümler Listelendi",
+                Mesaj = "Kitap Hareketleri Listelendi",
                 Data = new PageModel
                 {
                     SuankiSayfa = model.Sayfa,
@@ -48,6 +49,51 @@ namespace KutuphaneOtomasyon.Business.Concrete
                 }
             };
 
+        }
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse OduncEkle(int ogrenciId, int kitapId)
+        {
+            var response = _kitapHareketDal.SetState(new KitapHareket
+            {
+                OgrenciId = ogrenciId,
+                KitapId = kitapId
+            }, EntityState.Added);
+            if (response)
+                return new DataResponse
+                {
+                    Tamamlandi = true,
+                    Mesaj = "Hareket Eklendi",
+
+                };
+            return new DataResponse
+            {
+                Tamamlandi = false,
+                Mesaj = "Hareket Eklenemedi",
+
+            };
+
+        }
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse TeslimAl(int id)
+        {
+            var item = _kitapHareketDal.Find(id);
+            if (item == null)
+                return new DataResponse
+                {
+                    Tamamlandi = false,
+                    Mesaj = "Kitap Teslim Alınamadı",
+                };
+            item.TeslimTarihi = DateTime.Now;
+            _kitapHareketDal.SetState(item, EntityState.Modified);
+            return new DataResponse
+            {
+                Tamamlandi = true,
+                Mesaj = "Kitap Teslim Alındı",
+            };
         }
     }
 }

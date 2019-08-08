@@ -7,13 +7,13 @@ namespace KutuphaneOtomasyon.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class PhoneNumberProblem1 : IMigrationMetadata
+    public sealed partial class First : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PhoneNumberProblem1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(First));
         
         string IMigrationMetadata.Id
         {
-            get { return "201908051909558_PhoneNumberProblem1"; }
+            get { return "201908081050328_First"; }
         }
         
         string IMigrationMetadata.Source

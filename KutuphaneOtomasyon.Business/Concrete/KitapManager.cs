@@ -49,6 +49,65 @@ namespace KutuphaneOtomasyon.Business.Concrete
 
         [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
         [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse KitapGetirId(int id)
+        {
+            var data = _kitapDal.Find(id);
+            if (data == null)
+                return new DataResponse
+                {
+                    Tamamlandi = false,
+                    Mesaj = "Aradığınız Kitap Bulunamadı.",
+                };
+            return new DataResponse
+            {
+                Tamamlandi = true,
+                Mesaj = "Aradığınız Kitap Bulundu.",
+                Data = _mapper.Map<KitapDuzenleModel>(data)
+            };
+        }
+
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse KitapDuzenle(KitapDuzenleModel model)
+        {
+            var response = _kitapDal.SetState(_mapper.Map<Kitap>(model), EntityState.Modified);
+            if (response)
+                return new DataResponse
+                {
+                    Tamamlandi = true,
+                    Mesaj = model.Adi + " düzenlendi"
+                };
+            return new DataResponse
+            {
+                Tamamlandi = false,
+                Mesaj = model.Adi + " düzenlenirken hata oluştu"
+            };
+        }
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse KitapSil(int id)
+        {
+            var response = _kitapDal.Find(id);
+            if (response != null)
+            {
+                _kitapDal.SetState(response, EntityState.Deleted);
+                return new DataResponse
+                {
+                    Mesaj = "Kitap Silindi",
+                    Tamamlandi = true,
+                };
+            }
+            return new DataResponse
+            {
+                Mesaj = "Kitap Bulunamadı",
+                Tamamlandi = false,
+            };
+        }
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
         public DataResponse KitapSeciciListele(KitapAraModel model = null)
         {
             var kitapListesi = model?.ExecuteQueryables(_queryable.Table).Select(s => new KitapSeciciModel { KitapAdi = s.Adi, Id = s.Id }).ToList() ?? _queryable.Table.Select(s => new KitapSeciciModel { KitapAdi = s.Adi, Id = s.Id }).ToList();

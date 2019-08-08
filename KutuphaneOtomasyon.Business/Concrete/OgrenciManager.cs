@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Validation;
 using System.Linq;
 using AutoMapper;
 using KutuphaneOtomasyon.Business.Abstract;
@@ -60,14 +59,98 @@ namespace KutuphaneOtomasyon.Business.Concrete
 
         [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
         [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse OgrenciGetirId(int id)
+        {
+            
+            var data = _queryable.Table.Where(s => s.Id == id).Include(s => s.OgrencininMailAdresleri)
+                .Include(s => s.OgrencininAdresleri).Include(s => s.OgrencininTelefonlari).FirstOrDefault();
+            if (data == null)
+                return new DataResponse
+                {
+                    Tamamlandi = false,
+                    Mesaj = "Aradığınız Ogrenci Bulunamadı.",
+                };
+            return new DataResponse
+            {
+                Tamamlandi = true,
+                Mesaj = "Aradığınız Ogrenci Bulundu.",
+                Data = _mapper.Map<OgrenciDuzenleModel>(data)
+            };
+        }
+
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        [TransactionScopeAspect]
+        public DataResponse OgrenciDuzenle(OgrenciDuzenleModel model)
+        {
+            var response = _ogrenciDal.SetState(_mapper.Map<Ogrenci>(model), EntityState.Modified);
+            _ogrenciDal.AdresDuzenle(new OgrenciAdresEkleModel
+            {
+                Adres = model.OgrenciMemleketAdres,
+                OgrenciId = model.Id,
+                AdresTipi = AdresTipi.Ev
+            });
+            _ogrenciDal.AdresDuzenle(new OgrenciAdresEkleModel
+            {
+                Adres = model.OgrenciAdres,
+                OgrenciId = model.Id,
+                AdresTipi = AdresTipi.Okul
+            });
+            _ogrenciDal.MailDuzenle(new OgrenciMailEkleModel
+            {
+                MailAdresi = model.OgrenciMail,
+                OgrenciId = model.Id,
+            });
+            _ogrenciDal.TelefonDuzenle(new OgrenciTelefonEkleModel
+            {
+                Telefon = model.OgrenciTelefon,
+                OgrenciId = model.Id,
+            });
+            if (response)
+                return new DataResponse
+                {
+                    Tamamlandi = true,
+                    Mesaj = model.Ad + " düzenlendi"
+                };
+            return new DataResponse
+            {
+                Tamamlandi = false,
+                Mesaj = model.Ad + " düzenlenirken hata oluştu"
+            };
+        }
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse OgrenciSil(int id)
+        {
+            var response = _ogrenciDal.Find(id);
+            if (response != null)
+            {
+                _ogrenciDal.SetState(response, EntityState.Deleted);
+                return new DataResponse
+                {
+                    Mesaj = "Ogrenci Silindi",
+                    Tamamlandi = true,
+                };
+            }
+            return new DataResponse
+            {
+                Mesaj = "Ogrenci Bulunamadı",
+                Tamamlandi = false,
+            };
+        }
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
         public DataResponse OgrenciGetirTablo(OgrenciAraModel model)
         {
-            var response = model.ExecuteQueryables(_queryable.Table).Include(s=>s.Bolum).ToList();
+            var response = model.ExecuteQueryables(_queryable.Table).Include(s=>s.Bolum).Include(s=>s.OgrencininMailAdresleri).Include(s=>s.OgrencininAdresleri).Include(s=>s.OgrencininTelefonlari).ToList();
             var toplamData = model.Count(_queryable.Table);
             return new DataResponse
             {
                 Tamamlandi = true,
-                Mesaj = "Ögrenciler Listelendi",
+                Mesaj = "Ogrenciler Listelendi",
                 Data = new PageModel
                 {
                     SuankiSayfa = model.Sayfa,
@@ -77,6 +160,20 @@ namespace KutuphaneOtomasyon.Business.Concrete
                 }
             };
 
+        }
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse OgrenciGetirOduncTablo(OgrenciAraModel model)
+        {
+            var response = model.ExecuteQueryables(_queryable.Table).Include(s => s.OgrencininKitaplari).ToList();
+            var toplamData = model.Count(_queryable.Table);
+            return new DataResponse
+            {
+                Tamamlandi = true,
+                Mesaj = "Ogrenciler Listelendi",
+                Data = _mapper.Map<List<OgrenciOduncModel>>(response),
+            };
         }
 
         private Ogrenci OgrenciDataDoldur(OgrenciEkleModel model)

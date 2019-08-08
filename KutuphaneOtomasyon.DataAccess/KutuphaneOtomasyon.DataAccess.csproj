@@ -74,25 +74,9 @@
     <Compile Include="Concrete\ViewDal.cs" />
     <Compile Include="Core\EntityFramework\InitializeData.cs" />
     <Compile Include="Core\EntityFramework\KutuphaneContext.cs" />
-    <Compile Include="Migrations\201908040829276_first.cs" />
-    <Compile Include="Migrations\201908040829276_first.Designer.cs">
-      <DependentUpon>201908040829276_first.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908051138268_KitapDurumState.cs" />
-    <Compile Include="Migrations\201908051138268_KitapDurumState.Designer.cs">
-      <DependentUpon>201908051138268_KitapDurumState.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908051905419_PhoneNumberProblem.cs" />
-    <Compile Include="Migrations\201908051905419_PhoneNumberProblem.Designer.cs">
-      <DependentUpon>201908051905419_PhoneNumberProblem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908051909558_PhoneNumberProblem1.cs" />
-    <Compile Include="Migrations\201908051909558_PhoneNumberProblem1.Designer.cs">
-      <DependentUpon>201908051909558_PhoneNumberProblem1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908051912404_RegisterDate.cs" />
-    <Compile Include="Migrations\201908051912404_RegisterDate.Designer.cs">
-      <DependentUpon>201908051912404_RegisterDate.cs</DependentUpon>
+    <Compile Include="Migrations\201908081050328_First.cs" />
+    <Compile Include="Migrations\201908081050328_First.Designer.cs">
+      <DependentUpon>201908081050328_First.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,20 +96,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908040829276_first.resx">
-      <DependentUpon>201908040829276_first.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908051138268_KitapDurumState.resx">
-      <DependentUpon>201908051138268_KitapDurumState.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908051905419_PhoneNumberProblem.resx">
-      <DependentUpon>201908051905419_PhoneNumberProblem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908051909558_PhoneNumberProblem1.resx">
-      <DependentUpon>201908051909558_PhoneNumberProblem1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908051912404_RegisterDate.resx">
-      <DependentUpon>201908051912404_RegisterDate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908081050328_First.resx">
+      <DependentUpon>201908081050328_First.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

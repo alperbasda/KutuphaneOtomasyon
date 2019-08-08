@@ -62,7 +62,7 @@
                                         <td><%# Eval("Id") %></td>
                                         <td><%# Eval("KitapKategoriAdi") %></td>
                                         <td><a href="../Kitap/KitapListesi.aspx"><i class="fa fa-eye" style="color: cadetblue"></i></a></td>
-                                        <td><a href="../KitapKategori/KitapKategoriDuzenle.aspx"><i class="fa fa-edit" style="color: coral"></i></a></td>
+                                        <td><a href="../KitapKategori/KitapKategoriDuzenle.aspx?Id=<%# Eval("Id") %>"><i class="fa fa-edit" style="color: coral"></i></a></td>
                                         <td><a href="../KitapKategori/KitapKategoriDuzenle.aspx"><i class="fa fa-trash-alt" style="color: red"></i></a></td>
                                     </tr>
                                 </ItemTemplate>

@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Kitap Anahtar Ekle" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="KitapAnahtariEkle.aspx.cs" Inherits="KutuphaneOtomasyon.WebUI.KitapAnahtari.KitapAnahtariEkle" %>
+
 <%@ Import Namespace="KutuphaneOtomasyon.Entities.ComplexType.PostModels.KitapAnahtar" %>
 <%@ Register Src="../Kitap/KitapSecici.ascx" TagName="KitapSecici" TagPrefix="UserControl" %>
 
@@ -32,21 +33,21 @@
                             <UserControl:KitapSecici ID="KitapId" runat="server" />
                             <div class="form-group m-form__group">
                                 <label for="Anahtar">Anahtar</label>
-                                <asp:TextBox 
-                                    CssClass="form-control m-input m-input--air m-input--pill" 
-                                    type="text" 
+                                <asp:TextBox
+                                    CssClass="form-control m-input m-input--air m-input--pill"
+                                    type="text"
                                     ID="Anahtar"
-                                    ValidationGroup="KitapAnahtarEkleGroup" 
-                                    placeholder="Anahtar kelime yazın..." 
+                                    ValidationGroup="KitapAnahtarEkleGroup"
+                                    placeholder="Anahtar kelime yazın..."
                                     runat="server">
                                 </asp:TextBox>
-                                <dav:dataannotationsvalidator 
-                                    id="KitapAnahtarEkleAnahtarValidation" 
-                                    cssclass="m-form__help"
-                                    validationgroup="KitapAnahtarEkleGroup" 
-                                    metadatasourceid="msKitapAnahtarEkleModel"
-                                    controltovalidate="Anahtar" 
-                                    objectproperty="Anahtar" 
+                                <dav:DataAnnotationsValidator
+                                    ID="KitapAnahtarEkleAnahtarValidation"
+                                    CssClass="m-form__help"
+                                    ValidationGroup="KitapAnahtarEkleGroup"
+                                    MetadataSourceID="msKitapAnahtarEkleModel"
+                                    ControlToValidate="Anahtar"
+                                    ObjectProperty="Anahtar"
                                     runat="server" />
                             </div>
                         </div>
@@ -54,11 +55,11 @@
                     <div class="row justify-content-center">
                         <div class="col-4">
                             <div class="form-group m-form__group text-center">
-                                <asp:Button 
+                                <asp:Button
                                     CausesValidation="True"
-                                    ValidationGroup="KitapAnahtarEkleGroup" 
-                                    OnClick="KitapAnahtarEkleButton_OnClick" 
-                                    ID="KitapAnahtarEkleButton" 
+                                    ValidationGroup="KitapAnahtarEkleGroup"
+                                    OnClick="KitapAnahtarEkleButton_OnClick"
+                                    ID="KitapAnahtarEkleButton"
                                     Text="Kaydet"
                                     CssClass="btn btn-accent"
                                     runat="server" />

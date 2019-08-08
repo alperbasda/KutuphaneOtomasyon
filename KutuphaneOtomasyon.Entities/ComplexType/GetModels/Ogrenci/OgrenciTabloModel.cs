@@ -17,5 +17,13 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.GetModels.Ogrenci
 
         public string BolumAdi { get; set; }
 
+        public string MemleketAdres { get; set; }
+
+        public string Adres { get; set; }
+
+        public string Telefon { get; set; }
+
+        public string Mail { get; set; }
+        
     }
 }

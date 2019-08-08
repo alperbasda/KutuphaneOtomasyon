@@ -7,6 +7,14 @@ namespace KutuphaneOtomasyon.Business.Abstract
     {
         DataResponse OgrenciEkle(OgrenciEkleModel model);
 
+        DataResponse OgrenciGetirId(int id);
+
+        DataResponse OgrenciDuzenle(OgrenciDuzenleModel model);
+
+        DataResponse OgrenciSil(int id);
+
         DataResponse OgrenciGetirTablo(OgrenciAraModel model);
+
+        DataResponse OgrenciGetirOduncTablo(OgrenciAraModel model);
     }
 }

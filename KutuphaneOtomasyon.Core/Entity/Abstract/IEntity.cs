@@ -6,8 +6,6 @@ namespace KutuphaneOtomasyon.Core.Entity.Abstract
     {
         int Id { get; set; }
 
-        DateTime? SonGuncelleme { get; set; }
-
         bool Silindi { get; set; }
     }
 }

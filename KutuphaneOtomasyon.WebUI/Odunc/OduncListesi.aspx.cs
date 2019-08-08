@@ -48,5 +48,6 @@ namespace KutuphaneOtomasyon.WebUI.Odunc
             OduncListem.DataSource = _pageModel.TabloData;
             OduncListem.DataBind();
         }
+        
     }
 }

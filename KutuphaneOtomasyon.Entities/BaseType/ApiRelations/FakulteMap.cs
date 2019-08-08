@@ -9,9 +9,7 @@ namespace KutuphaneOtomasyon.Entities.BaseType.ApiRelations
             ToTable("Fakulteler","Akinsoft");
             HasKey(s => s.Id);
             Property(s => s.Adi).IsRequired().HasColumnType("nvarchar").HasMaxLength(100);
-            Property(s => s.SonGuncelleme).IsOptional().HasColumnType("datetime");
-            HasIndex(s => s.Adi);
-
+            
         }
     }
 }

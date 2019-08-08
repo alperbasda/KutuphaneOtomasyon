@@ -9,7 +9,7 @@ namespace KutuphaneOtomasyon.DataAccess.Core.EntityFramework
         protected override void Seed(KutuphaneContext context)
         {
             //Kullanıcı Rolleri initialize ediliyor.
-            context.Roller.Add(new Rol { RolAdi = "Admin",SonGuncelleme = DateTime.Now});
+            context.Roller.Add(new Rol { RolAdi = "Admin"});
             var rol = context.Roller.Add(new Rol { RolAdi = "Kullanici" });
             context.SaveChanges();
 

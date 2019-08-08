@@ -35,8 +35,8 @@
                             <label>Numara:</label>
                             <input type="number" class="form-control m-input" name="Numara" placeholder="Örn : 3244353463" data-col-index="2">
                         </div>
-                        <input type="hidden" name="BolumId"/>
-                        
+                        <input type="hidden" name="BolumId" />
+
                     </div>
                     <div class="row text-center">
                         <div class="col-lg-12">
@@ -68,8 +68,11 @@
                                 <th>Soyad</th>
                                 <th>Numara</th>
                                 <th>Bölüm</th>
+                                <th>Mail Adresi</th>
+                                <th>Memleket Adresi</th>
+                                <th>Adresi</th>
+                                <th>Telefonu</th>
                                 <th>Kayıt Tarihi</th>
-                                <th>Detay</th>
                                 <th>Düzenle</th>
                                 <th>Sil</th>
                             </tr>
@@ -83,9 +86,12 @@
                                         <td><%# Eval("Soyad") %></td>
                                         <td><%# Eval("Numara") %></td>
                                         <td><%# Eval("BolumAdi") %></td>
+                                        <td><a data-toggle="modal" data-target="#modalDetail" data-value="<%# Eval("Mail") %>" data-header="Mail Adresi" href="#"><i class="fa fa-eye" style="color: cadetblue"></i></a></td>
+                                        <td><a data-toggle="modal" data-target="#modalDetail" data-value="<%# Eval("MemleketAdres") %>" data-header="Memleket Adresi" href="#"><i class="fa fa-eye" style="color: cadetblue"></i></a></td>
+                                        <td><a data-toggle="modal" data-target="#modalDetail" data-value="<%# Eval("Adres") %>" data-header="Adres" href="#"><i class="fa fa-eye" style="color: cadetblue"></i></a></td>
+                                        <td><a data-toggle="modal" data-target="#modalDetail" data-value="<%# Eval("Telefon") %>" data-header="Telefon" href="#"><i class="fa fa-eye" style="color: cadetblue"></i></a></td>
                                         <td><%# Eval("KayitTarihi") %></td>
-                                        <td><a href="../Ogrenci/OgrenciDetay.aspx"><i class="fa fa-eye" style="color: cadetblue"></i></a></td>
-                                        <td><a href="../Ogrenci/OgrenciDuzenle.aspx"><i class="fa fa-edit" style="color: coral"></i></a></td>
+                                        <td><a href="../Ogrenci/OgrenciDuzenle.aspx?Id=<%# Eval("Id") %>"><i class="fa fa-edit" style="color: coral"></i></a></td>
                                         <td><a href="../Ogrenci/OgrenciDuzenle.aspx"><i class="fa fa-trash-alt" style="color: red"></i></a></td>
                                     </tr>
                                 </ItemTemplate>
@@ -117,6 +123,28 @@
             </div>
         </div>
     </div>
+    <!--Begin::BookModal-->
+    <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalHeader" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalHeader">Kitap Seçin</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-lg-12 m--margin-bottom-10-tablet-and-mobile">
+                        <label id="modalValue">Ad:</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::BookModal-->
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
     <script src="../Scripts/jquery-3.1.0.min.js"></script>
@@ -130,4 +158,10 @@
             $('input[name=BolumId]').val("");
         });
     </script>
+    <script type="text/javascript">
+        $('a[data-target="#modalDetail"]').click(function () {
+            $('#modalValue').html($(this).data('value'));
+            $('#modalHeader').html($(this).data('header'));
+        });
+</script>
 </asp:Content>

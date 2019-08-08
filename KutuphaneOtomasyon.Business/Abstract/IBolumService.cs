@@ -7,6 +7,12 @@ namespace KutuphaneOtomasyon.Business.Abstract
     {
         DataResponse BolumEkle(BolumEkleModel model);
 
+        DataResponse BolumGetirId(int id);
+
+        DataResponse BolumDuzenle(BolumDuzenleModel model);
+
+        DataResponse BolumSil(int id);
+
         DataResponse BolumleriGetir(BolumAraModel model = null);
 
         DataResponse BolumleriGetirTablo(BolumAraModel model);

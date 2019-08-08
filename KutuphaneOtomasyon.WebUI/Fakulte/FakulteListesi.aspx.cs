@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.UI.WebControls;
 using KutuphaneOtomasyon.Business.Abstract;
 using KutuphaneOtomasyon.Entities.ComplexType.PageModels;
 using KutuphaneOtomasyon.Entities.ComplexType.PostModels.Fakulte;
@@ -44,5 +45,17 @@ namespace KutuphaneOtomasyon.WebUI.Fakulte
             Fakulteler.DataBind();
         }
 
+        //protected void Sil_OnClick()
+        //{
+        //    int id;
+        //    if (int.TryParse(((LinkButton)sender).Attributes["DataId"], out id))
+        //    {
+        //        var response = FakulteService.FakulteSil(id);
+        //        if (response.Tamamlandi)
+        //            Response.Redirect("../Fakulte/FakulteListesi.aspx?notificationSuccess=" + response.Mesaj);
+        //        Response.Redirect("../Fakulte/FakulteListesi.aspx?notificationError=" + response.Mesaj);
+        //    }
+        //    Response.Redirect("../Anasayfa.aspx?notificationError=İşlem sırasında hata oluştu");
+        //}
     }
 }

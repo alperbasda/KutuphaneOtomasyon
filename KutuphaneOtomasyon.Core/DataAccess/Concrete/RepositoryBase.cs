@@ -16,7 +16,7 @@ namespace KutuphaneOtomasyon.Core.DataAccess.Concrete
         {
             using (TContext context = new TContext())
             {
-                return context.Set<TEntity>().Find(id);
+                return context.Set<TEntity>().FirstOrDefault(s=>s.Id==id);
             }
         }
 

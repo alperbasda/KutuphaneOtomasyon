@@ -50,6 +50,65 @@ namespace KutuphaneOtomasyon.Business.Concrete
 
         [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
         [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse KitapKategoriGetirId(int id)
+        {
+            var data = _kitapKategoriDal.Find(id);
+            if (data == null)
+                return new DataResponse
+                {
+                    Tamamlandi = false,
+                    Mesaj = "Aradığınız KitapKategori Bulunamadı.",
+                };
+            return new DataResponse
+            {
+                Tamamlandi = true,
+                Mesaj = "Aradığınız KitapKategori Bulundu.",
+                Data = _mapper.Map<KitapKategoriDuzenleModel>(data)
+            };
+        }
+
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse KitapKategoriDuzenle(KitapKategoriDuzenleModel model)
+        {
+            var response = _kitapKategoriDal.SetState(_mapper.Map<KitapKategori>(model), EntityState.Modified);
+            if (response)
+                return new DataResponse
+                {
+                    Tamamlandi = true,
+                    Mesaj = model.KitapKategoriAdi + " düzenlendi"
+                };
+            return new DataResponse
+            {
+                Tamamlandi = false,
+                Mesaj = model.KitapKategoriAdi + " düzenlenirken hata oluştu"
+            };
+        }
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse KitapKategoriSil(int id)
+        {
+            var response = _kitapKategoriDal.Find(id);
+            if (response != null)
+            {
+                _kitapKategoriDal.SetState(response, EntityState.Deleted);
+                return new DataResponse
+                {
+                    Mesaj = "KitapKategori Silindi",
+                    Tamamlandi = true,
+                };
+            }
+            return new DataResponse
+            {
+                Mesaj = "KitapKategori Bulunamadı",
+                Tamamlandi = false,
+            };
+        }
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
         public DataResponse KitapKategoriGetir(KitapKategoriAraModel model = null)
         {
             var response = model?.ExecuteQueryables(_queryable.Table).ToList() ?? _kitapKategoriDal.GetList();

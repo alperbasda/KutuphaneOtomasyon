@@ -13,11 +13,9 @@ namespace KutuphaneOtomasyon.Entities.BaseType
 
         public virtual Kitap Kitap { get; set; }
 
-        public DateTime AlinmaTarihi { get; set; }
+        public DateTime? AlinmaTarihi { get; set; }
 
-        public DateTime TeslimTarihi { get; set; }
-
-        public Guid EsZamanli { get; set; }
+        public DateTime? TeslimTarihi { get; set; }
 
     }
 }

@@ -49,6 +49,65 @@ namespace KutuphaneOtomasyon.Business.Concrete
 
         [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
         [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse FakulteGetirId(int id)
+        {
+            var data = _fakulteDal.Find(id);
+            if (data == null)
+                return new DataResponse
+                {
+                    Tamamlandi = false,
+                    Mesaj = "Aradığınız Fakülte Bulunamadı.",
+                };
+            return new DataResponse
+            {
+                Tamamlandi = true,
+                Mesaj = "Aradığınız Fakülte Bulundu.",
+                Data = _mapper.Map<FakulteDuzenleModel>(data)
+            };
+        }
+
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse FakulteDuzenle(FakulteDuzenleModel model)
+        {
+            var response = _fakulteDal.SetState(_mapper.Map<Fakulte>(model), EntityState.Modified);
+            if (response)
+                return new DataResponse
+                {
+                    Tamamlandi = true,
+                    Mesaj = model.FakulteAdi + " düzenlendi"
+                };
+            return new DataResponse
+            {
+                Tamamlandi = false,
+                Mesaj = model.FakulteAdi + " düzenlenirken hata oluştu"
+            };
+        }
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse FakulteSil(int id)
+        {
+            var response = _fakulteDal.Find(id);
+            if (response != null)
+            {
+                _fakulteDal.SetState(response, EntityState.Deleted);
+                return new DataResponse
+                {
+                    Mesaj = "Fakülte Silindi",
+                    Tamamlandi = true,
+                };
+            }
+            return new DataResponse
+            {
+                Mesaj = "Fakülte Bulunamadı",
+                Tamamlandi = false,
+            };
+        }
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
         public DataResponse FakulteleriGetir(FakulteAraModel model = null)
         {
             var fakulteler = model?.ExecuteQueryables(_queryable.Table).ToList() ?? _fakulteDal.GetList();

@@ -49,6 +49,65 @@ namespace KutuphaneOtomasyon.Business.Concrete
 
         [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
         [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse BolumGetirId(int id)
+        {
+            var data = _bolumDal.Find(id);
+            if (data == null)
+                return new DataResponse
+                {
+                    Tamamlandi = false,
+                    Mesaj = "Aradığınız Bolum Bulunamadı.",
+                };
+            return new DataResponse
+            {
+                Tamamlandi = true,
+                Mesaj = "Aradığınız Bolum Bulundu.",
+                Data = _mapper.Map<BolumDuzenleModel>(data)
+            };
+        }
+
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse BolumDuzenle(BolumDuzenleModel model)
+        {
+            var response = _bolumDal.SetState(_mapper.Map<Bolum>(model), EntityState.Modified);
+            if (response)
+                return new DataResponse
+                {
+                    Tamamlandi = true,
+                    Mesaj = model.BolumAdi + " düzenlendi"
+                };
+            return new DataResponse
+            {
+                Tamamlandi = false,
+                Mesaj = model.BolumAdi + " düzenlenirken hata oluştu"
+            };
+        }
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
+        public DataResponse BolumSil(int id)
+        {
+            var response = _bolumDal.Find(id);
+            if (response != null)
+            {
+                _bolumDal.SetState(response, EntityState.Deleted);
+                return new DataResponse
+                {
+                    Mesaj = "Bolum Silindi",
+                    Tamamlandi = true,
+                };
+            }
+            return new DataResponse
+            {
+                Mesaj = "Bolum Bulunamadı",
+                Tamamlandi = false,
+            };
+        }
+
+        [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
+        [SecuredOperationAspect(Roles = "Kullanici")]
         public DataResponse BolumleriGetir(BolumAraModel model = null)
         {
             var bolumler = model != null ? model.ExecuteQueryables(_queryable.Table).ToList() : _bolumDal.GetList().ToList();

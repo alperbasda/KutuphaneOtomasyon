@@ -7,6 +7,12 @@ namespace KutuphaneOtomasyon.Business.Abstract
     {
         DataResponse KitapEkle(KitapEkleModel model);
 
+        DataResponse KitapGetirId(int id);
+
+        DataResponse KitapDuzenle(KitapDuzenleModel model);
+
+        DataResponse KitapSil(int id);
+
         DataResponse KitapSeciciListele(KitapAraModel model=null);
 
         DataResponse KitaplariGetirTablo(KitapAraModel model);

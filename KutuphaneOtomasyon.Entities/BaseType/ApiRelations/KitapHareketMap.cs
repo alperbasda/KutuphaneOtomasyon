@@ -10,10 +10,9 @@ namespace KutuphaneOtomasyon.Entities.BaseType.ApiRelations
             HasKey(s => s.Id);
             Property(s => s.AlinmaTarihi).IsOptional();
             Property(s => s.TeslimTarihi).IsOptional();
-            Property(s => s.EsZamanli).IsOptional().IsConcurrencyToken();
-            HasIndex(s => s.AlinmaTarihi);
-            Property(s => s.TeslimTarihi).IsOptional().HasColumnType("datetime2");
-            Property(s => s.SonGuncelleme).IsOptional().HasColumnType("datetime");
+            Property(s => s.AlinmaTarihi).IsOptional().HasColumnType("datetime");
+            Property(s => s.TeslimTarihi).IsOptional().HasColumnType("datetime");
+            
 
             #region Relations
             HasRequired(s => s.Kitap)
