@@ -36,6 +36,14 @@ namespace KutuphaneOtomasyon.Core.DataAccess.Concrete
             }
         }
 
+        public TEntity First()
+        {
+            using (TContext context = new TContext())
+            {
+                return context.Set<TEntity>().FirstOrDefault();
+            }
+        }
+
         public TEntity Get<TOrd>(Expression<Func<TEntity, bool>> filter, Expression<Func<TEntity, TOrd>> order = null)
         {
             using (TContext context = new TContext())

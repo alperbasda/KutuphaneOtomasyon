@@ -116,7 +116,7 @@ namespace KutuphaneOtomasyon.Business.Concrete
                     };
                 }
                 item.TeslimTarihi = null;
-                _kitapHareketDal.SetState(new KitapHareket { Id = item.Id, AlinmaTarihi = item.AlinmaTarihi, TeslimTarihi = item.TeslimTarihi }, EntityState.Modified);
+                _kitapHareketDal.SetState(new KitapHareket { Id = item.Id, AlinmaTarihi = item.AlinmaTarihi, TeslimTarihi = item.TeslimTarihi,KitapId = item.KitapId,OgrenciId = item.OgrenciId}, EntityState.Modified);
                 return new DataResponse
                 {
                     Mesaj = $"{item.Ogrenci.Ad} >>> {item.Kitap.Adi} Teslim işlemi geri alındı.",
@@ -131,7 +131,7 @@ namespace KutuphaneOtomasyon.Business.Concrete
                     Tamamlandi = false
                 };
             }
-            _kitapHareketDal.SetState(new KitapHareket { Id = item.Id }, EntityState.Deleted);
+            _kitapHareketDal.SetState(new KitapHareket { Id = item.Id, AlinmaTarihi = item.AlinmaTarihi, TeslimTarihi = item.TeslimTarihi, KitapId = item.KitapId, OgrenciId = item.OgrenciId }, EntityState.Deleted);
             return new DataResponse
             {
                 Mesaj = $"{item.Kitap.Adi} >>> {item.Ogrenci.Ad} Ödünç işlemi geri alındı.",

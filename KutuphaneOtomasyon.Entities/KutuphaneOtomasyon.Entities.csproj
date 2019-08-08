@@ -89,7 +89,6 @@
     <Compile Include="ComplexType\GetModels\Odunc\OduncTabloModel.cs" />
     <Compile Include="ComplexType\GetModels\Ogrenci\OgrenciOduncModel.cs" />
     <Compile Include="ComplexType\GetModels\Ogrenci\OgrenciTabloModel.cs" />
-    <Compile Include="ComplexType\GetModels\SiteStats.cs" />
     <Compile Include="ComplexType\PageModels\PageModel.cs" />
     <Compile Include="ComplexType\PostModels\Bolum\BolumAraModel.cs" />
     <Compile Include="ComplexType\PostModels\Bolum\BolumDuzenleModel.cs" />

@@ -1,5 +1,6 @@
 ﻿using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using KutuphaneOtomasyon.Core.Entity.Abstract;
 using KutuphaneOtomasyon.Core.Entity.Concrete;
 
 namespace KutuphaneOtomasyon.WebUI.Helpers
@@ -16,7 +17,10 @@ namespace KutuphaneOtomasyon.WebUI.Helpers
                     ((TextBox) control).Text = prop.GetValue(nesne) !=null ? prop.GetValue(nesne).ToString():"";
                 if (control is DropDownList)
                     ((DropDownList)control).SelectedValue = prop.GetValue(nesne).ToString();
+                if (control is Label)
+                    ((Label)control).Text = prop.GetValue(nesne).ToString();
             }
         }
+      
     }
 }
