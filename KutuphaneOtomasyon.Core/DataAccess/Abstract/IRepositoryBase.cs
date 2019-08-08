@@ -12,6 +12,8 @@ namespace KutuphaneOtomasyon.Core.DataAccess.Abstract
 
         T Get(Expression<Func<T, bool>> filter);
 
+        T Last();
+
         T Get<TOrd>(Expression<Func<T, bool>> filter, Expression<Func<T, TOrd>> order=null);
         
         IEnumerable<T> GetList(Expression<Func<T, bool>> filter = null);

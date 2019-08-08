@@ -76,7 +76,7 @@
                                         <td><%# Eval("BolumAdi") %></td>
                                         <td><a href="../Ogrenci/OgrenciListesi.aspx?BolumId=<%# Eval("Id") %>"><i class="fa fa-eye" style="color: cadetblue"></i></a></td>
                                         <td><a href="../Bolum/BolumDuzenle.aspx?Id=<%# Eval("Id") %>"><i class="fa fa-edit" style="color: coral"></i></a></td>
-                                        <td><a href="../Bolum/BolumDuzenle.aspx?Id=<%# Eval("Id") %>"><i class="fa fa-trash-alt" style="color: red"></i></a></td>
+                                        <td><a href="../Bolum/BolumSil.aspx?Id=<%# Eval("Id") %>"><i class="fa fa-trash-alt" style="color: red"></i></a></td>
                                     </tr>
                                 </ItemTemplate>
                             </asp:Repeater>

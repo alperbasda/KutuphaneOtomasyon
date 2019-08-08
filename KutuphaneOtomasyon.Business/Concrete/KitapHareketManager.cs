@@ -59,6 +59,7 @@ namespace KutuphaneOtomasyon.Business.Concrete
             {
                 OgrenciId = ogrenciId,
                 KitapId = kitapId
+                
             }, EntityState.Added);
             if (response)
                 return new DataResponse
@@ -73,7 +74,6 @@ namespace KutuphaneOtomasyon.Business.Concrete
                 Mesaj = "Hareket Eklenemedi",
 
             };
-
         }
 
         [ExceptionLogAspect(typeof(DatabaseLogger), AspectPriority = 1)]
@@ -94,6 +94,50 @@ namespace KutuphaneOtomasyon.Business.Concrete
                 Tamamlandi = true,
                 Mesaj = "Kitap Teslim Alındı",
             };
+        }
+
+        public DataResponse GeriAl()
+        {
+            var item = _queryable.Table.Include(s => s.Ogrenci).Include(s => s.Kitap).OrderByDescending(s => s.Id).FirstOrDefault();
+            if (item == null)
+                return new DataResponse
+                {
+                    Mesaj = "İşlem bulunamadı",
+                    Tamamlandi = false
+                };
+            if (item.TeslimTarihi != null)
+            {
+                if (item.TeslimTarihi.Value.AddHours(1) < DateTime.Now)
+                {
+                    return new DataResponse
+                    {
+                        Mesaj = "İşlem üzerinden 1 saat geçmiş. İşlem yapılamıyor.",
+                        Tamamlandi = false
+                    };
+                }
+                item.TeslimTarihi = null;
+                _kitapHareketDal.SetState(new KitapHareket { Id = item.Id, AlinmaTarihi = item.AlinmaTarihi, TeslimTarihi = item.TeslimTarihi }, EntityState.Modified);
+                return new DataResponse
+                {
+                    Mesaj = $"{item.Ogrenci.Ad} >>> {item.Kitap.Adi} Teslim işlemi geri alındı.",
+                    Tamamlandi = true
+                };
+            }
+            if (item.AlinmaTarihi.Value.AddHours(1) < DateTime.Now)
+            {
+                return new DataResponse
+                {
+                    Mesaj = "İşlem üzerinden 1 saat geçmiş. İşlem yapılamıyor.",
+                    Tamamlandi = false
+                };
+            }
+            _kitapHareketDal.SetState(new KitapHareket { Id = item.Id }, EntityState.Deleted);
+            return new DataResponse
+            {
+                Mesaj = $"{item.Kitap.Adi} >>> {item.Ogrenci.Ad} Ödünç işlemi geri alındı.",
+                Tamamlandi = true
+            };
+
         }
     }
 }

@@ -12,7 +12,7 @@ namespace KutuphaneOtomasyon.DataAccess.Core.EntityFramework
             context.Roller.Add(new Rol { RolAdi = "Admin"});
             var rol = context.Roller.Add(new Rol { RolAdi = "Kullanici" });
             context.SaveChanges();
-
+            
             //Kullanıcılar initialize ediliyor.
             var kullanici = context.Kullanicilar.Add(new Kullanici { KullaniciAdi = "admin"});
             context.SaveChanges();

@@ -10,5 +10,7 @@ namespace KutuphaneOtomasyon.Business.Abstract
         DataResponse OduncEkle(int ogrenciId,int kitapId);
 
         DataResponse TeslimAl(int id);
+
+        DataResponse GeriAl();
     }
 }

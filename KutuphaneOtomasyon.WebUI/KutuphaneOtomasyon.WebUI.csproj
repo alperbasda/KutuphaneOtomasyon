@@ -141,6 +141,7 @@
     <Content Include="Bolum\BolumDuzenle.aspx" />
     <Content Include="Bolum\BolumEkle.aspx" />
     <Content Include="Bolum\BolumListesi.aspx" />
+    <Content Include="Bolum\BolumSil.aspx" />
     <Content Include="Cikis.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -163,6 +164,7 @@
     <Content Include="Fakulte\FakulteEkle.aspx" />
     <Content Include="Fakulte\FakulteListesi.aspx" />
     <Content Include="Fakulte\FakulteSecici.ascx" />
+    <Content Include="Fakulte\FakulteSil.aspx" />
     <Content Include="Fakulte\OgrenciAraFakulteBolumSecici.ascx" />
     <Content Include="Fakulte\OgrenciEkleFakulteBolumSecici.ascx" />
     <Content Include="favicon.ico" />
@@ -180,12 +182,16 @@
     <Content Include="KitapAnahtari\KitapAnahtariDuzenle.aspx" />
     <Content Include="KitapAnahtari\KitapAnahtariEkle.aspx" />
     <Content Include="KitapAnahtari\KitapAnahtariListesi.aspx" />
+    <Content Include="KitapAnahtari\KitapAnahtariSil.aspx" />
     <Content Include="KitapKategori\KitapAraKitapKategoriSecici.ascx" />
     <Content Include="KitapKategori\KitapKategoriDuzenle.aspx" />
     <Content Include="KitapKategori\KitapKategoriEkle.aspx" />
     <Content Include="KitapKategori\KitapKategoriListesi.aspx" />
     <Content Include="KitapKategori\KitapKategoriSecici.ascx" />
+    <Content Include="KitapKategori\KitapKategoriSil.aspx" />
     <Content Include="Kitap\KitapSecici.ascx" />
+    <Content Include="Kitap\KitapSil.aspx" />
+    <Content Include="Odunc\IslemiGeriAl.aspx" />
     <Content Include="Odunc\OduncEkle.aspx" />
     <Content Include="Odunc\OduncListesi.aspx" />
     <Content Include="Kitap\KitapDuzenle.aspx" />
@@ -219,6 +225,7 @@
     <Content Include="Ogrenci\OgrenciDuzenle.aspx" />
     <Content Include="Ogrenci\OgrenciEkle.aspx" />
     <Content Include="Ogrenci\OgrenciListesi.aspx" />
+    <Content Include="Ogrenci\OgrenciSil.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />
@@ -294,6 +301,13 @@
     <Compile Include="Bolum\BolumListesi.aspx.designer.cs">
       <DependentUpon>BolumListesi.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Bolum\BolumSil.aspx.cs">
+      <DependentUpon>BolumSil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bolum\BolumSil.aspx.designer.cs">
+      <DependentUpon>BolumSil.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cikis.aspx.cs">
       <DependentUpon>Cikis.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -328,6 +342,13 @@
     </Compile>
     <Compile Include="Fakulte\FakulteSecici.ascx.designer.cs">
       <DependentUpon>FakulteSecici.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Fakulte\FakulteSil.aspx.cs">
+      <DependentUpon>FakulteSil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fakulte\FakulteSil.aspx.designer.cs">
+      <DependentUpon>FakulteSil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Fakulte\OgrenciAraFakulteBolumSecici.ascx.cs">
       <DependentUpon>OgrenciAraFakulteBolumSecici.ascx</DependentUpon>
@@ -378,6 +399,13 @@
     <Compile Include="KitapAnahtari\KitapAnahtariListesi.aspx.designer.cs">
       <DependentUpon>KitapAnahtariListesi.aspx</DependentUpon>
     </Compile>
+    <Compile Include="KitapAnahtari\KitapAnahtariSil.aspx.cs">
+      <DependentUpon>KitapAnahtariSil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KitapAnahtari\KitapAnahtariSil.aspx.designer.cs">
+      <DependentUpon>KitapAnahtariSil.aspx</DependentUpon>
+    </Compile>
     <Compile Include="KitapKategori\KitapAraKitapKategoriSecici.ascx.cs">
       <DependentUpon>KitapAraKitapKategoriSecici.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -413,12 +441,33 @@
     <Compile Include="KitapKategori\KitapKategoriSecici.ascx.designer.cs">
       <DependentUpon>KitapKategoriSecici.ascx</DependentUpon>
     </Compile>
+    <Compile Include="KitapKategori\KitapKategoriSil.aspx.cs">
+      <DependentUpon>KitapKategoriSil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KitapKategori\KitapKategoriSil.aspx.designer.cs">
+      <DependentUpon>KitapKategoriSil.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Kitap\KitapSecici.ascx.cs">
       <DependentUpon>KitapSecici.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Kitap\KitapSecici.ascx.designer.cs">
       <DependentUpon>KitapSecici.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Kitap\KitapSil.aspx.cs">
+      <DependentUpon>KitapSil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kitap\KitapSil.aspx.designer.cs">
+      <DependentUpon>KitapSil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Odunc\IslemiGeriAl.aspx.cs">
+      <DependentUpon>IslemiGeriAl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Odunc\IslemiGeriAl.aspx.designer.cs">
+      <DependentUpon>IslemiGeriAl.aspx</DependentUpon>
     </Compile>
     <Compile Include="Odunc\OduncEkle.aspx.cs">
       <DependentUpon>OduncEkle.aspx</DependentUpon>
@@ -482,6 +531,13 @@
     </Compile>
     <Compile Include="Ogrenci\OgrenciListesi.aspx.designer.cs">
       <DependentUpon>OgrenciListesi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ogrenci\OgrenciSil.aspx.cs">
+      <DependentUpon>OgrenciSil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ogrenci\OgrenciSil.aspx.designer.cs">
+      <DependentUpon>OgrenciSil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

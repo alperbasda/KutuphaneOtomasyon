@@ -14,10 +14,7 @@ namespace KutuphaneOtomasyon.Entities.BaseType.ApiRelations
             HasKey(s => s.Id);
             Property(s => s.Kod).IsRequired().HasColumnType("nvarchar");
             
-            Property(s => s.ISBN).IsRequired().HasColumnType("nvarchar").HasMaxLength(13).HasColumnAnnotation(
-                IndexAnnotation.AnnotationName,
-                new IndexAnnotation(
-                    new IndexAttribute("IX_ISBN") { IsUnique = true }));
+            Property(s => s.ISBN).IsRequired().HasColumnType("nvarchar").HasMaxLength(13);
             Property(s => s.SayfaSayisi).IsRequired().HasColumnType("int");
             Property(s => s.YayinYili).IsRequired().HasColumnType("int");
             Property(s => s.Yazar).IsRequired().HasColumnType("nvarchar").HasMaxLength(150);

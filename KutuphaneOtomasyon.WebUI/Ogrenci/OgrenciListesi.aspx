@@ -92,7 +92,7 @@
                                         <td><a data-toggle="modal" data-target="#modalDetail" data-value="<%# Eval("Telefon") %>" data-header="Telefon" href="#"><i class="fa fa-eye" style="color: cadetblue"></i></a></td>
                                         <td><%# Eval("KayitTarihi") %></td>
                                         <td><a href="../Ogrenci/OgrenciDuzenle.aspx?Id=<%# Eval("Id") %>"><i class="fa fa-edit" style="color: coral"></i></a></td>
-                                        <td><a href="../Ogrenci/OgrenciDuzenle.aspx"><i class="fa fa-trash-alt" style="color: red"></i></a></td>
+                                        <td><a href="../Ogrenci/OgrenciSil.aspx?Id=<%# Eval("Id") %>"><i class="fa fa-trash-alt" style="color: red"></i></a></td>
                                     </tr>
                                 </ItemTemplate>
                             </asp:Repeater>

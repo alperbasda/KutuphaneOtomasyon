@@ -16,6 +16,9 @@
                     <div class="mr-auto">
                         <h6 class="m-subheader__title m-subheader__title--separator">Ödünç Kitap Listesi</h6>
                     </div>
+                    <div class="pull-right">
+                        <a href="../Odunc/IslemiGeriAl.aspx" class="btn btn-danger">Son İşlemi Geri Al</a>
+                    </div>
                 </div>
             </div>
 
@@ -44,8 +47,8 @@
                     <div class="row m--margin-bottom-20 text-center justify-content-center">
                         <div class="col-lg-3 m--margin-bottom-10-tablet-and-mobile">
                             <label>Durum </label>
-                            <select name="KitapDurum" class="form-control m-input" data-col-index="1">
-                                <%  foreach (KitapDurum durum in (KitapDurum[])Enum.GetValues(typeof(KitapDurum)))
+                            <select name="KitapDurumTeslim" class="form-control m-input" data-col-index="1">
+                                <%  foreach (KitapDurumTeslim durum in (KitapDurumTeslim[])Enum.GetValues(typeof(KitapDurumTeslim)))
                                     {%>
                                 <option value="<%= (int)durum %>"><%= durum.GetDescription() %></option>
                                 <%} %>
@@ -84,6 +87,8 @@
                                 <th>Alınma Tarihi</th>
                                 <th>Teslim Tarihi</th>
                                 <th>Teslim Al</th>
+                                <th>Kitap Suanki Durum</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -98,10 +103,14 @@
                                         <td><%# Eval("TeslimTarihi") %></td>
                                         <td>
 
-                                            <%# Eval("TeslimTarihi") == null ? (KitapDurum)Eval("KitapDurum") == KitapDurum.Ogrenci  
+                                            <%# Eval("TeslimTarihi") == null 
                                                     ? $"<a href='../Odunc/TeslimAl.aspx?Id={Eval("Id")}' class='trigger-button'><span class='m-badge m-badge--metal m-badge--danger'> Teslim Al </a></span>" 
-                                                    : "<span class='m-badge m-badge--metal m-badge--info'> Kütüphanede </span>" : ""  %>
+                                                    : "<span class='m-badge m-badge--metal m-badge--info'> Kütüphanede </span>" %>
                                         </td>
+                                        <td><%#  (KitapDurum)Eval("KitapDurum") == KitapDurum.Ogrenci
+                                                      ? "<span class='m-badge m-badge--metal m-badge--light'> Ögrencide </span>" 
+                                                      : "<span class='m-badge m-badge--metal m-badge--light'> Kütüphanede </span>"   %></td>
+                                        
                                     </tr>
                                 </ItemTemplate>
                             </asp:Repeater>

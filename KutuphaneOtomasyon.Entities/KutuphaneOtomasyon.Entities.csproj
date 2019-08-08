@@ -115,6 +115,7 @@
     <Compile Include="ComplexType\PostModels\Ogrenci\OgrenciDuzenleModel.cs" />
     <Compile Include="ComplexType\PostModels\Ogrenci\OgrenciEkleModel.cs" />
     <Compile Include="Enum\AdresTipleri.cs" />
+    <Compile Include="Enum\KitapDurumTeslim.cs" />
     <Compile Include="Enum\KitapDurumu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Response\Abstract\IViewResponse.cs" />

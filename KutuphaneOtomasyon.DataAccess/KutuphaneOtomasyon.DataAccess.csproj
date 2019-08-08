@@ -74,11 +74,6 @@
     <Compile Include="Concrete\ViewDal.cs" />
     <Compile Include="Core\EntityFramework\InitializeData.cs" />
     <Compile Include="Core\EntityFramework\KutuphaneContext.cs" />
-    <Compile Include="Migrations\201908081050328_First.cs" />
-    <Compile Include="Migrations\201908081050328_First.Designer.cs">
-      <DependentUpon>201908081050328_First.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -94,11 +89,6 @@
       <Project>{A0097892-B829-49BA-A86F-2A24105879B3}</Project>
       <Name>KutuphaneOtomasyon.Entities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908081050328_First.resx">
-      <DependentUpon>201908081050328_First.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

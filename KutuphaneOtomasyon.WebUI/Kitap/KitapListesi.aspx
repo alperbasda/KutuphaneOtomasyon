@@ -129,9 +129,9 @@
                                         <td><%# Eval("SayfaSayisi") %></td>
                                         <td><span class="m-badge  m-badge--metal m-badge--accent">
                                             <%# ((KitapDurum)Eval("KitapDurum")).GetDescription() %></span></td>
-                                        <td><a href="../KitapAnahtar/KitapAnahtarListesi.aspx?KitapId=<%# Eval("Id") %>"><i class="fa fa-eye" style="color: cadetblue"></i></a></td>
+                                        <td><a href="../KitapAnahtari/KitapAnahtariListesi.aspx?KitapId=<%# Eval("Id") %>"><i class="fa fa-eye" style="color: cadetblue"></i></a></td>
                                         <td><a href="../Kitap/KitapDuzenle.aspx?Id=<%# Eval("Id") %>"><i class="fa fa-edit" style="color: coral"></i></a></td>
-                                        <td><a href="../Kitap/KitapDuzenle.aspx"><i class="fa fa-trash-alt" style="color: red"></i></a></td>
+                                        <td><a href="../Kitap/KitapSil.aspx?Id=<%# Eval("Id") %>"><i class="fa fa-trash-alt" style="color: red"></i></a></td>
                                     </tr>
                                 </ItemTemplate>
                             </asp:Repeater>

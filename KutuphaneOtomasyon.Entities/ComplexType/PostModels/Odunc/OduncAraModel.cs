@@ -18,6 +18,8 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.Odunc
 
         public KitapDurum KitapDurum { get; set; }
 
+        public KitapDurumTeslim KitapDurumTeslim { get; set; }
+
         private IQueryable<KitapHareket> KitapQuery(IQueryable<KitapHareket> queryable)
         {
             if (!string.IsNullOrEmpty(KitapAdi))
@@ -62,6 +64,15 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.Odunc
             return queryable;
         }
 
+        private IQueryable<KitapHareket> KitapDurumTeslimQuery(IQueryable<KitapHareket> queryable)
+        {
+            if (KitapDurumTeslim == KitapDurumTeslim.TeslimEdilmedi)
+                return queryable.Where(s => s.TeslimTarihi ==null);
+            if (KitapDurumTeslim == KitapDurumTeslim.TeslimEdildi)
+                return queryable.Where(s => s.TeslimTarihi != null);
+            return queryable;
+        }
+
         public override IQueryable<KitapHareket> ExecuteQueryables(IQueryable<KitapHareket> queryable)
         {
             queryable = WithoutPageExecuteQueryable(queryable);
@@ -76,6 +87,7 @@ namespace KutuphaneOtomasyon.Entities.ComplexType.PostModels.Odunc
             queryable = AlinmaTarihiQuery(queryable);
             queryable = TeslimTarihiQuery(queryable);
             queryable = KitapDurumQuery(queryable);
+            queryable = KitapDurumTeslimQuery(queryable);
             return queryable;
         }
 
